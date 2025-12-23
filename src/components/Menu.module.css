@@ -7,8 +7,9 @@
 .menuContainer {
   background-color: #f5f5f5; 
   border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+  /* overflow: hidden;  <-- Remova ou altere se as abas estiverem sumindo nas bordas arredondadas */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-top: 20px;
 }
 
 .contentArea {

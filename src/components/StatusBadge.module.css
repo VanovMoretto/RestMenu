@@ -39,6 +39,11 @@
   background-color: var(--status-closed);
 }
 
+.warning {
+  background-color: var(--status-warning);
+  box-shadow: 0 0 8px var(--status-warning);
+}
+
 .statusText {
   font-family: var(--font-ui);
   font-size: 0.75rem;
