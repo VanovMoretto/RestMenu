@@ -1,5 +1,5 @@
 import styles from './Modal.module.css';
-import notFoundImg from '../assets/notFound.png'; 
+import notFoundImg from '../assets/notFound.png';
 
 interface ModalProps {
   isOpen: boolean;
@@ -14,7 +14,6 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, item }) => {
   if (!isOpen || !item) return null;
-
   const displayImage = item.image || notFoundImg;
 
   return (
@@ -31,6 +30,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, item }) => {
             <h2 className={styles.title}>{item.name}</h2>
             <p className={styles.description}>{item.description}</p>
           </div>
+          
           <div className={styles.footer}>
             <span className={styles.price}>{item.price}</span>
           </div>

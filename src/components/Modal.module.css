@@ -80,9 +80,10 @@
 
 .closeBtn {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: white;
+  top: 5px;
+  right: 5px;
+  color: #080808cb;
+  background: transparent;
   border: none;
   width: 32px;
   height: 32px;
@@ -93,7 +94,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 @keyframes slideUp {

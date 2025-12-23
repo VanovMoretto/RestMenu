@@ -1,3 +1,4 @@
+// src/components/Menu.tsx
 import { useState } from "react";
 import styles from "./Menu.module.css";
 import Tabs from "./Tabs";
@@ -20,15 +21,24 @@ const Menu: React.FC<MenuProps> = ({ onSelectItem }) => {
 
         <section className={styles.contentArea}>
           {currentItems.length > 0 ? (
-            currentItems.map((item) => (
-              <MenuItem
-                key={item.id}
-                name={item.name}
-                price={item.price}
-                description={item.description}
-                onClick={() => onSelectItem(item)}
-              />
-            ))
+            currentItems.map((item: any, index) => {
+              if (item.section) {
+                return (
+                  <h2 key={`section-${index}`} className={styles.subCategoryTitle}>
+                    {item.section}
+                  </h2>
+                );
+              }
+              return (
+                <MenuItem
+                  key={item.id}
+                  name={item.name}
+                  price={item.price}
+                  description={item.description}
+                  onClick={() => onSelectItem(item)}
+                />
+              );
+            })
           ) : (
             <p className={styles.placeholder}>
               Nenhum item disponível nesta categoria.
