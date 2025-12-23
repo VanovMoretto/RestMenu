@@ -1,5 +1,5 @@
-// src/components/Modal.tsx
 import styles from './Modal.module.css';
+import notFoundImg from '../assets/notFound.png'; 
 
 interface ModalProps {
   isOpen: boolean;
@@ -15,20 +15,22 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, item }) => {
   if (!isOpen || !item) return null;
 
+  const displayImage = item.image || notFoundImg;
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeBtn} onClick={onClose}>&times;</button>
         
-        {item.image && (
-          <div className={styles.imageWrapper}>
-            <img src={item.image} alt={item.name} className={styles.image} />
-          </div>
-        )}
+        <div className={styles.imageWrapper}>
+          <img src={displayImage} alt={item.name} className={styles.image} />
+        </div>
         
         <div className={styles.details}>
-          <h2 className={styles.title}>{item.name}</h2>
-          <p className={styles.description}>{item.description}</p>
+          <div className={styles.textContent}>
+            <h2 className={styles.title}>{item.name}</h2>
+            <p className={styles.description}>{item.description}</p>
+          </div>
           <div className={styles.footer}>
             <span className={styles.price}>{item.price}</span>
           </div>
