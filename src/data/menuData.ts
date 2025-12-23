@@ -1,5 +1,9 @@
 import { prices } from './priceList';
 import carpaccioImg from '../assets/carpaccio.png';
+import bruschettaImg from '../assets/burschetta.png'
+import mignonImg from '../assets/mignon.png'
+import salmonImg from '../assets/salmon.png'
+import gateauImg from '../assets/gateau.png'
 
 export const categories = [
   { id: 'entrada', label: 'Entrada' },
@@ -12,14 +16,14 @@ export const categories = [
 export const menuItems = {
   entrada: [
     { id: 1, name: 'Carpaccio di Manzo', price: prices.entrada_carpaccio, description: 'Lâminas de filé mignon, rúcula, alcaparras e lascas de parmesão.', image: carpaccioImg },
-    { id: 2, name: 'Bruschetta Tradicional', price: prices.entrada_bruschetta, description: 'Pão italiano tostado, tomates frescos e manjericão.' },
+    { id: 2, name: 'Bruschetta Tradicional', price: prices.entrada_bruschetta, description: 'Pão italiano tostado, tomates frescos e manjericão.', image: bruschettaImg },
   ],
   principal: [
-    { id: 10, name: 'Filé Mignon ao Poivre', price: prices.principal_file, description: 'Medalhão de filé com molho de pimentas verdes e risoto.' },
-    { id: 11, name: 'Salmão Grelhado', price: prices.principal_salmao, description: 'Com crosta de ervas e legumes.' },
+    { id: 10, name: 'Filé Mignon ao Poivre', price: prices.principal_file, description: 'Medalhão de filé com molho de pimentas verdes, aspargos e batatas.', image: mignonImg },
+    { id: 11, name: 'Salmão Grelhado', price: prices.principal_salmao, description: 'Com crosta de ervas e legumes.', image: salmonImg },
   ],
   sobremesa: [
-    { id: 20, name: 'Petit Gâteau', price: prices.sobremesa_petit, description: 'Com sorvete de creme.' },
+    { id: 20, name: 'Petit Gâteau', price: prices.sobremesa_petit, description: 'Com sorvete de creme.', image: gateauImg },
   ],
   bebida: [
     { section: 'Bebidas Frias' },
@@ -30,10 +34,10 @@ export const menuItems = {
     { id: 'b5', name: 'Energético Baly', price: prices.energetico, description: 'Tradicional - lata 250ml.' },
 
     { section: 'Bebidas Quentes' },
-    { id: 'b6', name: 'Café (Bule)', price: prices.cafe_bule, description: 'Serve 2 xícaras. Coffee pot.' },
-    { id: 'b7', name: 'Leite Quente (Bule)', price: prices.leite_bule, description: 'Serve 2 xícaras. Milk pot.' },
-    { id: 'b8', name: 'Chocolate Quente', price: prices.chocolate_quente, description: 'Bule - Serve 2 xícaras. Hot chocolate.' },
-    { id: 'b9', name: 'Chá (Bule)', price: prices.cha_bule, description: 'Serve 2 xícaras. Tea pot.' },
+    { id: 'b6', name: 'Café (Bule)', price: prices.cafe_bule, description: 'Serve 2 xícaras.' },
+    { id: 'b7', name: 'Leite Quente (Bule)', price: prices.leite_bule, description: 'Serve 2 xícaras.' },
+    { id: 'b8', name: 'Chocolate Quente', price: prices.chocolate_quente, description: 'Bule - Serve 2 xícaras.' },
+    { id: 'b9', name: 'Chá (Bule)', price: prices.cha_bule, description: 'Serve 2 xícaras.' },
     { id: 'b10', name: 'Café Nespresso', price: prices.nespresso, description: 'Curtinho.' },
 
     { section: 'Cervejas' },

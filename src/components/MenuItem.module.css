@@ -2,6 +2,16 @@
   padding: 16px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   animation: fadeIn 0.4s ease-out;
+  cursor: default; 
+  transition: background-color 0.2s;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:active {
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .card:last-child {
@@ -15,11 +25,22 @@
   margin-bottom: 4px;
 }
 
+.titleRow {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 8px; 
+  color: #888;
+}
+
 .name {
   font-family: var(--font-ui);
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-primary);
+  margin: 0;
 }
 
 .price {
@@ -27,17 +48,15 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-primary);
+  white-space: nowrap;
+  margin-left: 10px;
 }
 
 .description {
   font-size: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.4;
-}
-
-.titleRow {
-  display: flex;
-  align-items: center;
+  margin: 4px 0 0 0;
 }
 
 @keyframes fadeIn {

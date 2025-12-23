@@ -14,6 +14,10 @@ const Menu: React.FC<MenuProps> = ({ onSelectItem }) => {
 
   const currentItems = menuItems[activeTab as keyof typeof menuItems] || [];
 
+  const categoriesWithModal = ['entrada', 'principal', 'sobremesa'];
+
+  const isClickable = categoriesWithModal.includes(activeTab);
+
   return (
     <main className={styles.menuWrapper}>
       <div className={styles.menuContainer}>
@@ -21,22 +25,13 @@ const Menu: React.FC<MenuProps> = ({ onSelectItem }) => {
 
         <section className={styles.contentArea}>
           {currentItems.length > 0 ? (
-            currentItems.map((item: any, index) => {
- 
+            currentItems.map((item: any, index: number) => {
+              
               if (item.section) {
-                return (
-                  <h2 key={`section-${index}`} className={styles.sectionTitle}>
-                    {item.section}
-                  </h2>
-                );
+                return <h2 key={`section-${index}`} className={styles.sectionTitle}>{item.section}</h2>;
               }
-
               if (item.subsection) {
-                return (
-                  <h3 key={`sub-${index}`} className={styles.subSectionTitle}>
-                    {item.subsection}
-                  </h3>
-                );
+                return <h3 key={`sub-${index}`} className={styles.subSectionTitle}>{item.subsection}</h3>;
               }
 
               return (
@@ -46,7 +41,7 @@ const Menu: React.FC<MenuProps> = ({ onSelectItem }) => {
                   price={item.price}
                   description={item.description}
                   servingType={item.servingType}
-                  onClick={() => onSelectItem(item)}
+                  onClick={isClickable ? () => onSelectItem(item) : undefined}
                 />
               );
             })
