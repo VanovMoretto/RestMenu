@@ -41,3 +41,34 @@
 .subCategoryTitle:first-child {
   margin-top: 10px;
 }
+
+/* Título Grande (ex: VINHOS TINTOS) */
+.sectionTitle {
+  font-family: var(--font-logo);
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin: 30px 0 10px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #333; /* Linha mais grossa */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* Título Menor (ex: Cabernet Sauvignon) */
+.subSectionTitle {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  color: var(--status-open); /* Um toque de cor, talvez verde ou dourado do tema */
+  margin: 20px 0 10px 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 5px;
+  border-left: 3px solid var(--status-open); /* Detalhe lateral */
+}
+
+/* Ajuste para o primeiro não colar */
+.sectionTitle:first-child {
+  margin-top: 10px;
+}

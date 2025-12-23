@@ -22,19 +22,30 @@ const Menu: React.FC<MenuProps> = ({ onSelectItem }) => {
         <section className={styles.contentArea}>
           {currentItems.length > 0 ? (
             currentItems.map((item: any, index) => {
+ 
               if (item.section) {
                 return (
-                  <h2 key={`section-${index}`} className={styles.subCategoryTitle}>
+                  <h2 key={`section-${index}`} className={styles.sectionTitle}>
                     {item.section}
                   </h2>
                 );
               }
+
+              if (item.subsection) {
+                return (
+                  <h3 key={`sub-${index}`} className={styles.subSectionTitle}>
+                    {item.subsection}
+                  </h3>
+                );
+              }
+
               return (
                 <MenuItem
                   key={item.id}
                   name={item.name}
                   price={item.price}
                   description={item.description}
+                  servingType={item.servingType}
                   onClick={() => onSelectItem(item)}
                 />
               );
