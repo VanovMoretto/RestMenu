@@ -1,12 +1,15 @@
-import './App.css'
+// App.tsx
+import Header from './components/Header';
+import Menu from './components/Menu';
+import './App.css';
 
 function App() {
-
   return (
-   <div>
-    <h1>Hello World</h1>
-   </div>
-  )
+    <div className="container">
+      <Header />
+      <Menu/>
+    </div>
+  );
 }
 
-export default App
+export default App;

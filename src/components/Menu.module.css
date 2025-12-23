@@ -1,0 +1,27 @@
+.menuWrapper {
+  padding: 0 15px 40px 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.menuContainer {
+  background-color: #f5f5f5; 
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+}
+
+.contentArea {
+  background-color: var(--bg-primary); 
+  min-height: 400px;
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+}
+
+.placeholder {
+  text-align: center;
+  font-family: var(--font-ui);
+  color: var(--text-secondary);
+  margin-top: 50px;
+  text-transform: capitalize;
+}

@@ -1,0 +1,32 @@
+.tabsContainer {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 10px 5px;
+  scrollbar-width: none; 
+}
+
+.tabsContainer::-webkit-scrollbar {
+  display: none; 
+}
+
+.tabButton {
+  padding: 12px 20px;
+  border: none;
+  background-color: #f0f0f0; 
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.tabButton.active {
+  background-color: var(--bg-primary); 
+  color: var(--text-primary);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px); 
+}
