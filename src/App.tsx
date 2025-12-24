@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Navbar from "./components/Navbar"; // Importação Nova
 import Header from "./components/Header";
 import Menu from "./components/Menu";
 import Modal from "./components/Modal";
@@ -9,6 +10,8 @@ function App() {
 
   return (
     <div className="container">
+      <Navbar /> 
+      
       <Header />
       <Menu onSelectItem={setSelectedItem} />
 

@@ -2,31 +2,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
+  padding: 20px 20px 40px 20px;
   text-align: center;
   position: relative;
 }
 
-.logoText {
-  font-family: var(--font-logo);
-  font-size: 2.5rem;
-  letter-spacing: 8px;
-  font-weight: 500;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.logoSubtext {
-  font-family: var(--font-ui);
-  font-size: 1rem;
-  letter-spacing: 4px;
-  margin-top: -5px;
-  color: var(--text-secondary);
-}
-
-.statusRow {
+/* Centraliza a imagem caso o container precise */
+.logoContainer {
+  margin: 40px 0 0px;
   display: flex;
-  gap: 30px;
-  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
+/* Controle o tamanho da logo aqui */
+.logoImage {
+  width: 250px;
+  height: auto; 
+  display: block;
+}

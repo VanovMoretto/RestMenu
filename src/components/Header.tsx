@@ -1,19 +1,15 @@
 import styles from './Header.module.css';
-import LanguageSwitcher from './LanguageSwitcher';
-import StatusBadge from './StatusBadge';
+import logo from '../assets/irius-logo.svg'; 
 
 const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        <h1 className={styles.logoText}>IRIUS</h1>
-        <p className={styles.logoSubtext}>gastronomia</p>
-      </div>
-      <LanguageSwitcher/>
-
-      <div className={styles.statusRow}>
-        <StatusBadge type="restaurant" label="Restaurante" />
-        <StatusBadge type="roomService" label="Room Service" />
+        <img 
+          src={logo} 
+          alt="Irius Gastronomia" 
+          className={styles.logoImage} 
+        />
       </div>
     </header>
   );
