@@ -16,7 +16,7 @@ const Menu: React.FC<MenuProps> = ({ onSelectItem }) => {
 
   const currentItems = menuItems[activeTab as keyof typeof menuItems] || [];
 
-  const categoriesWithModal = ["entrada", "principal", "sobremesa"];
+  const categoriesWithModal = ["entrada", "principal", "lanches", "sobremesa"];
 
   const isClickable = categoriesWithModal.includes(activeTab);
 

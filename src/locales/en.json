@@ -1,15 +1,31 @@
 {
-  "header": {
-    "open": "Open Now",
-    "closed": "Closed",
-    "hours": "Tuesday to Sunday - 6pm to 11pm"
-  },
   "nav": {
-  "menu": "Menu",
-  "phone": "Phone",
-  "hours": "Hours",
-  "directions": "Directions"
-},
+    "menu": "Menu",
+    "phone": "Phone",
+    "hours": "Hours",
+    "directions": "Directions"
+  },
+  "hoursSection": {
+    "title": "Opening Hours",
+    "restaurant": "Restaurant",
+    "days_rest": "Monday to Friday",
+    "closed_rest": "Closed on Saturdays, Sundays and Holidays",
+    "room_service": "Room Service",
+    "days_room": "Every day",
+    "daily_service": "Daily Service"
+  },
+  "locationSection": {
+    "title": "Directions",
+    "ground_floor": "Ground floor of",
+    "open_gps": "Open in GPS"
+  },
+  "footerSection": {
+    "for_guests": "For Guests",
+    "extension": "Extension",
+    "external_call": "External Call",
+    "ask_extension": "Ask for extension",
+    "rights": "All rights reserved."
+  },
   "categories": {
     "entrada": "Starters",
     "principal": "Main Courses",

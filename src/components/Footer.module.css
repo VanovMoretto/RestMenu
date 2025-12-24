@@ -1,5 +1,5 @@
 .footer {
-  background-color: #1a1a1a; 
+  background-color: #1a1a1a;
   color: var(--bg-body);
   padding: 50px 20px 20px 20px;
   font-family: var(--font-ui);
@@ -30,8 +30,13 @@
   gap: 40px;
   width: 100%;
   max-width: 600px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border: none;
+  background-image: 
+    linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2) 15%, rgba(255, 255, 255, 0.2) 85%, transparent), /* Linha Superior */
+    linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2) 15%, rgba(255, 255, 255, 0.2) 85%, transparent); /* Linha Inferior */
+  background-position: top center, bottom center;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
   padding: 30px 0;
 }
 
@@ -43,8 +48,16 @@
 }
 
 .contactItem p {
+  margin-top: 5px;
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+.contactItem a {
+  color: var(--bg-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .highlight {
@@ -58,8 +71,8 @@
   gap: 20px;
 }
 
-.socials a{
-    font-size: 1.4rem;
+.socials a {
+  font-size: 1.4rem;
 }
 
 .socialLink {
@@ -78,12 +91,12 @@
 .copy {
   margin-top: 40px;
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .logoImage {
   width: 180px;
-  height: auto; 
+  height: auto;
   display: block;
 }
 

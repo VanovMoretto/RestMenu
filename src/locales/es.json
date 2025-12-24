@@ -1,15 +1,31 @@
 {
-  "header": {
-    "open": "Abierto Ahora",
-    "closed": "Cerrado",
-    "hours": "Martes a Domingo - 18h a 23h"
-  },
   "nav": {
-  "menu": "Menú",
-  "phone": "Teléfono",
-  "hours": "Horarios",
-  "directions": "Ubicación"
-},
+    "menu": "Menú",
+    "phone": "Teléfono",
+    "hours": "Horarios",
+    "directions": "Ubicación"
+  },
+  "hoursSection": {
+    "title": "Horarios de Atención",
+    "restaurant": "Restaurante",
+    "days_rest": "Lunes a Viernes",
+    "closed_rest": "Cerrado los Sábados, Domingos y Festivos",
+    "room_service": "Room Service",
+    "days_room": "Todos los días",
+    "daily_service": "Atención Diaria"
+  },
+  "locationSection": {
+    "title": "Ubicación",
+    "ground_floor": "Planta baja del",
+    "open_gps": "Abrir en GPS"
+  },
+  "footerSection": {
+    "for_guests": "Para Huéspedes",
+    "extension": "Extensión",
+    "external_call": "Llamada Externa",
+    "ask_extension": "Solicite la extensión",
+    "rights": "Todos los derechos reservados."
+  },
   "categories": {
     "entrada": "Entradas",
     "principal": "Platos Principales",

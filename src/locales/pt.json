@@ -1,15 +1,31 @@
 {
-  "header": {
-    "open": "Aberto agora",
-    "closed": "Fechado",
-    "hours": "Terça a Domingo - 18h às 23h"
-  },
   "nav": {
-  "menu": "Cardápio",
-  "phone": "Telefone",
-  "hours": "Horários",
-  "directions": "Como Chegar"
-},
+    "menu": "Cardápio",
+    "phone": "Telefone",
+    "hours": "Horários",
+    "directions": "Como Chegar"
+  },
+  "hoursSection": {
+    "title": "Horários de Funcionamento",
+    "restaurant": "Restaurante",
+    "days_rest": "Segunda a Sexta",
+    "closed_rest": "Fechado aos Sábados, Domingos e Feriados",
+    "room_service": "Room Service",
+    "days_room": "Todos os dias",
+    "daily_service": "Atendimento Diário"
+  },
+  "locationSection": {
+    "title": "Como Chegar",
+    "ground_floor": "Andar térreo do",
+    "open_gps": "Abrir no GPS"
+  },
+  "footerSection": {
+    "for_guests": "Para Hóspedes",
+    "extension": "Ramal",
+    "external_call": "Ligação Externa",
+    "ask_extension": "Solicite o ramal",
+    "rights": "Todos os direitos reservados."
+  },
   "categories": {
     "entrada": "Entradas",
     "principal": "Principais",
