@@ -1,7 +1,8 @@
 // src/components/Tabs/Tabs.tsx
-import { useEffect, useRef } from 'react';
-import styles from './Tabs.module.css';
-import { categories } from '../data/menuData';
+import { useEffect, useRef } from "react";
+import styles from "./Tabs.module.css";
+import { categories } from "../data/menuData";
+import { useTranslation } from "react-i18next";
 
 interface TabsProps {
   activeTab: string;
@@ -9,13 +10,19 @@ interface TabsProps {
 }
 
 const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange }) => {
+  const { t } = useTranslation();
   const tabsRef = useRef<HTMLElement>(null);
   useEffect(() => {
-    const activeElement = tabsRef.current?.querySelector(`.${styles.active}`) as HTMLElement;
+    const activeElement = tabsRef.current?.querySelector(
+      `.${styles.active}`
+    ) as HTMLElement;
     if (activeElement && tabsRef.current) {
       const container = tabsRef.current;
-      const scrollLeft = activeElement.offsetLeft - (container.offsetWidth / 2) + (activeElement.offsetWidth / 2);
-      container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+      const scrollLeft =
+        activeElement.offsetLeft -
+        container.offsetWidth / 2 +
+        activeElement.offsetWidth / 2;
+      container.scrollTo({ left: scrollLeft, behavior: "smooth" });
     }
   }, [activeTab]);
 
@@ -24,10 +31,12 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange }) => {
       {categories.map((cat) => (
         <button
           key={cat.id}
-          className={`${styles.tabButton} ${activeTab === cat.id ? styles.active : ''}`}
+          className={`${styles.tabButton} ${
+            activeTab === cat.id ? styles.active : ""
+          }`}
           onClick={() => onTabChange(cat.id)}
         >
-          {cat.label}
+          {t(cat.label)}
         </button>
       ))}
     </nav>

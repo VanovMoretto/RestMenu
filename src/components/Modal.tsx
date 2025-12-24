@@ -1,5 +1,6 @@
-import styles from './Modal.module.css';
-import notFoundImg from '../assets/notFound.png';
+import styles from "./Modal.module.css";
+import notFoundImg from "../assets/notFound.png";
+import { useTranslation } from "react-i18next";
 
 interface ModalProps {
   isOpen: boolean;
@@ -13,24 +14,27 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, item }) => {
+  const { t } = useTranslation();
   if (!isOpen || !item) return null;
   const displayImage = item.image || notFoundImg;
 
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeBtn} onClick={onClose}>&times;</button>
-        
+        <button className={styles.closeBtn} onClick={onClose}>
+          &times;
+        </button>
+
         <div className={styles.imageWrapper}>
           <img src={displayImage} alt={item.name} className={styles.image} />
         </div>
-        
+
         <div className={styles.details}>
           <div className={styles.textContent}>
-            <h2 className={styles.title}>{item.name}</h2>
-            <p className={styles.description}>{item.description}</p>
+            <h2 className={styles.title}>{t(item.name)}</h2>
+            <p className={styles.description}>{item.description ? t(item.description) : ''}</p>
           </div>
-          
+
           <div className={styles.footer}>
             <span className={styles.price}>{item.price}</span>
           </div>

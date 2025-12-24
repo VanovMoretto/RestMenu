@@ -1,5 +1,32 @@
 import { prices } from './priceList';
 
+// --- 1. DEFINIÇÃO DOS TIPOS (O CONTRATO) ---
+
+// Tipo para um Prato/Bebida real
+export interface Dish {
+  id: string | number;
+  name: string;
+  price: string;      // Obrigatório ter preço
+  description?: string; // Opcional (?)
+  image?: string;       // Opcional (?)
+  servingType?: 'bottle' | 'glass'; // Só aceita esses dois valores exatos
+}
+
+// Tipo para um Título de Seção (ex: "Vinhos Tintos")
+export interface SectionHeader {
+  section: string;
+}
+
+// Tipo para um Título de Subseção (ex: "Merlot")
+export interface SubSectionHeader {
+  subsection: string;
+}
+
+// Um item da lista pode ser QUALQUER UM desses três
+export type MenuItemType = Dish | SectionHeader | SubSectionHeader;
+
+// --- 2. DADOS ---
+
 export const categories = [
   { id: 'entrada', label: 'Entradas' },
   { id: 'principal', label: 'Principais' },
@@ -9,7 +36,8 @@ export const categories = [
   { id: 'vinho', label: 'Vinhos' },
 ];
 
-export const menuItems = {
+// Aplicando a tipagem aqui: Record<string, MenuItemType[]>
+export const menuItems: Record<string, MenuItemType[]> = {
   entrada: [
     { section: 'Couvert & Petiscos' },
     { id: 'c1', name: 'Dadinhos de Coalho', price: prices.couvert_dadinhos, description: '8 unidades, com melado.', image: 'pratos/dadinhos.png' },
@@ -33,7 +61,7 @@ export const menuItems = {
     { id: 'sp4', name: 'Creme de Moranga', price: prices.sopa_creme_moranga, description: 'Acompanha bacon assado, torradinhas e queijo.', image: 'pratos/creme_moranga.png' },
     { id: 'sp5', name: 'Creme de Aipim com Frango', price: prices.sopa_creme_aipim, description: 'Acompanha bacon assado, torradinhas e queijo.', image: 'pratos/creme_aipim.png' },
   ],
-  
+
   principal: [
     { section: 'Carnes Vermelhas' },
     { id: 'cn1', name: 'Bife Ancho com Massa', price: prices.carne_ancho_massa, description: 'Grelhado na manteiga. Com massa, legumes, aligot e purê de baroa.', image: 'pratos/ancho_massa.png' },
@@ -95,13 +123,13 @@ export const menuItems = {
   ],
 
   sobremesa: [
-    { section: 'Sobremesas' },
     { id: 'sb1', name: 'Salada de Frutas', price: prices.sobremesa_salada_frutas, image: 'pratos/salada_frutas.png' },
     { id: 'sb2', name: 'Gelato de Iogurte', price: prices.sobremesa_gelato_iogurte, description: 'Com coulis de frutas vermelhas e crumble.', image: 'pratos/gelato_iogurte.png' },
     { id: 'sb3', name: 'Gelato de Pistache', price: prices.sobremesa_gelato_pistache, description: 'Com pistache fresco e tuile.', image: 'pratos/gelato_pistache.png' },
     { id: 'sb4', name: 'Petit Gâteau', price: prices.sobremesa_petit_gateau, description: 'Chocolate, Doce de Leite ou Siciliano. Com gelato.', image: 'pratos/petit_gateau.png' },
     { id: 'sb5', name: 'Trio de Petit Doces', price: prices.sobremesa_trio, description: 'Mini crème brûlée, gelato de pistache e +1.', image: 'pratos/trio_doces.png' },
   ],
+
   bebida: [
     { section: 'Bebidas Frias' },
     { id: 'b1', name: 'Suco Fresco de Laranja', price: prices.suco_laranja, description: 'Natural.' },
@@ -111,10 +139,10 @@ export const menuItems = {
     { id: 'b5', name: 'Energético Baly', price: prices.energetico, description: 'Tradicional - lata 250ml.' },
 
     { section: 'Bebidas Quentes' },
-    { id: 'b6', name: 'Café (Bule)', price: prices.cafe_bule, description: 'Serve 2 xícaras.' },
-    { id: 'b7', name: 'Leite Quente (Bule)', price: prices.leite_bule, description: 'Serve 2 xícaras.' },
-    { id: 'b8', name: 'Chocolate Quente', price: prices.chocolate_quente, description: 'Bule - Serve 2 xícaras.' },
-    { id: 'b9', name: 'Chá (Bule)', price: prices.cha_bule, description: 'Serve 2 xícaras.' },
+    { id: 'b6', name: 'Café (Bule)', price: prices.cafe_bule, description: 'Serve 2 xícaras. Coffee pot.' },
+    { id: 'b7', name: 'Leite Quente (Bule)', price: prices.leite_bule, description: 'Serve 2 xícaras. Milk pot.' },
+    { id: 'b8', name: 'Chocolate Quente', price: prices.chocolate_quente, description: 'Bule - Serve 2 xícaras. Hot chocolate.' },
+    { id: 'b9', name: 'Chá (Bule)', price: prices.cha_bule, description: 'Serve 2 xícaras. Tea pot.' },
     { id: 'b10', name: 'Café Nespresso', price: prices.nespresso, description: 'Curtinho.' },
 
     { section: 'Cervejas' },
@@ -134,6 +162,7 @@ export const menuItems = {
     { id: 'd11', name: 'Gin Tônica', price: prices.gin_tonica, description: 'Rocks.' },
     { id: 'd12', name: 'Negroni', price: prices.negroni },
   ],
+
   vinho: [
     { section: 'Vinhos em Taça' },
     { id: 't1', name: 'Taça de Salton Classic', price: prices.taca_salton, description: 'Merlot | Cabernet Sauvignon - Serra Gaúcha.', servingType: 'glass' },
