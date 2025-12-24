@@ -1,0 +1,95 @@
+.footer {
+  background-color: #1a1a1a; 
+  color: var(--bg-body);
+  padding: 50px 20px 20px 20px;
+  font-family: var(--font-ui);
+  box-shadow: 0 -2px 8px 6px #1a1a1a41;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-family: var(--font-logo);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* Área de Contatos */
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  width: 100%;
+  max-width: 600px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 30px 0;
+}
+
+.contactItem h4 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.contactItem p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.highlight {
+  color: var(--status-warning);
+  font-weight: 700;
+}
+
+/* Redes Sociais */
+.socials {
+  display: flex;
+  gap: 20px;
+}
+
+.socials a{
+    font-size: 1.4rem;
+}
+
+.socialLink {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.socialLink:hover {
+  opacity: 1;
+}
+
+/* Copyright */
+.copy {
+  margin-top: 40px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.logoImage {
+  width: 180px;
+  height: auto; 
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

@@ -1,72 +1,62 @@
 .switcherWrapper {
-  position: absolute;
-  top: 20px;  
-  right: 20px;
-  z-index: 100;
-  width: 40px; 
+  position: relative;
+  display: flex;
+  align-items: center; 
+  height: 100%;
 }
 
 .currentLangButton {
-  background-color: transparent;
-  color: var(--text-primary); 
-  font-size: 1rem;
-  padding: 5px;
-  border: 1px solid transparent; 
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  transition: all 0.2s;
-}
-
-.currentLangButton:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-/* A lista suspensa */
-.dropdownMenu {
-  position: absolute;
-  background-color: var(--bg-primary, #fff); 
-  border: 1px solid rgba(0,0,0,0.1);
-  top: 110%; 
-  right: 0;
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdownItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: none;
   border: none;
-  width: 100%;
-  padding: 10px 0;
   cursor: pointer;
-  color: var(--text-primary); 
+  padding: 8px;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; 
   transition: background-color 0.2s;
 }
 
-.dropdownItem:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+.currentLangButton:hover {
+  background-color: rgba(0,0,0,0.05);
 }
 
-.dropdownItem:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-
-/* Estilo da bandeira */
 .flagIcon {
-  width: 24px;
-  height: 18px;
+  width: 24px; 
+  height: 24px;
   border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
-  display: block; 
+  display: block;
+}
+
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--bg-paper);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 5px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 50px;
+}
+
+.dropdownItem {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.dropdownItem:hover {
+  background-color: rgba(0,0,0,0.05);
 }

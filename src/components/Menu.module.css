@@ -55,14 +55,13 @@
 
 .subSectionTitle {
   font-family: var(--font-ui);
-  font-size: 1rem;
-  color: var(--status-open);
+  font-size: 1rem;;
   margin: 20px 0 10px 0;
-  font-weight: 600;
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding-left: 5px;
-  border-left: 3px solid var(--status-open);
+  border-left: 3px solid var(--text-primary);
 }
 
 .sectionTitle:first-child {
