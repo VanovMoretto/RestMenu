@@ -1,29 +1,106 @@
 import { prices } from './priceList';
-import carpaccioImg from '../assets/carpaccio.png';
-import bruschettaImg from '../assets/burschetta.png'
-import mignonImg from '../assets/mignon.png'
-import salmonImg from '../assets/salmon.png'
-import gateauImg from '../assets/gateau.png'
 
 export const categories = [
-  { id: 'entrada', label: 'Entrada' },
-  { id: 'principal', label: 'Principal' },
-  { id: 'sobremesa', label: 'Sobremesa' },
-  { id: 'bebida', label: 'Bebida' },
-  { id: 'vinho', label: 'Vinho' },
+  { id: 'entrada', label: 'Entradas' },
+  { id: 'principal', label: 'Principais' },
+  { id: 'lanches', label: 'Lanches' },
+  { id: 'sobremesa', label: 'Sobremesas' },
+  { id: 'bebida', label: 'Bebidas' },
+  { id: 'vinho', label: 'Vinhos' },
 ];
 
 export const menuItems = {
   entrada: [
-    { id: 1, name: 'Carpaccio di Manzo', price: prices.entrada_carpaccio, description: 'Lâminas de filé mignon, rúcula, alcaparras e lascas de parmesão.', image: carpaccioImg },
-    { id: 2, name: 'Bruschetta Tradicional', price: prices.entrada_bruschetta, description: 'Pão italiano tostado, tomates frescos e manjericão.', image: bruschettaImg },
+    { section: 'Couvert & Petiscos' },
+    { id: 'c1', name: 'Dadinhos de Coalho', price: prices.couvert_dadinhos, description: '8 unidades, com melado.', image: 'pratos/dadinhos.png' },
+    { id: 'c2', name: 'Mini Croquetas de Costela', price: prices.couvert_croquetas, description: '8 unidades. Servido com maionese de leite e pesto.', image: 'pratos/croquetas.png' },
+    { id: 'c3', name: 'Polentinha Frita', price: prices.couvert_polenta, description: 'Coberta com parmesão ralado. Acompanha caponata.', image: 'pratos/polenta.png' },
+    { id: 'c4', name: 'Batatinha Frita', price: prices.couvert_batatinha, description: 'Coberta com parmesão ralado. Acompanha molho dijon.', image: 'pratos/batatinha.png' },
+    { id: 'c5', name: 'Iscas de Frango ao Panko', price: prices.couvert_iscas_frango, description: 'Com maionese de limão e mostarda com mel trufado.', image: 'pratos/iscas_frango.png' },
+    { id: 'c6', name: 'Iscas de Filet Mignon à Milanesa', price: prices.couvert_iscas_mignon, description: 'Porção grande (travessa).', image: 'pratos/iscas_mignon.png' },
+    { id: 'c7', name: 'Seleção de Queijos & Frios', price: prices.couvert_queijos, description: 'Servido na pedra de ardósia com tâmaras, uvas e nuts.', image: 'pratos/tabua_frios.png' },
+    { id: 'c8', name: 'Brie Folhado', price: prices.couvert_brie_folhado, description: 'Assado com mel trufado e nuts. Acompanha chips e torradas.', image: 'pratos/brie_folhado.png' },
+    { id: 'c9', name: 'Burrata', price: prices.couvert_burrata, description: 'Ao molho de tomate fresco, pesto e brotos. Com chips e torradas.', image: 'pratos/burrata.png' },
+
+    { section: 'Saladas' },
+    { id: 's1', name: 'Mix de Folhas (Sem Brie)', price: prices.salada_mix_sem_brie, description: 'Com nuts e legumes confitados em oliva (palmito, ervilhas, grão de bico).', image: 'pratos/salada.png' },
+    { id: 's2', name: 'Mix de Folhas (Com Brie)', price: prices.salada_mix_com_brie, description: 'Com queijo brie, nuts e legumes confitados.', image: 'pratos/salada_brie.png' },
+
+    { section: 'Sopas & Cremes' },
+    { id: 'sp1', name: 'Canja de Frango', price: prices.sopa_canja, description: 'Acompanha torradinhas com ervas finas.', image: 'pratos/canja.png' },
+    { id: 'sp2', name: 'Sopa de Capeletti', price: prices.sopa_capeletti, description: 'Acompanha bacon assado, torradinhas e queijo.', image: 'pratos/capeletti.png' },
+    { id: 'sp3', name: 'Creme de Ervilha', price: prices.sopa_creme_ervilha, description: 'Acompanha bacon assado, torradinhas e queijo.', image: 'pratos/creme_ervilha.png' },
+    { id: 'sp4', name: 'Creme de Moranga', price: prices.sopa_creme_moranga, description: 'Acompanha bacon assado, torradinhas e queijo.', image: 'pratos/creme_moranga.png' },
+    { id: 'sp5', name: 'Creme de Aipim com Frango', price: prices.sopa_creme_aipim, description: 'Acompanha bacon assado, torradinhas e queijo.', image: 'pratos/creme_aipim.png' },
   ],
+  
   principal: [
-    { id: 10, name: 'Filé Mignon ao Poivre', price: prices.principal_file, description: 'Medalhão de filé com molho de pimentas verdes, aspargos e batatas.', image: mignonImg },
-    { id: 11, name: 'Salmão Grelhado', price: prices.principal_salmao, description: 'Com crosta de ervas e legumes.', image: salmonImg },
+    { section: 'Carnes Vermelhas' },
+    { id: 'cn1', name: 'Bife Ancho com Massa', price: prices.carne_ancho_massa, description: 'Grelhado na manteiga. Com massa, legumes, aligot e purê de baroa.', image: 'pratos/ancho_massa.png' },
+    { id: 'cn2', name: 'Costela 12h', price: prices.carne_costela_12h, description: 'Assada lentamente. Com massa, legumes, aligot e purê de baroa.', image: 'pratos/costela.png' },
+    { id: 'cn3', name: 'Bife Ancho (Sem Massa)', price: prices.carne_ancho_legumes, description: 'Na manteiga ou molho mostarda. Servido com legumes variados.', image: 'pratos/ancho_legumes.png' },
+    { id: 'cn4', name: 'Tornedor de Mignon', price: prices.carne_tornedor_manteiga, description: 'Na manteiga ou molho mostarda. Acompanha arroz branco.', image: 'pratos/tornedor.png' },
+    { id: 'cn5', name: 'Filet à Parmegiana', price: prices.carne_parmegiana, description: 'Com bacon, ovo frito, arroz e fritas.', image: 'pratos/parmegiana.png' },
+    { id: 'cn6', name: 'Risoto de Brie com Iscas de Angus', price: prices.carne_risoto_iscas, description: 'Iscas flambadas no conhaque. Risoto com gran formaggio.', image: 'pratos/risoto_iscas.png' },
+    { id: 'cn7', name: 'Escondidinho de Charque', price: prices.carne_escondidinho, description: 'Com arroz branco, crispy de couve e legumes.', image: 'pratos/escondidinho.png' },
+    { id: 'cn8', name: 'Estrogonofe de Angus', price: prices.carne_estrogonofe, description: 'Com crispy de couve, chips/fritas e arroz com nuts.', image: 'pratos/estrogonofe.png' },
+    { id: 'cn9', name: 'Nhoque com Iscas de Angus', price: prices.carne_nhoque_iscas, description: 'Molho de queijos com cogumelos e iscas flambadas.', image: 'pratos/nhoque_iscas.png' },
+    { id: 'cn10', name: 'Tornedor ao Molho Roti', price: prices.carne_tornedor_roti, description: 'Com cogumelos e risoto de grana padano com brie.', image: 'pratos/tornedor_roti.png' },
+    { id: 'cn11', name: 'À la Minuta de Mignon', price: prices.carne_alaminuta, description: 'Ovo frito, arroz branco e fritas. (Feijão opcional).', image: 'pratos/alaminuta.png' },
+
+    { section: 'Peixes & Frutos do Mar' },
+    { id: 'px1', name: 'Polvo Grelhado', price: prices.peixe_polvo, description: 'Com oliva, páprica e molho tarê. Crispy de couve.', image: 'pratos/polvo.png' },
+    { id: 'px2', name: 'Salmão Grelhado', price: prices.peixe_salmao_grelhado, description: 'Molho de maracujá ou espumante (opcional).', image: 'pratos/salmao.png' },
+    { id: 'px3', name: 'Salmão ou Truta ao Panko', price: prices.peixe_salmao_panko, description: 'Com risoto de siciliano, camarão e brie.', image: 'pratos/salmao_panko.png' },
+    { id: 'px4', name: 'Truta à Belle Meunière', price: prices.peixe_truta, description: 'Na manteiga com alcaparras, amêndoas e champignons.', image: 'pratos/truta.png' },
+
+    { section: 'Aves' },
+    { id: 'av1', name: 'Filé de Frango Grelhado', price: prices.ave_frango_grelhado, description: 'Com legumes confitados, purê e espaguete.', image: 'pratos/frango_grelhado.png' },
+    { id: 'av2', name: 'Frango à Parmegiana', price: prices.ave_parmegiana, description: 'Com bacon, ovo frito, arroz e fritas.', image: 'pratos/frango_parmegiana.png' },
+    { id: 'av3', name: 'Filé de Frango ao Panko', price: prices.ave_panko, description: 'Recheado com queijos. Acompanha legumes e espaguete.', image: 'pratos/frango_panko.png' },
+    { id: 'av4', name: 'Estrogonofe de Frango', price: prices.ave_estrogonofe, description: 'Com crispy de couve, chips/fritas e arroz.', image: 'pratos/estrogonofe_frango.png' },
+    { id: 'av5', name: 'À la Minuta de Frango', price: prices.ave_alaminuta, description: 'Ovo frito, arroz branco e fritas.', image: 'pratos/alaminuta_frango.png' },
+
+    { section: 'Massas & Risotos' },
+    { id: 'ms1', name: 'Espaguete', price: prices.massa_espaguete, description: 'Molho Bolonhesa ou Queijos com Gran Formaggio.', image: 'pratos/espaguete.png' },
+    { id: 'ms2', name: 'Nhoque de Baroa', price: prices.massa_nhoque_baroa, description: 'Ao molho de queijos com Gran Formaggio.', image: 'pratos/nhoque.png' },
+    { id: 'ms3', name: 'Risoto de Brie com Aspargos', price: prices.risoto_brie_aspargos, description: 'Arroz arbóreo cremoso.', image: 'pratos/risoto_aspargos.png' },
+    { id: 'ms4', name: 'Risoto de Brie com Formaggio', price: prices.risoto_brie_formaggio, description: 'Arroz arbóreo cremoso.', image: 'pratos/risoto_formaggio.png' },
   ],
+
+  lanches: [
+    { section: 'Hambúrgueres & Sanduíches' },
+    { id: 'ln1', name: 'Hambúrguer do Chef (Com Fritas)', price: prices.lanche_burger_chef_fritas, description: 'Pão brioche, burger, mussarela, tomate, picles, bacon.', image: 'pratos/burger_fritas.png' },
+    { id: 'ln2', name: 'Hambúrguer do Chef (Sem Fritas)', price: prices.lanche_burger_chef, description: 'Pão brioche, burger, mussarela, tomate, picles, bacon.', image: 'pratos/burger.png' },
+    { id: 'ln3', name: 'Club Sandwich', price: prices.lanche_club_sandwich, description: 'Quente ou Frio. Pão de forma, maionese, alface, tomate, frango, bacon, ovo.', image: 'pratos/club_sandwich.png' },
+    { id: 'ln4', name: 'Sanduíche Integral', price: prices.lanche_sanduiche_integral, description: 'Molho iogurte, ricota, peito de peru, pepino.', image: 'pratos/sanduiche_integral.png' },
+    { id: 'ln5', name: 'Misto Quente Completo (Com Fritas)', price: prices.lanche_misto_completo_fritas, description: 'Mussarela, blanquet, ovo, tomate, alface.', image: 'pratos/misto_completo.png' },
+    { id: 'ln6', name: 'Misto Quente Simples', price: prices.lanche_misto_simples, description: 'Pão, mussarela e blanquet de peru.', image: 'pratos/misto_simples.png' },
+
+    { section: 'Omeletes & Tapiocas' },
+    { id: 'om1', name: 'Omelete de Brie', price: prices.lanche_omelete_brie, description: 'Com folhas jovens, oliva e nuts. Acompanha torradas.', image: 'pratos/omelete_brie.png' },
+    { id: 'om2', name: 'Omelete de Mussarela', price: prices.lanche_omelete_mussarela, description: 'Com blanquet de peru e folhas jovens. Acompanha torradas.', image: 'pratos/omelete_mussarela.png' },
+    { id: 'om3', name: 'Tapilete', price: prices.lanche_tapilete, description: 'Omelete de tapioca com mussarela, blanquet e folhas.', image: 'pratos/tapilete.png' },
+    { id: 'om4', name: 'Tapioca de Mussarela', price: prices.lanche_tapioca_mussarela, description: 'Com blanquet de peru.', image: 'pratos/tapioca_salgada.png' },
+    { id: 'om5', name: 'Tapioca Doce', price: prices.lanche_tapioca_doce, description: 'Chocolate branco com nozes e amêndoas.', image: 'pratos/tapioca_doce.png' },
+
+    { section: 'Pizzas (Média)' },
+    { id: 'pz1', name: 'Pizza Mussarela', price: prices.pizza_mussarela, image: 'pratos/pizza_mussarela.png' },
+    { id: 'pz2', name: 'Pizza Calabresa', price: prices.pizza_calabresa, image: 'pratos/pizza_calabresa.png' },
+    { id: 'pz3', name: 'Pizza Marguerita', price: prices.pizza_marguerita, image: 'pratos/pizza_marguerita.png' },
+
+    { section: 'Extras' },
+    { id: 'ex1', name: 'Porção de Batatas Fritas', price: prices.lanche_fritas, description: 'Prato raso.', image: 'pratos/porcao_fritas.png' },
+    { id: 'ex2', name: 'Chocolate Quente com Torradas', price: prices.lanche_chocolate_quente, description: 'Bule (2 xícaras).', image: 'pratos/chocolate_quente_lanche.png' },
+  ],
+
   sobremesa: [
-    { id: 20, name: 'Petit Gâteau', price: prices.sobremesa_petit, description: 'Com sorvete de creme.', image: gateauImg },
+    { section: 'Sobremesas' },
+    { id: 'sb1', name: 'Salada de Frutas', price: prices.sobremesa_salada_frutas, image: 'pratos/salada_frutas.png' },
+    { id: 'sb2', name: 'Gelato de Iogurte', price: prices.sobremesa_gelato_iogurte, description: 'Com coulis de frutas vermelhas e crumble.', image: 'pratos/gelato_iogurte.png' },
+    { id: 'sb3', name: 'Gelato de Pistache', price: prices.sobremesa_gelato_pistache, description: 'Com pistache fresco e tuile.', image: 'pratos/gelato_pistache.png' },
+    { id: 'sb4', name: 'Petit Gâteau', price: prices.sobremesa_petit_gateau, description: 'Chocolate, Doce de Leite ou Siciliano. Com gelato.', image: 'pratos/petit_gateau.png' },
+    { id: 'sb5', name: 'Trio de Petit Doces', price: prices.sobremesa_trio, description: 'Mini crème brûlée, gelato de pistache e +1.', image: 'pratos/trio_doces.png' },
   ],
   bebida: [
     { section: 'Bebidas Frias' },

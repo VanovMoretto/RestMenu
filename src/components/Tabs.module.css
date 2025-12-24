@@ -1,11 +1,19 @@
 .tabsContainer {
   display: flex;
+  align-items: center;
   overflow-x: auto;
   overflow-y: hidden;
   gap: 8px;
-  padding: 12px 15px; 
+  padding: 12px 15px 0 15px; 
   scrollbar-width: none; 
   -webkit-overflow-scrolling: touch;
+  justify-content: flex-start; 
+}
+
+@media (min-width: 768px) {
+  .tabsContainer {
+    justify-content: center;
+  }
 }
 
 .tabsContainer::-webkit-scrollbar {
@@ -15,7 +23,7 @@
 .tabButton {
   padding: 12px 24px;
   border: none;
-  background-color: #e8e8e8;
+  background-color: #e5e5e5;
   color: var(--text-secondary);
   font-family: var(--font-ui);
   font-size: 0.85rem;
@@ -30,7 +38,7 @@
 .tabButton.active {
   background-color: var(--bg-primary); 
   color: var(--text-primary);
-  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.08);
-  transform: translateY(-4px); 
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.08); 
   font-weight: 600;
+  z-index: 2;
 }

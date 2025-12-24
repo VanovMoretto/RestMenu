@@ -1,10 +1,86 @@
 export const prices = {
-  // --- COMIDAS (Placeholders) ---
-  entrada_carpaccio: "R$ 48,00",
-  entrada_bruschetta: "R$ 32,00",
-  principal_file: "R$ 89,00",
-  principal_salmao: "R$ 78,00",
-  sobremesa_petit: "R$ 28,00",
+  // --- LANCHES & HAMBÚRGUERES ---
+  lanche_burger_chef_fritas: "R$ 68,00",
+  lanche_burger_chef: "R$ 54,00",
+  lanche_omelete_brie: "R$ 54,00",
+  lanche_omelete_mussarela: "R$ 48,00",
+  lanche_tapilete: "R$ 48,00",
+  lanche_tapioca_mussarela: "R$ 38,00",
+  lanche_tapioca_doce: "R$ 44,00",
+  lanche_club_sandwich: "R$ 42,00",
+  lanche_sanduiche_integral: "R$ 42,00",
+  lanche_fritas: "R$ 48,00",
+  lanche_chocolate_quente: "R$ 30,00",
+  lanche_misto_completo_fritas: "R$ 48,00",
+  lanche_misto_completo: "R$ 38,00",
+  lanche_misto_simples_fritas: "R$ 42,00",
+  lanche_misto_simples: "R$ 32,00",
+
+  // --- PIZZAS ---
+  pizza_mussarela: "R$ 58,00",
+  pizza_calabresa: "R$ 58,00",
+  pizza_marguerita: "R$ 58,00",
+
+  // --- SOPAS ---
+  sopa_canja: "R$ 46,00",
+  sopa_capeletti: "R$ 46,00",
+  sopa_creme_ervilha: "R$ 46,00",
+  sopa_creme_moranga: "R$ 46,00",
+  sopa_creme_aipim: "R$ 46,00",
+
+  // --- COUVERT / ENTRADAS ---
+  couvert_dadinhos: "R$ 24,00",
+  couvert_croquetas: "R$ 48,00",
+  couvert_polenta: "R$ 48,00",
+  couvert_batatinha: "R$ 48,00",
+  couvert_iscas_frango: "R$ 58,00",
+  couvert_iscas_mignon: "R$ 98,00",
+  couvert_queijos: "R$ 98,00",
+  couvert_brie_folhado: "R$ 74,00",
+  couvert_burrata: "R$ 74,00",
+
+  // --- SALADAS ---
+  salada_mix_sem_brie: "R$ 68,00",
+  salada_mix_com_brie: "R$ 82,00",
+
+  // --- MASSAS E RISOTOS ---
+  massa_espaguete: "R$ 62,00",
+  massa_nhoque_baroa: "R$ 68,00",
+  risoto_brie_aspargos: "R$ 68,00",
+  risoto_brie_formaggio: "R$ 68,00",
+
+  // --- CARNES ---
+  carne_ancho_massa: "R$ 92,00",
+  carne_costela_12h: "R$ 92,00",
+  carne_ancho_legumes: "R$ 84,00",
+  carne_tornedor_manteiga: "R$ 84,00",
+  carne_parmegiana: "R$ 84,00",
+  carne_risoto_iscas: "R$ 68,00",
+  carne_escondidinho: "R$ 78,00",
+  carne_estrogonofe: "R$ 68,00",
+  carne_nhoque_iscas: "R$ 68,00",
+  carne_tornedor_roti: "R$ 84,00",
+  carne_alaminuta: "R$ 84,00",
+
+  // --- PEIXES ---
+  peixe_polvo: "R$ 84,00",
+  peixe_salmao_grelhado: "R$ 84,00",
+  peixe_salmao_panko: "R$ 84,00",
+  peixe_truta: "R$ 84,00",
+
+  // --- AVES ---
+  ave_frango_grelhado: "R$ 68,00",
+  ave_parmegiana: "R$ 68,00",
+  ave_panko: "R$ 68,00",
+  ave_estrogonofe: "R$ 68,00",
+  ave_alaminuta: "R$ 68,00",
+
+  // --- SOBREMESAS ---
+  sobremesa_salada_frutas: "R$ 35,00",
+  sobremesa_gelato_iogurte: "R$ 35,00",
+  sobremesa_gelato_pistache: "R$ 35,00",
+  sobremesa_petit_gateau: "R$ 40,00",
+  sobremesa_trio: "R$ 40,00",
 
   // --- BEBIDAS NÃO ALCOÓLICAS ---
   suco_laranja: "R$ 15,00",
