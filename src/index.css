@@ -1,25 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:wght@400;500;600&display=swap');
 
-
 * {
   -webkit-tap-highlight-color: transparent;
   outline: none;
 }
 
 :root {
-  --bg-primary: #fdfdfd; 
-  --text-primary: #1a1a1a;
-  --text-secondary: #4a4a4a;
+  /* MUDANÇA AQUI: Definindo a paleta quente */
+  --bg-paper: #FDF5E6;       /* A cor "Old Lace" para o fundo do site */
+  --bg-body: #faf8f8;      /* Branco puro para a área de leitura (cardápio) */
+  --bg-tabs-track: #dfd5bd; /* Um bege levemente mais escuro para o fundo das abas */
+  
+  /* Cores de Texto */
+  --text-primary: #2c2420;  /* Um marrom quase preto (mais suave que preto puro) */
+  --text-secondary: #5d544f;
+  
+  /* Status */
   --status-open: #2e7d32;
   --status-closed: #c62828;
   --status-warning: #ed6c02;
+  
+  /* Fontes */
   --font-logo: 'Cinzel', serif;
   --font-ui: 'EB Garamond', serif;
 }
 
 body {
   margin: 0;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-body); /* Aplica o Creme no fundo geral */
   color: var(--text-primary);
   font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;

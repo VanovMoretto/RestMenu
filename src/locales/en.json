@@ -4,6 +4,12 @@
     "closed": "Closed",
     "hours": "Tuesday to Sunday - 6pm to 11pm"
   },
+  "nav": {
+  "menu": "Menu",
+  "phone": "Phone",
+  "hours": "Hours",
+  "directions": "Directions"
+},
   "categories": {
     "entrada": "Starters",
     "principal": "Main Courses",
@@ -14,6 +20,7 @@
   },
   "sections": {
     "couvert": "Couvert & Appetizers",
+    "sobremesas":"Desserts",
     "saladas": "Salads",
     "sopas": "Soups & Creams",
     "carnes": "Red Meats",

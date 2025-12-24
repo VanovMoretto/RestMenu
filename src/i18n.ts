@@ -5,19 +5,24 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import ptJSON from './locales/pt.json';
 import enJSON from './locales/en.json';
+import esJSON from './locales/es.json';
 
 i18n
-  .use(LanguageDetector) // Detecta o idioma do navegador
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    supportedLngs: ['pt', 'en', 'es'], 
+    
     resources: {
       pt: { translation: ptJSON },
       en: { translation: enJSON },
+      es: { translation: esJSON}
     },
-    fallbackLng: 'pt', // Se não achar inglês, usa português
+    fallbackLng: 'pt',
     interpolation: {
-      escapeValue: false, // React já protege contra XSS
+      escapeValue: false,
     },
+    debug: true, 
   });
 
 export default i18n;

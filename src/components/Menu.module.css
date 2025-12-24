@@ -5,18 +5,17 @@
 }
 
 .menuContainer {
-  background-color: #f5f5f5; 
   border-radius: 20px;
-  /* overflow: hidden;  <-- Remova ou altere se as abas estiverem sumindo nas bordas arredondadas */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   margin-top: 20px;
 }
 
 .contentArea {
-  background-color: var(--bg-primary); 
+  /* MUDANÇA: O papel do cardápio fica branco para destacar as fotos e texto */
+  background-color: var(--bg-paper); 
   min-height: 400px;
   padding: 20px;
-  border-radius: 0 0 20px 20px;
+  border-radius: 5px 5px 20px 20px;
+  box-shadow: 0px 11px 20px 10px rgba(44, 36, 32, 0.08); /* Sombra levemente marrom */
 }
 
 .placeholder {
@@ -33,7 +32,7 @@
   color: var(--text-primary);
   margin: 30px 0 15px 0;
   padding-bottom: 5px;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 2px solid #e6dfd5; /* Linha mais suave */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -42,34 +41,30 @@
   margin-top: 10px;
 }
 
-/* Título Grande (ex: VINHOS TINTOS) */
 .sectionTitle {
   font-family: var(--font-logo);
   font-size: 1.4rem;
   color: var(--text-primary);
   margin: 30px 0 10px 0;
   padding-bottom: 8px;
-  border-bottom: 2px solid #333; /* Linha mais grossa */
+  border-bottom: 2px solid var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
 }
 
-/* Título Menor (ex: Cabernet Sauvignon) */
 .subSectionTitle {
   font-family: var(--font-ui);
   font-size: 1rem;
-  color: var(--status-open); /* Um toque de cor, talvez verde ou dourado do tema */
+  color: var(--status-open);
   margin: 20px 0 10px 0;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding-left: 5px;
-  border-left: 3px solid var(--status-open); /* Detalhe lateral */
+  border-left: 3px solid var(--status-open);
 }
 
-/* Ajuste para o primeiro não colar */
 .sectionTitle:first-child {
   margin-top: 10px;
 }
-

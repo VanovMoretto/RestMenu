@@ -17,7 +17,7 @@
 }
 
 .modalContent {
-  background: var(--bg-primary);
+  background: var(--bg-paper);
   width: 100%;
   max-width: 400px;
   max-height: 85vh;
@@ -54,7 +54,7 @@
   font-family: var(--font-logo);
   font-size: 1.6rem;
   margin: 0 0 8px 0;
-  color: var(--text-primary);
+  color: var(--text-secondary);
 }
 
 .description {

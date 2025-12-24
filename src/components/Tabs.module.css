@@ -3,6 +3,7 @@
   align-items: center;
   overflow-x: auto;
   overflow-y: hidden;
+  background-color: var(--bg-body);
   gap: 8px;
   padding: 12px 15px 0 15px; 
   scrollbar-width: none; 
@@ -23,7 +24,7 @@
 .tabButton {
   padding: 12px 24px;
   border: none;
-  background-color: #e5e5e5;
+  background-color: var(--bg-tabs-track);
   color: var(--text-secondary);
   font-family: var(--font-ui);
   font-size: 0.85rem;
@@ -36,9 +37,9 @@
 }
 
 .tabButton.active {
-  background-color: var(--bg-primary); 
+  background-color: var(--bg-paper);
   color: var(--text-primary);
-  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.08); 
+  box-shadow: 0px 10px 5px 8px #00000014; 
   font-weight: 600;
   z-index: 2;
 }

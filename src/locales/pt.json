@@ -4,6 +4,12 @@
     "closed": "Fechado",
     "hours": "Terça a Domingo - 18h às 23h"
   },
+  "nav": {
+  "menu": "Cardápio",
+  "phone": "Telefone",
+  "hours": "Horários",
+  "directions": "Como Chegar"
+},
   "categories": {
     "entrada": "Entradas",
     "principal": "Principais",
@@ -14,6 +20,7 @@
   },
   "sections": {
     "couvert": "Couvert & Petiscos",
+    "sobremesas":"Sobremesas",
     "saladas": "Saladas",
     "sopas": "Sopas & Cremes",
     "carnes": "Carnes Vermelhas",
