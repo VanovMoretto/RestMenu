@@ -59,7 +59,7 @@ export const menuItems: Record<string, MenuItemType[]> = {
   principal: [
     { section: 'sections.carnes' },
     { id: 'cn1', name: 'items.cn1.name', description: 'items.cn1.desc', price: prices.carne_ancho_massa, image: 'principais/ancho_massa.png' },
-    { id: 'cn2', name: 'items.cn2.name', description: 'items.cn2.desc', price: prices.carne_costela_12h, image: 'principais/costela.png' },
+    { id: 'cn2', name: 'items.cn2.name', description: 'items.cn2.desc', price: prices.carne_costela_12h, image: 'principais/costela12.png' },
     { id: 'cn3', name: 'items.cn3.name', description: 'items.cn3.desc', price: prices.carne_ancho_legumes, image: 'principais/ancho_legumes.png' },
     { id: 'cn4', name: 'items.cn4.name', description: 'items.cn4.desc', price: prices.carne_tornedor_manteiga, image: 'principais/tornedor.png' },
     { id: 'cn5', name: 'items.cn5.name', description: 'items.cn5.desc', price: prices.carne_parmegiana, image: 'principais/parmegiana.png' },

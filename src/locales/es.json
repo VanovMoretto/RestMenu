@@ -86,7 +86,10 @@
     "sp4": { "name": "Crema de Calabaza", "desc": "Acompaña tocino asado, tostaditas y queso." },
     "sp5": { "name": "Crema de Yuca con Pollo", "desc": "Acompaña tocino asado, tostaditas y queso." },
     "cn1": { "name": "Bife Ancho con Pasta", "desc": "A la plancha en mantequilla. Con pasta, verduras, aligot y puré de mandioquinha." },
-    "cn2": { "name": "Costilla 12h", "desc": "Asada lentamente. Con pasta, verduras, aligot y puré de mandioquinha." },
+    "cn2": { 
+             "name": "Costilla 12h", 
+             "desc": "Asada lentamente. Con pasta, crocante de kale, chimichurri, farofa, verduras confitadas, aligot de yuca y puré de arracacha.\n\nElija la pasta de acompañamiento:\n• Ñoquis de Arracacha en salsa de quesos con Gran Formaggio\n• Sorrentinos de espinaca con Brie\n• Espagueti con salsa de:\n   - Nata con Gruyere y Parmesano\n   - Quesos\n   - Funghi (Hongos)" 
+           },
     "cn3": { "name": "Bife Ancho (Sin Pasta)", "desc": "Mantequilla o salsa de mostaza. Servido con verduras variadas." },
     "cn4": { "name": "Tournedos de Mignon", "desc": "Mantequilla o salsa de mostaza. Acompaña arroz blanco." },
     "cn5": { "name": "Filete a la Parmesana", "desc": "Con tocino, huevo frito, arroz y papas fritas." },
@@ -109,8 +112,8 @@
     "ms2": { "name": "Ñoquis de Mandioquinha", "desc": "A la salsa de quesos con Gran Formaggio." },
     "ms3": { "name": "Risotto de Brie con Espárragos", "desc": "Arroz arbóreo cremoso." },
     "ms4": { "name": "Risotto de Brie con Formaggio", "desc": "Arroz arbóreo cremoso." },
-    "ln1": { "name": "Hamburguesa del Chef (Con Papas)", "desc": "Pan brioche, hamburguesa, mozzarella, tomate, pepinillos, tocino." },
-    "ln2": { "name": "Hamburguesa del Chef (Sin Papas)", "desc": "Pan brioche, hamburguesa, mozzarella, tomate, pepinillos, tocino." },
+    "ln1": { "name": "Hamburguesa del Chef (Con Papas)", "desc": "Pan brioche, hamburguesa, queso mozzarella, tomate, pepinillos, tocino Ruppenthal, huevo y salsa especial. Acompañada de papas fritas McCain Sure Crisp."},
+    "ln2": { "name": "Hamburguesa del Chef (Sin Papas)", "desc": "Pan brioche, hamburguesa, queso mozzarella, tomate, pepinillos, tocino Ruppenthal, huevo y salsa especial." },
     "ln3": { "name": "Club Sandwich", "desc": "Caliente o Frío. Pan de molde, mayonesa, lechuga, tomate, pollo, tocino, huevo." },
     "ln4": { "name": "Sándwich Integral", "desc": "Salsa de yogur, ricotta, pechuga de pavo, pepino." },
     "ln5": { "name": "Sándwich Mixto Completo (Con Papas)", "desc": "Mozzarella, pechuga de pavo, huevo, tomate, lechuga." },

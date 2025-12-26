@@ -87,7 +87,10 @@
     "sp4": { "name": "Pumpkin Cream", "desc": "Served with baked bacon, toast and cheese." },
     "sp5": { "name": "Cassava Cream with Chicken", "desc": "Served with baked bacon, toast and cheese." },
     "cn1": { "name": "Ancho Steak with Pasta", "desc": "Grilled in butter. With pasta, vegetables, aligot and baroa puree." },
-    "cn2": { "name": "12h Ribs", "desc": "Slow roasted. With pasta, vegetables, aligot and baroa puree." },
+    "cn2": { 
+             "name": "12-Hour Ribs", 
+             "desc": "Slow-roasted. Served with pasta, crispy kale, chimichurri, farofa, confit vegetables, cassava aligot, and arracacha puree.\n\nChoose your pasta side:\n• Arracacha Gnocchi in cheese sauce with Gran Formaggio\n• Spinach Sorrentino with Brie\n• Spaghetti with sauce:\n   - Cream with Gruyère and Parmesan\n   - Cheese\n   - Funghi (Mushroom)" 
+           },
     "cn3": { "name": "Ancho Steak (No Pasta)", "desc": "Butter or mustard sauce. Served with mixed vegetables." },
     "cn4": { "name": "Mignon Tournedos", "desc": "Butter or mustard sauce. Served with white rice." },
     "cn5": { "name": "Parmigiana Filet", "desc": "With bacon, fried egg, rice and fries." },
@@ -110,8 +113,8 @@
     "ms2": { "name": "Baroa Potato Gnocchi", "desc": "Cheese sauce with Gran Formaggio." },
     "ms3": { "name": "Brie Risotto with Asparagus", "desc": "Creamy arborio rice." },
     "ms4": { "name": "Brie Risotto with Formaggio", "desc": "Creamy arborio rice." },
-    "ln1": { "name": "Chef's Burger (With Fries)", "desc": "Brioche bun, burger, mozzarella, tomato, pickles, bacon." },
-    "ln2": { "name": "Chef's Burger (No Fries)", "desc": "Brioche bun, burger, mozzarella, tomato, pickles, bacon." },
+    "ln1": { "name": "Chef's Burger (With Fries)", "desc": "Brioche bun, burger patty, mozzarella, tomato, pickles, Ruppenthal bacon, egg, and special sauce. Served with McCain Sure Crisp fries."},
+    "ln2": { "name": "Chef's Burger (No Fries)", "desc": "Brioche bun, burger patty, mozzarella, tomato, pickles, Ruppenthal bacon, egg, and special sauce."},
     "ln3": { "name": "Club Sandwich", "desc": "Hot or Cold. Sliced bread, mayo, lettuce, tomato, chicken, bacon, egg." },
     "ln4": { "name": "Whole Grain Sandwich", "desc": "Yogurt sauce, ricotta, turkey breast, cucumber." },
     "ln5": { "name": "Complete Toasted Sandwich (With Fries)", "desc": "Mozzarella, turkey blanquet, egg, tomato, lettuce." },

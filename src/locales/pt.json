@@ -87,7 +87,10 @@
     "sp4": { "name": "Creme de Moranga", "desc": "Acompanha bacon assado, torradinhas e queijo." },
     "sp5": { "name": "Creme de Aipim com Frango", "desc": "Acompanha bacon assado, torradinhas e queijo." },
     "cn1": { "name": "Bife Ancho com Massa", "desc": "Grelhado na manteiga. Com massa, legumes, aligot e purê de baroa." },
-    "cn2": { "name": "Costela 12h", "desc": "Assada lentamente. Com massa, legumes, aligot e purê de baroa." },
+    "cn2": { 
+             "name": "Costela 12h", 
+             "desc": "Assada lentamente. Com massa, crispy de couve, chimchurri, farofa, legumes confitados, aligot de aipim e purê de baroa.\n\nEscolha a massa de acompanhamento:\n• Nhoque de Baroa ao molho de queijos com gran formaggio\n• Sorrentino de espinafre com brie\n• Espaguete ao molho de:\n   - De Nata com Gruyere e Parmesão\n   - De Queijos\n   - Ao Funghi" 
+           },
     "cn3": { "name": "Bife Ancho (Sem Massa)", "desc": "Na manteiga ou molho mostarda. Servido com legumes variados." },
     "cn4": { "name": "Tornedor de Mignon", "desc": "Na manteiga ou molho mostarda. Acompanha arroz branco." },
     "cn5": { "name": "Filet à Parmegiana", "desc": "Com bacon, ovo frito, arroz e fritas." },
@@ -110,8 +113,8 @@
     "ms2": { "name": "Nhoque de Baroa", "desc": "Ao molho de queijos com Gran Formaggio." },
     "ms3": { "name": "Risoto de Brie com Aspargos", "desc": "Arroz arbóreo cremoso." },
     "ms4": { "name": "Risoto de Brie com Formaggio", "desc": "Arroz arbóreo cremoso." },
-    "ln1": { "name": "Hambúrguer do Chef (Com Fritas)", "desc": "Pão brioche, burger, mussarela, tomate, picles, bacon." },
-    "ln2": { "name": "Hambúrguer do Chef (Sem Fritas)", "desc": "Pão brioche, burger, mussarela, tomate, picles, bacon." },
+    "ln1": { "name": "Hambúrguer do Chef (Com Fritas)", "desc": "Pão brioche, burger, mussarela, tomate, picles, bacon ruppenthal, ovo e molho especial. Acompanhado de fritas McCain Sure Crisp." },
+    "ln2": { "name": "Hambúrguer do Chef (Sem Fritas)", "desc": "Pão brioche, burger, mussarela, tomate, picles, bacon ruppenthal, ovo e molho especial." },
     "ln3": { "name": "Club Sandwich", "desc": "Quente ou Frio. Pão de forma, maionese, alface, tomate, frango, bacon, ovo." },
     "ln4": { "name": "Sanduíche Integral", "desc": "Molho iogurte, ricota, peito de peru, pepino." },
     "ln5": { "name": "Misto Quente Completo (Com Fritas)", "desc": "Mussarela, blanquet, ovo, tomate, alface." },
