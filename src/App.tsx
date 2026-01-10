@@ -7,6 +7,7 @@ import Location from "./components/Location";
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 import "./App.css";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [selectedItem, setSelectedItem] = useState<any>(null);
@@ -19,6 +20,7 @@ function App() {
       <Hours />
       <Location />
       <Footer />
+      <ScrollToTop />
       <Modal
         isOpen={!!selectedItem}
         onClose={() => setSelectedItem(null)}
