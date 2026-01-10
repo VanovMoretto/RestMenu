@@ -1,3 +1,5 @@
+/* src/components/MenuItem.module.css */
+
 .card {
   padding: 16px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -34,6 +36,19 @@
   margin-right: 8px; 
   color: #888;
 }
+
+/* --- NOVO ESTILO DA CÂMERA --- */
+.cameraIcon {
+  margin-left: 8px; /* Espaço entre o nome e a câmera */
+  color: #aaa;      /* Cinza discreto (pode usar uma cor de destaque se preferir) */
+  margin-bottom: -2px; /* Ajuste fino vertical para alinhar com o texto */
+}
+
+/* Ao passar o mouse, a câmera ganha destaque */
+.clickable:hover .cameraIcon {
+  color: var(--text-primary); /* Fica mais escura quando focar */
+}
+/* ----------------------------- */
 
 .name {
   font-family: var(--font-ui);

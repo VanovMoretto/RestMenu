@@ -17,7 +17,6 @@ const Menu: React.FC<MenuProps> = ({ onSelectItem }) => {
   const currentItems = menuItems[activeTab as keyof typeof menuItems] || [];
 
   const categoriesWithModal = ["entrada", "principal", "lanches", "sobremesa"];
-
   const isClickable = categoriesWithModal.includes(activeTab);
 
   return (
@@ -49,8 +48,11 @@ const Menu: React.FC<MenuProps> = ({ onSelectItem }) => {
                   name={t(item.name)}
                   price={item.price}
                   description={
-                    item.description ? t(item.description) : undefined
-                  }
+                    item.description ? t(item.description) : undefined}
+                    picture={item.picture}                  
+                  // --- ADICIONADO: Passando a imagem novamente ---
+                  image={item.image} 
+                  // ----------------------------------------------
                   servingType={item.servingType}
                   onClick={isClickable ? () => onSelectItem(item) : undefined}
                 />

@@ -7,6 +7,7 @@ export interface Dish {
   price: string;
   description?: string;
   image?: string;
+  picture?: boolean;
   servingType?: 'bottle' | 'glass';
 }
 
@@ -59,7 +60,7 @@ export const menuItems: Record<string, MenuItemType[]> = {
   principal: [
     { section: 'sections.carnes' },
     { id: 'cn1', name: 'items.cn1.name', description: 'items.cn1.desc', price: prices.carne_ancho_massa, image: 'principais/ancho_massa.png' },
-    { id: 'cn2', name: 'items.cn2.name', description: 'items.cn2.desc', price: prices.carne_costela_12h, image: 'principais/costela12.png' },
+    { id: 'cn2', name: 'items.cn2.name', description: 'items.cn2.desc', price: prices.carne_costela_12h, image: 'principais/costela12.webp', picture: true },
     { id: 'cn3', name: 'items.cn3.name', description: 'items.cn3.desc', price: prices.carne_ancho_legumes, image: 'principais/ancho_legumes.png' },
     { id: 'cn4', name: 'items.cn4.name', description: 'items.cn4.desc', price: prices.carne_tornedor_manteiga, image: 'principais/tornedor.png' },
     { id: 'cn5', name: 'items.cn5.name', description: 'items.cn5.desc', price: prices.carne_parmegiana, image: 'principais/parmegiana.png' },
@@ -92,8 +93,8 @@ export const menuItems: Record<string, MenuItemType[]> = {
 
   lanches: [
     { section: 'sections.burgers' },
-    { id: 'ln1', name: 'items.ln1.name', description: 'items.ln1.desc', price: prices.lanche_burger_chef_fritas, image: 'lanches/burger-chef-fritas.png' },
-    { id: 'ln2', name: 'items.ln2.name', description: 'items.ln2.desc', price: prices.lanche_burger_chef, image: 'lanches/burger-chef.png' },
+    { id: 'ln1', name: 'items.ln1.name', description: 'items.ln1.desc', price: prices.lanche_burger_chef_fritas, image: 'lanches/burger-chef-fritas.webp', picture: true },
+    { id: 'ln2', name: 'items.ln2.name', description: 'items.ln2.desc', price: prices.lanche_burger_chef, image: 'lanches/burger-chef.webp', picture: true},
     { id: 'ln3', name: 'items.ln3.name', description: 'items.ln3.desc', price: prices.lanche_club_sandwich, image: 'lanches/club_sandwich.png' },
     { id: 'ln4', name: 'items.ln4.name', description: 'items.ln4.desc', price: prices.lanche_sanduiche_integral, image: 'lanches/sanduiche_integral.png' },
     { id: 'ln5', name: 'items.ln5.name', description: 'items.ln5.desc', price: prices.lanche_misto_completo_fritas, image: 'lanches/misto_completo.png' },
