@@ -1,16 +1,19 @@
 // src/components/Tabs/Tabs.tsx
 import { useEffect, useRef } from "react";
 import styles from "./Tabs.module.css";
-import { categories } from "../data/menuData";
-import { useTranslation } from "react-i18next";
+
+export interface TabOption {
+  id: string;
+  label: string;
+}
 
 interface TabsProps {
+  tabs: TabOption[];
   activeTab: string;
   onTabChange: (id: string) => void;
 }
 
-const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange }) => {
-  const { t } = useTranslation();
+const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onTabChange }) => {
   const tabsRef = useRef<HTMLElement>(null);
   useEffect(() => {
     const activeElement = tabsRef.current?.querySelector(
@@ -28,15 +31,15 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange }) => {
 
   return (
     <nav className={styles.tabsContainer} ref={tabsRef}>
-      {categories.map((cat) => (
+      {tabs.map((tab) => (
         <button
-          key={cat.id}
+          key={tab.id}
           className={`${styles.tabButton} ${
-            activeTab === cat.id ? styles.active : ""
+            activeTab === tab.id ? styles.active : ""
           }`}
-          onClick={() => onTabChange(cat.id)}
+          onClick={() => onTabChange(tab.id)}
         >
-          {t(cat.label)}
+          {tab.label}
         </button>
       ))}
     </nav>

@@ -1,6 +1,6 @@
 .button {
   position: fixed;
-  bottom: 2rem;
+  bottom: calc(2rem + var(--cart-bar-space, 0px)); /* sobe quando a barra do pedido aparece */
   right: 1.5rem;
   z-index: 1000;
   
@@ -64,7 +64,7 @@
 
 @media (max-width: 480px) {
   .button {
-    bottom: 1.5rem;
+    bottom: calc(1.5rem + var(--cart-bar-space, 0px));
     right: 1rem;
     width: 3rem; 
     height: 3rem;

@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Guia do App Irius — como tudo funciona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;600&display=block" rel="stylesheet">
+<style>
+  :root {
+    --brown: #2c2420;
+    --brown2: #5d544f;
+    --paper: #fdf5e6;
+    --beige: #dfd5bd;
+    --line: #d9cdb4;
+    --green: #2e7d32;
+    --orange: #ed6c02;
+    --red: #c62828;
+    --blue: #1f5f8b;
+  }
+  @page {
+    size: A4;
+    margin: 20mm 19mm 22mm 19mm;
+    @bottom-center {
+      content: counter(page);
+      font-family: "Cinzel", serif;
+      font-size: 9pt;
+      color: #8a7f74;
+    }
+    @top-right {
+      content: "Guia do App Irius";
+      font-family: "Cinzel", serif;
+      font-size: 7.5pt;
+      letter-spacing: 1.5pt;
+      color: #a99d8f;
+    }
+  }
+  @page cover {
+    margin: 0;
+    @bottom-center { content: none; }
+    @top-right { content: none; }
+  }
+  @page part {
+    @bottom-center { content: none; }
+    @top-right { content: none; }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 12.2pt;
+    line-height: 1.5;
+    color: var(--brown);
+    background: #fff;
+    hyphens: auto;
+  }
+  p { margin: 0 0 9pt; text-align: justify; }
+  strong { font-weight: 700; }
+  a { color: inherit; text-decoration: none; }
+  code, pre, .mono { font-family: "JetBrains Mono", Consolas, monospace; }
+  code {
+    font-size: 8.6pt;
+    background: #f3ecdf;
+    border-radius: 3px;
+    padding: 0.5pt 3pt;
+    white-space: nowrap;
+  }
+  pre {
+    font-size: 8.2pt;
+    line-height: 1.45;
+    background: #2c2420;
+    color: #f4eadb;
+    border-radius: 6px;
+    padding: 9pt 11pt;
+    margin: 4pt 0 11pt;
+    white-space: pre-wrap;
+    break-inside: avoid;
+  }
+  pre .c { color: #b9a98f; font-style: italic; }
+  pre .k { color: #ffcf7a; }
+  pre .s { color: #a8d8a8; }
+  ul, ol { margin: 0 0 10pt; padding-left: 17pt; }
+  li { margin-bottom: 3pt; }
+  li > p { margin-bottom: 3pt; }
+
+  /* ---------- capa ---------- */
+  .cover {
+    page: cover;
+    height: 297mm;
+    width: 210mm;
+    background: var(--brown);
+    color: var(--paper);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30mm 24mm 22mm;
+    break-after: page;
+  }
+  .cover .brand { font-family: "Cinzel", serif; font-size: 40pt; letter-spacing: 10pt; text-align: center; margin-top: 18mm; }
+  .cover .brand small { display: block; font-family: "EB Garamond", serif; font-size: 18pt; letter-spacing: 3pt; margin-top: -4pt; }
+  .cover .rule { width: 60mm; height: 1px; background: #cbbfa7; margin: 14pt auto; position: relative; }
+  .cover h1 { font-family: "Cinzel", serif; font-weight: 600; font-size: 25pt; letter-spacing: 2pt; text-align: center; margin: 22mm 0 6pt; line-height: 1.25; }
+  .cover .sub { text-align: center; font-size: 15pt; font-style: italic; color: #e3d6bd; margin: 0 14mm; }
+  .cover .foot { text-align: center; font-size: 11pt; color: #cbbfa7; letter-spacing: 1pt; }
+
+  /* ---------- partes e capítulos ---------- */
+  .part {
+    page: part;
+    break-before: page;
+    break-after: page;
+    height: 240mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .part .num { font-family: "Cinzel", serif; font-size: 12pt; letter-spacing: 6pt; color: var(--orange); }
+  .part h1 { font-family: "Cinzel", serif; font-size: 28pt; font-weight: 600; letter-spacing: 2pt; margin: 8pt 0 10pt; }
+  .part p { text-align: center; font-style: italic; font-size: 13.5pt; color: var(--brown2); max-width: 125mm; }
+
+  h2.chapter {
+    font-family: "Cinzel", serif;
+    font-size: 18pt;
+    font-weight: 600;
+    letter-spacing: 1pt;
+    margin: 20pt 0 10pt;
+    padding-bottom: 5pt;
+    border-bottom: 1.5pt solid var(--brown);
+    break-after: avoid;
+  }
+  h2.chapter .n { color: var(--orange); margin-right: 6pt; }
+  h2.newpage { break-before: page; margin-top: 0; }
+  h3 {
+    font-family: "Cinzel", serif;
+    font-size: 12.5pt;
+    font-weight: 600;
+    letter-spacing: 0.5pt;
+    margin: 14pt 0 6pt;
+    break-after: avoid;
+  }
+  h4 { font-size: 12.5pt; font-weight: 700; margin: 10pt 0 4pt; break-after: avoid; }
+
+  /* ---------- caixas ---------- */
+  .box {
+    border-radius: 6px;
+    padding: 8pt 11pt 3pt;
+    margin: 6pt 0 12pt;
+    break-inside: avoid;
+    border-left: 4pt solid;
+  }
+  .box .t { font-family: "Cinzel", serif; font-size: 9.5pt; font-weight: 700; letter-spacing: 1.2pt; display: block; margin-bottom: 3pt; }
+  .box p { text-align: left; }
+  .analogia { background: #f6efe1; border-color: #a8916b; }
+  .analogia .t { color: #7a6340; }
+  .atencao { background: #fff2e5; border-color: var(--orange); }
+  .atencao .t { color: var(--orange); }
+  .lembre { background: #edf5ec; border-color: var(--green); }
+  .lembre .t { color: var(--green); }
+  .pratica { background: #eaf1f6; border-color: var(--blue); }
+  .pratica .t { color: var(--blue); }
+
+  /* ---------- tabelas ---------- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4pt 0 12pt;
+    font-size: 10.6pt;
+    line-height: 1.35;
+    break-inside: auto;
+  }
+  tr { break-inside: avoid; }
+  th {
+    font-family: "Cinzel", serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.8pt;
+    text-align: left;
+    background: var(--brown);
+    color: var(--paper);
+    padding: 5pt 7pt;
+  }
+  td { padding: 5pt 7pt; border-bottom: 0.6pt solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #fbf7ef; }
+  td code { white-space: normal; }
+
+  figure { margin: 6pt 0 14pt; break-inside: avoid; text-align: center; }
+  figure svg { max-width: 100%; height: auto; }
+  figcaption { font-size: 10pt; font-style: italic; color: var(--brown2); margin-top: 3pt; }
+
+  .toc { columns: 1; font-size: 11.6pt; }
+  .toc .p { font-family: "Cinzel", serif; font-size: 10pt; letter-spacing: 1.5pt; color: var(--orange); margin: 10pt 0 3pt; }
+  .toc a { display: block; padding: 1.2pt 0; border-bottom: 0.5pt dotted #cfc3ad; }
+  .toc a span { color: var(--orange); font-family: "Cinzel", serif; font-size: 10pt; display: inline-block; width: 22pt; }
+
+  .tree { font-size: 8.3pt; line-height: 1.5; background: #f8f2e6; color: var(--brown); border: 0.6pt solid var(--line); }
+  .tree b { color: var(--orange); font-weight: 600; }
+  .tree i { color: #8a7f74; font-style: normal; }
+
+  .check li { list-style: none; position: relative; }
+  .check li::before { content: "☐"; position: absolute; left: -15pt; top: -1pt; font-size: 12pt; }
+  .step { counter-increment: step; }
+  .center { text-align: center; }
+  .small { font-size: 10.5pt; }
+  .muted { color: var(--brown2); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; }
+  .two > div { break-inside: avoid; }
+  .answer { font-size: 10.5pt; color: var(--brown2); }
+</style>
+</head>
+<body>
+
+<!-- ======================================================= CAPA -->
+<section class="cover">
+  <div>
+    <div class="brand">IRIUS<small>gastronomia</small></div>
+    <div class="rule"></div>
+    <h1>Guia do App<br>Como tudo funciona</h1>
+    <p class="sub">Uma aula do zero, de cabo a rabo, para quem conhece React, JavaScript, HTML e CSS, mas nunca viu SQL</p>
+  </div>
+  <div class="foot">Cardápio digital · Room Service · Painel do restaurante<br>Versão de 22 de outubro de 2026</div>
+</section>
+
+<!-- ======================================================= ABERTURA -->
+<h2 class="chapter">Antes de começar</h2>
+<p>Este guia explica <strong>tudo</strong> o que existe no app hoje: o que cada parte faz, por que ela foi feita desse jeito e como as partes conversam entre si. Ele foi escrito para você ler com calma, de preferência na ordem. Não é preciso decorar nada. A ideia é que, no final, você consiga olhar para qualquer arquivo do projeto e saber “ah, isso aqui serve para tal coisa”.</p>
+<p>Você já conhece a parte de React. Por isso, sempre que aparecer algo novo (banco de dados, SQL, segurança), vou comparar com coisas que você já sabe de JavaScript.</p>
+
+<h3>As caixas que aparecem no texto</h3>
+<div class="box analogia"><span class="t">Analogia</span><p>Uma comparação com o mundo real para a ideia “fazer sentido” antes do detalhe técnico.</p></div>
+<div class="box lembre"><span class="t">Para lembrar</span><p>O resumo do que importa. Se tiver pouco tempo, leia só essas caixas.</p></div>
+<div class="box atencao"><span class="t">Atenção</span><p>Algo que pode dar problema ou que tem a ver com segurança e dinheiro.</p></div>
+<div class="box pratica"><span class="t">Na prática</span><p>Algo para você fazer ou testar com as próprias mãos.</p></div>
+
+<h3 style="break-before: page; margin-top: 0">Sumário</h3>
+<div class="toc">
+  <div class="p">Parte I · Visão geral</div>
+  <a href="#c1"><span>1</span>O que o app faz hoje</a>
+  <a href="#c2"><span>2</span>A grande mudança: de site estático para app com banco</a>
+  <a href="#c3"><span>3</span>O mapa do sistema</a>
+  <div class="p">Parte II · O banco de dados, do zero</div>
+  <a href="#c4"><span>4</span>Banco de dados para quem sabe JavaScript</a>
+  <a href="#c5"><span>5</span>As tabelas do Irius, uma por uma</a>
+  <a href="#c6"><span>6</span>A vida de um pedido (os status)</a>
+  <a href="#c7"><span>7</span>Segurança: GRANT, RLS e por que o front não protege nada</a>
+  <a href="#c8"><span>8</span>Funções dentro do banco (RPC)</a>
+  <a href="#c9"><span>9</span>Login, fotos e tempo real: os outros serviços do Supabase</a>
+  <a href="#c10"><span>10</span>Os arquivos SQL do projeto e quando rodar cada um</a>
+  <div class="p">Parte III · O front-end</div>
+  <a href="#c11"><span>11</span>O mapa das pastas</a>
+  <a href="#c12"><span>12</span>Como o app se conecta ao Supabase</a>
+  <a href="#c13"><span>13</span>O cardápio público</a>
+  <a href="#c14"><span>14</span>O carrinho e o checkout do hóspede</a>
+  <a href="#c15"><span>15</span>O painel: login e gestão do cardápio</a>
+  <a href="#c16"><span>16</span>O painel: pedidos ao vivo, som e cupom de 80mm</a>
+  <div class="p">Parte IV · Na prática</div>
+  <a href="#c17"><span>17</span>Por que hoje aparece “Cardápio indisponível”</a>
+  <a href="#c18"><span>18</span>Passo a passo: colocando o teste real para rodar</a>
+  <a href="#c19"><span>19</span>Como investigar quando algo dá errado</a>
+  <a href="#c20"><span>20</span>As fotos do cardápio</a>
+  <a href="#c21"><span>21</span>Antes de abrir para hóspedes de verdade</a>
+  <a href="#c22"><span>22</span>Glossário</a>
+  <a href="#c23"><span>23</span>Exercícios para fixar</a>
+</div>
+
+<!-- ======================================================= PARTE I -->
+<section class="part">
+  <div class="num">PARTE I</div>
+  <h1>Visão geral</h1>
+  <p>O que o app faz, o que mudou e quais são as peças do sistema.</p>
+</section>
+
+<h2 class="chapter" id="c1"><span class="n">1</span>O que o app faz hoje</h2>
+<p>O app atende três tipos de pessoa. Pensar neles ajuda a entender por que cada parte existe.</p>
+<table>
+  <tr><th style="width:24%">Quem</th><th style="width:30%">Onde usa</th><th>O que faz</th></tr>
+  <tr><td><strong>Hóspede</strong> (ou cliente)</td><td>O cardápio, no celular: <code>/RestMenu/</code></td><td>Vê o cardápio em PT, EN ou ES, monta um pedido, informa quarto e dados, escolhe como pagar e acompanha o andamento.</td></tr>
+  <tr><td><strong>Recepção e cozinha</strong></td><td>O painel: <code>/RestMenu/admin</code>, aba “Pedidos ao Vivo”</td><td>Recebe os pedidos na hora, com um som de alerta. Confere os pedidos “faturar no quarto” ou “dinheiro”, envia para a cozinha e imprime o cupom.</td></tr>
+  <tr><td><strong>Dono</strong> (Cristiano)</td><td>O painel, aba “Gestão de Cardápio”</td><td>Pausa pratos em falta, muda preços, cria e edita itens e sobe fotos, sem precisar de programador.</td></tr>
+</table>
+<p>O objetivo de negócio por trás de tudo isso são as duas dores que o Cristiano descreveu:</p>
+<ol>
+  <li><strong>Menos telefone tocando.</strong> O pedido chega escrito e direto na tela e na impressora, sem o cozinheiro largar o fogão para atender.</li>
+  <li><strong>Nada sem pagar.</strong> Pedidos PIX ou cartão só vão para a cozinha depois de pagos. “Faturar no quarto” e “dinheiro” passam antes pela conferência da recepção.</li>
+</ol>
+
+<h2 class="chapter" id="c2"><span class="n">2</span>A grande mudança: de site estático para app com banco</h2>
+<p>Antes, o cardápio estava <strong>escrito dentro do código</strong>, nos arquivos <code>menuData.ts</code> e <code>priceList.ts</code>. Mudar o preço da costela era assim: abrir o VS Code, editar, gerar o build e publicar de novo. E não existia pedido, pagamento nem login.</p>
+<p>Agora o cardápio, os pedidos e os usuários ficam num <strong>banco de dados na internet</strong> (o Supabase). O site virou só a “vitrine”: quando abre, ele <strong>pergunta</strong> ao banco o que mostrar.</p>
+
+<figure>
+<svg viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" font-family="EB Garamond, serif">
+  <rect x="10" y="10" width="300" height="210" rx="10" fill="#f6efe1" stroke="#a8916b"/>
+  <text x="160" y="36" text-anchor="middle" font-family="Cinzel" font-size="15" font-weight="600" fill="#2c2420">ANTES</text>
+  <rect x="40" y="55" width="240" height="70" rx="8" fill="#fff" stroke="#2c2420"/>
+  <text x="160" y="80" text-anchor="middle" font-size="14" fill="#2c2420">Site (React)</text>
+  <text x="160" y="100" text-anchor="middle" font-size="12" fill="#5d544f">o cardápio está DENTRO do código</text>
+  <text x="160" y="115" text-anchor="middle" font-size="11" fill="#5d544f" font-family="JetBrains Mono">menuData.ts · priceList.ts</text>
+  <text x="160" y="155" text-anchor="middle" font-size="12.5" fill="#c62828">mudar preço = programador + novo deploy</text>
+  <text x="160" y="175" text-anchor="middle" font-size="12.5" fill="#c62828">sem pedidos · sem login · sem pagamento</text>
+  <rect x="370" y="10" width="300" height="210" rx="10" fill="#edf5ec" stroke="#2e7d32"/>
+  <text x="520" y="36" text-anchor="middle" font-family="Cinzel" font-size="15" font-weight="600" fill="#2c2420">AGORA</text>
+  <rect x="395" y="55" width="110" height="70" rx="8" fill="#fff" stroke="#2c2420"/>
+  <text x="450" y="85" text-anchor="middle" font-size="14" fill="#2c2420">Site</text>
+  <text x="450" y="104" text-anchor="middle" font-size="11.5" fill="#5d544f">(a vitrine)</text>
+  <rect x="545" y="55" width="110" height="70" rx="8" fill="#2c2420"/>
+  <text x="600" y="85" text-anchor="middle" font-size="14" fill="#fdf5e6">Supabase</text>
+  <text x="600" y="104" text-anchor="middle" font-size="11.5" fill="#dfd5bd">(o estoque)</text>
+  <line x1="505" y1="80" x2="545" y2="80" stroke="#2c2420" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="545" y1="100" x2="505" y2="100" stroke="#2c2420" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="520" y="155" text-anchor="middle" font-size="12.5" fill="#2e7d32">preço muda no painel, na hora</text>
+  <text x="520" y="175" text-anchor="middle" font-size="12.5" fill="#2e7d32">pedidos · login · fotos · tempo real</text>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2c2420"/></marker></defs>
+</svg>
+<figcaption>Antes os dados moravam no código. Agora moram no banco, e o site só os mostra.</figcaption>
+</figure>
+
+<div class="box analogia"><span class="t">Analogia</span><p>Antes, o cardápio era <strong>impresso</strong>: para mudar um preço, era preciso mandar imprimir tudo de novo. Agora é como uma <strong>TV de cardápio</strong> ligada a um computador. Muda no computador e todas as TVs mostram o novo preço na hora.</p></div>
+
+<h2 class="chapter" id="c3"><span class="n">3</span>O mapa do sistema</h2>
+<p>Existem duas grandes peças: o <strong>front-end</strong> (o React que você conhece, rodando no navegador) e o <strong>Supabase</strong> (um serviço na nuvem). O Supabase, por sua vez, é um pacote com quatro serviços dentro:</p>
+
+<figure>
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="EB Garamond, serif">
+  <defs><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5d544f"/></marker></defs>
+  <rect x="10" y="10" width="220" height="280" rx="12" fill="#f6efe1" stroke="#a8916b"/>
+  <text x="120" y="36" text-anchor="middle" font-family="Cinzel" font-size="13" font-weight="600" fill="#2c2420">NAVEGADOR (React)</text>
+  <rect x="30" y="55" width="180" height="95" rx="8" fill="#fff" stroke="#2c2420"/>
+  <text x="120" y="80" text-anchor="middle" font-size="14" font-weight="600" fill="#2c2420">Cardápio do hóspede</text>
+  <text x="120" y="100" text-anchor="middle" font-size="11.5" fill="#5d544f">/RestMenu/</text>
+  <text x="120" y="120" text-anchor="middle" font-size="11.5" fill="#5d544f">ver menu · carrinho</text>
+  <text x="120" y="136" text-anchor="middle" font-size="11.5" fill="#5d544f">checkout · acompanhar</text>
+  <rect x="30" y="170" width="180" height="100" rx="8" fill="#fff" stroke="#2c2420"/>
+  <text x="120" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="#2c2420">Painel do restaurante</text>
+  <text x="120" y="215" text-anchor="middle" font-size="11.5" fill="#5d544f">/RestMenu/admin</text>
+  <text x="120" y="235" text-anchor="middle" font-size="11.5" fill="#5d544f">login · pedidos ao vivo</text>
+  <text x="120" y="251" text-anchor="middle" font-size="11.5" fill="#5d544f">gestão do cardápio</text>
+  <rect x="300" y="10" width="370" height="280" rx="12" fill="#2c2420"/>
+  <text x="485" y="36" text-anchor="middle" font-family="Cinzel" font-size="13" font-weight="600" fill="#fdf5e6">SUPABASE (nuvem)</text>
+  <g font-size="12" fill="#2c2420">
+    <rect x="320" y="52" width="160" height="108" rx="8" fill="#fdf5e6"/>
+    <text x="400" y="74" text-anchor="middle" font-size="14" font-weight="700">Banco (Postgres)</text>
+    <text x="400" y="94" text-anchor="middle">tabelas: cardápio,</text>
+    <text x="400" y="110" text-anchor="middle">pedidos, admins</text>
+    <text x="400" y="128" text-anchor="middle">regras de segurança</text>
+    <text x="400" y="144" text-anchor="middle">funções (RPC)</text>
+    <rect x="490" y="52" width="160" height="108" rx="8" fill="#fdf5e6"/>
+    <text x="570" y="74" text-anchor="middle" font-size="14" font-weight="700">Auth</text>
+    <text x="570" y="94" text-anchor="middle">login com e-mail</text>
+    <text x="570" y="110" text-anchor="middle">e senha do painel</text>
+    <text x="570" y="128" text-anchor="middle">“quem é você?”</text>
+    <rect x="320" y="170" width="160" height="104" rx="8" fill="#fdf5e6"/>
+    <text x="400" y="192" text-anchor="middle" font-size="14" font-weight="700">Storage</text>
+    <text x="400" y="212" text-anchor="middle">bucket menu-images</text>
+    <text x="400" y="228" text-anchor="middle">as fotos dos pratos</text>
+    <rect x="490" y="170" width="160" height="104" rx="8" fill="#fdf5e6"/>
+    <text x="570" y="192" text-anchor="middle" font-size="14" font-weight="700">Realtime</text>
+    <text x="570" y="212" text-anchor="middle">avisa o painel na</text>
+    <text x="570" y="228" text-anchor="middle">hora que um pedido</text>
+    <text x="570" y="244" text-anchor="middle">entra ou muda</text>
+  </g>
+  <line x1="230" y1="100" x2="298" y2="100" stroke="#5d544f" stroke-width="2" marker-start="url(#b)" marker-end="url(#b)"/>
+  <line x1="230" y1="220" x2="298" y2="220" stroke="#5d544f" stroke-width="2" marker-start="url(#b)" marker-end="url(#b)"/>
+  <text x="264" y="92" text-anchor="middle" font-size="10" fill="#5d544f">internet</text>
+</svg>
+<figcaption>As duas telas do app (à esquerda) e os quatro serviços do Supabase (à direita).</figcaption>
+</figure>
+
+<table>
+  <tr><th style="width:20%">Serviço</th><th>Para que usamos</th></tr>
+  <tr><td><strong>Banco (Postgres)</strong></td><td>Guarda categorias, pratos, pedidos e a lista de administradores. Também guarda as <strong>regras de segurança</strong> e as <strong>funções</strong> que calculam o pedido.</td></tr>
+  <tr><td><strong>Auth</strong></td><td>O login do painel. Ele confere e-mail e senha e entrega ao navegador um “crachá” que prova quem é a pessoa.</td></tr>
+  <tr><td><strong>Storage</strong></td><td>Um “Google Drive” para as fotos dos pratos, no bucket <code>menu-images</code>.</td></tr>
+  <tr><td><strong>Realtime</strong></td><td>Avisa o painel no instante em que um pedido é criado ou muda de status. É isso que faz o som tocar sem ninguém apertar F5.</td></tr>
+</table>
+<div class="box analogia"><span class="t">Analogia</span><p>Pense no Supabase como um <strong>prédio de serviços</strong>. No térreo fica o arquivo (o banco). Na portaria, o segurança que confere crachás (Auth). No subsolo, o depósito de fotos (Storage). E no último andar, um alto-falante que anuncia “chegou pedido!” (Realtime). O seu React é o cliente que entra no prédio e pede coisas.</p></div>
+<div class="box lembre"><span class="t">Para lembrar</span><p>Não existe um “servidor nosso” (Node, Express…). O navegador conversa <strong>direto</strong> com o Supabase. É por isso que a segurança precisa morar <strong>dentro do banco</strong> (capítulo 7).</p></div>
+
+<!-- ======================================================= PARTE II -->
+<section class="part">
+  <div class="num">PARTE II</div>
+  <h1>O banco de dados, do zero</h1>
+  <p>SQL explicado para quem só conhece JavaScript: tabelas, segurança e as funções que protegem o dinheiro do restaurante.</p>
+</section>
+
+<h2 class="chapter" id="c4"><span class="n">4</span>Banco de dados para quem sabe JavaScript</h2>
+<h3>Tabela = um array de objetos com formato fixo</h3>
+<p>Você já trabalhou com algo assim em JavaScript:</p>
+<pre><span class="k">const</span> menu_items = [
+  { id: <span class="s">1</span>, name: <span class="s">"Dadinhos de Coalho"</span>, price: <span class="s">24.00</span>, is_available: <span class="s">true</span> },
+  { id: <span class="s">2</span>, name: <span class="s">"Costela 12h"</span>,        price: <span class="s">92.00</span>, is_available: <span class="s">false</span> },
+];</pre>
+<p>Uma <strong>tabela</strong> de banco de dados é exatamente isso, com três diferenças importantes:</p>
+<ol>
+  <li><strong>Ela mora num servidor</strong>, não na memória do navegador. Todos os celulares veem os mesmos dados.</li>
+  <li><strong>O formato é obrigatório.</strong> Toda linha tem as mesmas colunas, cada uma com um tipo (texto, número…). Se você tentar salvar <code>price: "banana"</code>, o banco recusa.</li>
+  <li><strong>Ela tem regras.</strong> Por exemplo: “o preço não pode ser negativo” ou “só admin pode alterar”.</li>
+</ol>
+<p>Cada objeto do array é uma <strong>linha</strong> (ou registro). Cada propriedade é uma <strong>coluna</strong> (ou campo).</p>
+
+<h3>SQL: a linguagem para conversar com o banco</h3>
+<p>SQL é uma linguagem em que você <strong>descreve o que quer</strong>, e o banco descobre como fazer. Compare com o JavaScript:</p>
+<table>
+  <tr><th style="width:44%">Em JavaScript (com um array)</th><th>Em SQL (com uma tabela)</th></tr>
+  <tr><td><code>items.filter(i =&gt; i.price &gt; 50)</code></td><td><code>select * from menu_items where price &gt; 50;</code></td></tr>
+  <tr><td><code>items.map(i =&gt; i.name)</code></td><td><code>select name from menu_items;</code></td></tr>
+  <tr><td><code>items.sort((a,b) =&gt; a.price - b.price)</code></td><td><code>select * from menu_items order by price;</code></td></tr>
+  <tr><td><code>items.slice(0, 5)</code></td><td><code>select * from menu_items limit 5;</code></td></tr>
+  <tr><td><code>items.length</code></td><td><code>select count(*) from menu_items;</code></td></tr>
+  <tr><td><code>items.push({ name: "Novo", price: 10 })</code></td><td><code>insert into menu_items (name, price) values ('Novo', 10);</code></td></tr>
+  <tr><td><code>items.forEach(i =&gt; { if (i.id === 2) i.price = 95 })</code></td><td><code>update menu_items set price = 95 where id = 2;</code></td></tr>
+  <tr><td><code>items = items.filter(i =&gt; i.id !== 2)</code></td><td><code>delete from menu_items where id = 2;</code></td></tr>
+</table>
+<div class="box atencao"><span class="t">Atenção</span><p>Num <code>update</code> ou <code>delete</code>, <strong>sempre</strong> coloque o <code>where</code>. Sem ele, o comando vale para <strong>todas as linhas da tabela</strong>. Um <code>update menu_items set price = 95;</code> deixa o cardápio inteiro custando R$ 95. No SQL não existe Ctrl+Z.</p></div>
+<p>Detalhes de escrita: textos usam <strong>aspas simples</strong> (<code>'Costela'</code>), o comando termina com <code>;</code> e maiúsculas e minúsculas nos comandos tanto faz (<code>SELECT</code> = <code>select</code>).</p>
+
+<h3>Juntando tabelas (join)</h3>
+<p>O prato guarda só o <strong>número</strong> da categoria (<code>category_id</code>), não o nome. Para ver os dois juntos, você “junta” as tabelas:</p>
+<pre><span class="k">select</span> menu_items.name, categories.name <span class="k">as</span> categoria
+<span class="k">from</span> menu_items
+<span class="k">join</span> categories <span class="k">on</span> categories.id = menu_items.category_id;</pre>
+<p>Em JavaScript seria um <code>items.map(i =&gt; ({ ...i, categoria: categories.find(c =&gt; c.id === i.category_id).name }))</code>.</p>
+
+<h3>Os tipos de dado que usamos</h3>
+<table>
+  <tr><th style="width:24%">Tipo SQL</th><th style="width:22%">Parecido com</th><th>Onde usamos e por quê</th></tr>
+  <tr><td><code>text</code></td><td>string</td><td>Nomes, descrições, quarto.</td></tr>
+  <tr><td><code>int</code> / <code>bigint</code></td><td>number (inteiro)</td><td>Quantidade, ordem de exibição, IDs.</td></tr>
+  <tr><td><code>numeric(10,2)</code></td><td>number com 2 casas</td><td><strong>Dinheiro.</strong> Guarda o valor exato. Em JS, <code>0.1 + 0.2</code> dá <code>0.30000000000000004</code>; o <code>numeric</code> não erra centavos.</td></tr>
+  <tr><td><code>boolean</code></td><td>true/false</td><td><code>is_available</code>, <code>allow_room_charge</code>.</td></tr>
+  <tr><td><code>uuid</code></td><td>string aleatória</td><td>ID do pedido, por exemplo <code>8368db83-…</code>. É impossível de adivinhar e por isso serve como “senha” do pedido.</td></tr>
+  <tr><td><code>timestamptz</code></td><td>Date</td><td>Data e hora com fuso, como <code>created_at</code>.</td></tr>
+  <tr><td><code>jsonb</code></td><td>um objeto JS</td><td><code>translations</code>: <code>{"en": {"name": "Ribs"}, "es": {...}}</code>.</td></tr>
+</table>
+
+<h3>Chaves e regras</h3>
+<ul>
+  <li><strong>Chave primária (<code>primary key</code>)</strong>: a coluna que identifica a linha de forma única, como o <code>key</code> de uma lista no React. Em todas as nossas tabelas é o <code>id</code>.</li>
+  <li><strong>Chave estrangeira (<code>references</code>)</strong>: uma coluna que aponta para o <code>id</code> de outra tabela. O <code>menu_items.category_id</code> aponta para <code>categories.id</code>, e o banco <strong>não deixa</strong> você colocar um prato numa categoria que não existe.</li>
+  <li><strong><code>not null</code></strong>: o campo é obrigatório.</li>
+  <li><strong><code>unique</code></strong>: o valor não pode se repetir (o <code>slug</code>, por exemplo).</li>
+  <li><strong><code>check (...)</code></strong>: uma validação, como <code>check (price &gt;= 0)</code> ou <code>check (quantity between 1 and 20)</code>.</li>
+  <li><strong><code>default</code></strong>: o valor automático quando você não informa nada. <code>created_at default now()</code> grava a hora atual.</li>
+  <li><strong><code>generated ... as identity</code></strong>: um contador automático (1, 2, 3…). É assim que os pedidos ganham os números #101, #102…</li>
+</ul>
+<div class="box lembre"><span class="t">Para lembrar</span><p>Essas regras ficam no banco. Mesmo que alguém burle o seu formulário React, o banco recusa um dado inválido. A validação do front serve para a <strong>experiência</strong> do usuário (mensagens bonitas); a do banco serve para a <strong>segurança</strong>.</p></div>
+
+<h2 class="chapter newpage" id="c5"><span class="n">5</span>As tabelas do Irius, uma por uma</h2>
+<p>Todas as tabelas são criadas pelo arquivo <code>supabase/schema.sql</code>. Veja como elas se ligam:</p>
+<figure>
+<svg viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" font-family="EB Garamond, serif" font-size="12">
+  <defs><marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ed6c02"/></marker></defs>
+  <g fill="#2c2420">
+    <rect x="10" y="10" width="190" height="130" rx="8" fill="#fff" stroke="#2c2420"/>
+    <rect x="10" y="10" width="190" height="24" rx="8" fill="#2c2420"/><text x="105" y="27" text-anchor="middle" fill="#fdf5e6" font-family="Cinzel" font-weight="700">categories</text>
+    <text x="20" y="52">id</text><text x="20" y="68" fill="#ed6c02">parent_id → categories</text><text x="20" y="84">slug · name</text><text x="20" y="100">translations (jsonb)</text><text x="20" y="116">sort_order · is_active</text>
+    <rect x="245" y="10" width="200" height="170" rx="8" fill="#fff" stroke="#2c2420"/>
+    <rect x="245" y="10" width="200" height="24" rx="8" fill="#2c2420"/><text x="345" y="27" text-anchor="middle" fill="#fdf5e6" font-family="Cinzel" font-weight="700">menu_items</text>
+    <text x="255" y="52">id · slug</text><text x="255" y="68" fill="#ed6c02">category_id → categories</text><text x="255" y="84">name · description</text><text x="255" y="100">translations · price</text><text x="255" y="116">image_url · serving_type</text><text x="255" y="132">is_available</text><text x="255" y="148">allow_room_charge</text><text x="255" y="164">show_picture_icon · sort_order</text>
+    <rect x="490" y="10" width="180" height="250" rx="8" fill="#fff" stroke="#2c2420"/>
+    <rect x="490" y="10" width="180" height="24" rx="8" fill="#2c2420"/><text x="580" y="27" text-anchor="middle" fill="#fdf5e6" font-family="Cinzel" font-weight="700">orders</text>
+    <text x="500" y="52">id (uuid)</text><text x="500" y="68">order_number (#101…)</text><text x="500" y="84">user_id (opcional)</text><text x="500" y="100">room_number</text><text x="500" y="116">guest_name · guest_cpf</text><text x="500" y="132">guest_phone</text><text x="500" y="148">payment_method</text><text x="500" y="164">payment_status</text><text x="500" y="180">payment_provider_id</text><text x="500" y="196">print_status</text><text x="500" y="212">total_amount · notes</text><text x="500" y="228">created_at · updated_at</text>
+    <rect x="245" y="200" width="200" height="82" rx="8" fill="#fff" stroke="#2c2420"/>
+    <rect x="245" y="200" width="200" height="24" rx="8" fill="#2c2420"/><text x="345" y="217" text-anchor="middle" fill="#fdf5e6" font-family="Cinzel" font-weight="700">order_items</text>
+    <text x="255" y="240" fill="#ed6c02">order_id → orders</text><text x="255" y="256" fill="#ed6c02">menu_item_id → menu_items</text><text x="255" y="272">item_name · quantity · unit_price…</text>
+    <rect x="10" y="200" width="190" height="62" rx="8" fill="#fff" stroke="#2c2420"/>
+    <rect x="10" y="200" width="190" height="24" rx="8" fill="#2c2420"/><text x="105" y="217" text-anchor="middle" fill="#fdf5e6" font-family="Cinzel" font-weight="700">admin_users</text>
+    <text x="20" y="242">user_id → usuário do Auth</text>
+  </g>
+  <path d="M245,68 C225,68 225,40 200,40" fill="none" stroke="#ed6c02" stroke-width="1.6" marker-end="url(#c)"/>
+  <path d="M345,236 C345,215 345,200 345,182" fill="none" stroke="#ed6c02" stroke-width="1.6" marker-end="url(#c)"/>
+  <path d="M445,240 C470,240 470,52 490,52" fill="none" stroke="#ed6c02" stroke-width="1.6" marker-end="url(#c)"/>
+</svg>
+<figcaption>As cinco tabelas. As setas laranja são as chaves estrangeiras: “esta coluna aponta para aquela tabela”.</figcaption>
+</figure>
+
+<h3>categories: o cardápio em árvore</h3>
+<p>O cardápio antigo tinha três níveis: aba (Vinhos), seção (Vinhos Tintos) e subseção (Malbec). Em vez de criar três tabelas, cada categoria pode ter um <strong>pai</strong>, pela coluna <code>parent_id</code>:</p>
+<table class="small">
+  <tr><th>id</th><th>parent_id</th><th>slug</th><th>name</th><th>O que é</th></tr>
+  <tr><td>6</td><td><em>null</em></td><td>vinho</td><td>Vinhos</td><td>aba (não tem pai)</td></tr>
+  <tr><td>24</td><td>6</td><td>vinhos_tintos</td><td>Vinhos Tintos</td><td>seção (o pai é a aba 6)</td></tr>
+  <tr><td>32</td><td>24</td><td>malbec</td><td>Malbec</td><td>subseção (o pai é a seção 24)</td></tr>
+</table>
+<p>Outras colunas: <code>slug</code> é um apelido fixo e sem espaços (“vinhos_tintos”), útil para o código achar a categoria sem depender do número. <code>sort_order</code> define a ordem de exibição. <code>is_active</code> esconde a categoria inteira. <code>translations</code> guarda os nomes em inglês e espanhol, e o <code>name</code> é sempre o português.</p>
+
+<h3>menu_items: os pratos e bebidas</h3>
+<table class="small">
+  <tr><th style="width:28%">Coluna</th><th>Para que serve</th></tr>
+  <tr><td><code>category_id</code></td><td>Em qual categoria o item aparece. Pode ser uma aba, uma seção ou uma subseção.</td></tr>
+  <tr><td><code>slug</code></td><td>O antigo id do código (<code>c1</code>, <code>v14</code>…). A cerveja virou <code>c1_beer</code> porque o <code>c1</code> estava repetido.</td></tr>
+  <tr><td><code>name</code>, <code>description</code></td><td>Em português. É o que sai no cupom da cozinha.</td></tr>
+  <tr><td><code>translations</code></td><td><code>{"en": {"name": "...", "description": "..."}, "es": {...}}</code>. Se faltar, o app mostra o português.</td></tr>
+  <tr><td><code>price</code></td><td>O preço oficial. <strong>É o único preço que vale</strong> (capítulo 8).</td></tr>
+  <tr><td><code>image_url</code></td><td>Caminho da foto: antigo (<code>lanches/burger-chef.webp</code>, dentro de <code>public/</code>) ou URL completa do Storage.</td></tr>
+  <tr><td><code>is_available</code></td><td>Desligado = “Indisponível no momento”. Continua aparecendo, mas não dá para pedir.</td></tr>
+  <tr><td><code>allow_room_charge</code></td><td>Se o item pode ser “faturado no quarto”. <strong>Hoje está desligado em todos.</strong></td></tr>
+  <tr><td><code>serving_type</code></td><td><code>glass</code> (taça, mostra o ícone de taça) ou <code>bottle</code> (garrafa).</td></tr>
+  <tr><td><code>show_picture_icon</code></td><td>Mostra o ícone de câmera ao lado do nome. Liga sozinho quando uma foto é enviada pelo painel.</td></tr>
+</table>
+
+<h3>orders: os pedidos</h3>
+<p>Uma linha por pedido, com o quarto, nome, CPF, telefone, a forma de pagamento (<code>pix</code>, <code>credit_card</code>, <code>room_charge</code> ou <code>cash_on_delivery</code>), o <strong>status do pagamento</strong> (capítulo 6), o <strong>status de impressão</strong> (<code>pending</code>, <code>printed</code>, <code>error</code>), o total e as observações. O <code>id</code> é um UUID secreto, enquanto o <code>order_number</code> é o número amigável da comanda (#101, #102…). Há ainda o <code>payment_provider_id</code>, que vai guardar o código da cobrança no gateway de pagamento real. Hoje ele recebe <code>SIMULADO-…</code> quando o pagamento é simulado.</p>
+
+<h3>order_items: os itens de cada pedido, como uma “foto”</h3>
+<p>Cada item do pedido guarda o <code>item_name</code> e o <code>unit_price</code> <strong>do momento da compra</strong>. Se amanhã a costela passar a custar R$ 99, o pedido de ontem continua mostrando R$ 92. É a mesma lógica de uma nota fiscal: ela não muda depois de emitida. A coluna <code>line_total</code> (quantidade × preço) é calculada pelo próprio banco.</p>
+
+<h3>admin_users: quem manda</h3>
+<p>Uma lista simples com os IDs dos usuários que são administradores. Estar logado <strong>não basta</strong>: a pessoa precisa estar nessa lista. Isso evita que, no futuro, um hóspede com login vire “admin” sem querer.</p>
+
+<h2 class="chapter" id="c6"><span class="n">6</span>A vida de um pedido (os status)</h2>
+<p>A coluna <code>payment_status</code> é o coração das regras do hotel. Cada pedido segue um destes caminhos:</p>
+<figure>
+<svg viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg" font-family="EB Garamond, serif" font-size="12.5">
+  <defs><marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2c2420"/></marker></defs>
+  <text x="15" y="40" font-family="Cinzel" font-size="11" fill="#5d544f">PIX / CARTÃO</text>
+  <rect x="130" y="18" width="130" height="36" rx="18" fill="#fff2e5" stroke="#ed6c02"/><text x="195" y="41" text-anchor="middle">pending</text>
+  <rect x="380" y="18" width="130" height="36" rx="18" fill="#edf5ec" stroke="#2e7d32"/><text x="445" y="41" text-anchor="middle" font-weight="700">paid</text>
+  <line x1="260" y1="36" x2="378" y2="36" stroke="#2c2420" stroke-width="1.5" marker-end="url(#d)"/>
+  <text x="320" y="28" text-anchor="middle" font-size="11" fill="#5d544f">gateway confirma</text>
+  <text x="15" y="123" font-family="Cinzel" font-size="11" fill="#5d544f">QUARTO /</text><text x="15" y="138" font-family="Cinzel" font-size="11" fill="#5d544f">DINHEIRO</text>
+  <rect x="130" y="108" width="160" height="36" rx="18" fill="#fff2e5" stroke="#ed6c02"/><text x="210" y="131" text-anchor="middle">awaiting_approval</text>
+  <rect x="380" y="108" width="130" height="36" rx="18" fill="#edf5ec" stroke="#2e7d32"/><text x="445" y="131" text-anchor="middle" font-weight="700">approved</text>
+  <line x1="290" y1="126" x2="378" y2="126" stroke="#2c2420" stroke-width="1.5" marker-end="url(#d)"/>
+  <text x="334" y="118" text-anchor="middle" font-size="11" fill="#5d544f">recepção confirma</text>
+  <rect x="380" y="198" width="130" height="36" rx="18" fill="#fdecec" stroke="#c62828"/><text x="445" y="221" text-anchor="middle">cancelled</text>
+  <path d="M210,144 C210,215 300,216 378,216" fill="none" stroke="#c62828" stroke-width="1.5" marker-end="url(#d)"/>
+  <text x="300" y="238" text-anchor="middle" font-size="11" fill="#c62828">recepção recusa</text>
+  <rect x="560" y="60" width="110" height="64" rx="10" fill="#2c2420"/>
+  <text x="615" y="86" text-anchor="middle" fill="#fdf5e6" font-weight="700">COZINHA</text>
+  <text x="615" y="104" text-anchor="middle" fill="#dfd5bd" font-size="11">cupom impresso</text>
+  <line x1="510" y1="36" x2="560" y2="78" stroke="#2c2420" stroke-width="1.5" marker-end="url(#d)"/>
+  <line x1="510" y1="126" x2="560" y2="108" stroke="#2c2420" stroke-width="1.5" marker-end="url(#d)"/>
+</svg>
+<figcaption>Só pedidos <strong>paid</strong> ou <strong>approved</strong> chegam à cozinha.</figcaption>
+</figure>
+<table class="small">
+  <tr><th style="width:24%">Status</th><th>Significado</th><th style="width:30%">Quem muda</th></tr>
+  <tr><td><code>pending</code></td><td>PIX/cartão criado, esperando o pagamento. <strong>Não aparece no painel</strong>.</td><td>A função <code>create_safe_order</code> cria assim.</td></tr>
+  <tr><td><code>awaiting_approval</code></td><td>Faturar no quarto ou dinheiro: a recepção precisa conferir.</td><td>A função <code>create_safe_order</code> cria assim.</td></tr>
+  <tr><td><code>paid</code></td><td>Pago de verdade.</td><td>Hoje, o botão DEV de simulação. No futuro, o gateway de pagamento.</td></tr>
+  <tr><td><code>approved</code></td><td>Liberado pela recepção, mas o dinheiro ainda vai entrar (no check-out ou na entrega).</td><td>Botão “Confirmar Quarto” do painel.</td></tr>
+  <tr><td><code>cancelled</code></td><td>Recusado.</td><td>Botão “Recusar” do painel.</td></tr>
+</table>
+<div class="box lembre"><span class="t">Para lembrar</span><p>“Faturar no quarto” confirmado vira <code>approved</code>, e não <code>paid</code>, porque ninguém pagou ainda. Assim o relatório nunca mistura “dinheiro no caixa” com “dinheiro a receber”.</p></div>
+
+<h2 class="chapter newpage" id="c7"><span class="n">7</span>Segurança: GRANT, RLS e por que o front não protege nada</h2>
+<h3>O problema: o seu código React é público</h3>
+<p>Tudo o que roda no navegador pode ser visto e alterado por quem estiver usando o navegador. Abra o DevTools (F12) em qualquer site: dá para ler o JavaScript, mudar valores e disparar requisições. Se o cardápio confiasse no front para dizer “a costela custa R$ 92”, alguém poderia mandar “a costela custa R$ 0,01”.</p>
+<p>Além disso, a <strong>chave</strong> que o app usa para falar com o Supabase (<code>VITE_SUPABASE_ANON_KEY</code>) vai junto no JavaScript publicado. <strong>Isso é normal e esperado</strong>: ela é a chave “publishable” (pública). Ela só abre as portas que o banco permitir.</p>
+<div class="box atencao"><span class="t">Atenção</span><p>O Supabase tem também uma chave <strong>secret / service_role</strong>, que ignora todas as regras. Ela <strong>nunca</strong> pode ir para o código do site, nem para arquivo com <code>VITE_</code> no nome. Tudo que começa com <code>VITE_</code> vai parar no JavaScript que qualquer um baixa.</p></div>
+
+<h3>Os três tipos de visitante</h3>
+<table class="small">
+  <tr><th style="width:22%">Papel</th><th>Quem é</th></tr>
+  <tr><td><code>anon</code></td><td>Qualquer pessoa sem login: o hóspede no cardápio.</td></tr>
+  <tr><td><code>authenticated</code></td><td>Alguém que fez login pelo Auth.</td></tr>
+  <tr><td><strong>admin</strong></td><td>Um <code>authenticated</code> que está na tabela <code>admin_users</code>. A função <code>is_admin()</code> responde se a pessoa é admin.</td></tr>
+</table>
+
+<h3>Duas camadas de proteção</h3>
+<figure>
+<svg viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" font-family="EB Garamond, serif" font-size="12.5">
+  <defs><marker id="e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2c2420"/></marker></defs>
+  <rect x="10" y="45" width="120" height="60" rx="8" fill="#fff" stroke="#2c2420"/><text x="70" y="72" text-anchor="middle">Requisição</text><text x="70" y="90" text-anchor="middle" font-size="11" fill="#5d544f">do navegador</text>
+  <rect x="180" y="20" width="200" height="110" rx="10" fill="#f6efe1" stroke="#a8916b"/>
+  <text x="280" y="44" text-anchor="middle" font-family="Cinzel" font-weight="700">1 · GRANT</text>
+  <text x="280" y="66" text-anchor="middle">a porta do prédio</text>
+  <text x="280" y="86" text-anchor="middle" font-size="11.5" fill="#5d544f">“anon pode LER menu_items?”</text>
+  <text x="280" y="104" text-anchor="middle" font-size="11.5" fill="#5d544f">vale para a tabela inteira</text>
+  <rect x="420" y="20" width="200" height="110" rx="10" fill="#edf5ec" stroke="#2e7d32"/>
+  <text x="520" y="44" text-anchor="middle" font-family="Cinzel" font-weight="700">2 · RLS</text>
+  <text x="520" y="66" text-anchor="middle">o porteiro de cada sala</text>
+  <text x="520" y="86" text-anchor="middle" font-size="11.5" fill="#5d544f">“ESTA linha pode ser vista</text>
+  <text x="520" y="104" text-anchor="middle" font-size="11.5" fill="#5d544f">por ESTA pessoa?”</text>
+  <line x1="130" y1="75" x2="178" y2="75" stroke="#2c2420" stroke-width="1.5" marker-end="url(#e)"/>
+  <line x1="380" y1="75" x2="418" y2="75" stroke="#2c2420" stroke-width="1.5" marker-end="url(#e)"/>
+  <text x="650" y="80" text-anchor="middle" font-size="22">✓</text>
+</svg>
+<figcaption>Para chegar aos dados, a requisição passa pelas duas camadas.</figcaption>
+</figure>
+<p><strong>1. GRANT (permissão por tabela).</strong> Diz o que cada papel pode fazer com a tabela <em>como um todo</em>. Por exemplo:</p>
+<pre><span class="k">grant select on</span> public.menu_items <span class="k">to</span> anon, authenticated;            <span class="c">-- todos podem LER</span>
+<span class="k">grant insert, update, delete on</span> public.menu_items <span class="k">to</span> authenticated; <span class="c">-- só logados podem ESCREVER</span></pre>
+<p>Você desligou a opção “Automatically expose new tables” no Supabase. Isso é bom para a segurança, mas significa que, sem esses GRANTs, <strong>ninguém</strong> consegue ler nada. É exatamente o erro que você está vendo hoje (capítulo 17).</p>
+<p><strong>2. RLS (Row Level Security, segurança por linha).</strong> Depois de passar pela porta, cada linha é conferida por uma <strong>policy</strong> (política). Veja uma delas lida em português:</p>
+<pre><span class="k">create policy</span> <span class="s">"menu_items_admin_all"</span> <span class="k">on</span> public.menu_items
+  <span class="k">for all to</span> authenticated          <span class="c">-- vale para ler/criar/editar/apagar, para quem está logado</span>
+  <span class="k">using</span> (public.is_admin())         <span class="c">-- ...mas só se a pessoa for admin</span>
+  <span class="k">with check</span> (public.is_admin());   <span class="c">-- e o que ela gravar também passa pela mesma regra</span></pre>
+<p>É assim que um usuário logado que <strong>não</strong> é admin passa pela porta (GRANT) mas é barrado pelo porteiro (RLS).</p>
+
+<h3>Quem pode o quê, hoje</h3>
+<table class="small">
+  <tr><th>Ação</th><th>Hóspede (anon)</th><th>Logado comum</th><th>Admin</th></tr>
+  <tr><td>Ver o cardápio (categorias ativas e seus itens, inclusive os pausados)</td><td>✓</td><td>✓</td><td>✓ (inclusive os ocultos)</td></tr>
+  <tr><td>Criar, editar ou apagar prato e categoria</td><td>✗</td><td>✗</td><td>✓</td></tr>
+  <tr><td>Criar pedido</td><td colspan="3">Só pela função <code>create_safe_order</code>. Ninguém grava direto na tabela.</td></tr>
+  <tr><td>Ver pedidos</td><td>✗ (só o status do seu, via <code>get_order_status</code>)</td><td>só os próprios</td><td>todos</td></tr>
+  <tr><td>Mudar status do pedido</td><td>✗</td><td>✗</td><td>✓, mas <strong>só</strong> <code>payment_status</code> e <code>print_status</code></td></tr>
+  <tr><td>Mudar valor, itens ou dados do hóspede</td><td>✗</td><td>✗</td><td>✗ (travado)</td></tr>
+  <tr><td>Enviar ou apagar fotos</td><td>✗</td><td>✗</td><td>✓</td></tr>
+</table>
+<div class="box analogia"><span class="t">Analogia</span><p>O GRANT é o cartão que abre a porta do prédio. O RLS é o porteiro de cada sala, que olha o crachá e uma lista de nomes antes de deixar entrar. Os dois trabalham juntos.</p></div>
+
+<h2 class="chapter newpage" id="c8"><span class="n">8</span>Funções dentro do banco (RPC)</h2>
+<p>Uma <strong>função</strong> no banco funciona como uma função JavaScript que mora no servidor. O app chama pelo nome:</p>
+<pre><span class="k">const</span> { data, error } = <span class="k">await</span> supabase.rpc(<span class="s">"nome_da_funcao"</span>, { parametro: valor });</pre>
+<p>“RPC” quer dizer <em>Remote Procedure Call</em>: chamar uma função que está em outro computador.</p>
+
+<h3>security definer: o “funcionário de confiança”</h3>
+<p>O hóspede não pode gravar na tabela <code>orders</code>. Então como o pedido é criado? Por uma função marcada como <code>security definer</code>. Ela roda com a permissão do <strong>dono do banco</strong>, e não com a de quem chamou. Só que ela faz <strong>apenas</strong> o que está escrito nela.</p>
+<div class="box analogia"><span class="t">Analogia</span><p>O cliente não entra na cozinha. Ele entrega o pedido ao garçom (a função), que entra na cozinha e faz exatamente o que o procedimento manda. O cliente não pode pedir ao garçom “mude o preço”, porque isso não está no procedimento.</p></div>
+
+<h3>create_safe_order: a função que protege o dinheiro</h3>
+<p>É chamada quando o hóspede clica em “Enviar pedido”. O front manda <strong>apenas</strong> o seguinte:</p>
+<pre>supabase.rpc(<span class="s">"create_safe_order"</span>, {
+  p_room_number: <span class="s">"204"</span>,
+  p_guest_name: <span class="s">"Ana Souza"</span>,
+  p_payment_method: <span class="s">"pix"</span>,
+  p_items: [{ menu_item_id: <span class="s">12</span>, quantity: <span class="s">2</span>, notes: <span class="s">"sem cebola"</span> }], <span class="c">// SEM preço!</span>
+  p_guest_cpf: <span class="s">"52998224725"</span>, p_guest_phone: <span class="s">"51999990000"</span>, p_notes: <span class="s">"tocar a campainha"</span>,
+});</pre>
+<p>Dentro do banco, a função segue esta ordem:</p>
+<ol>
+  <li><strong>Valida o hóspede</strong>: quarto com até 10 caracteres (letras, números, hífen), nome com até 120, CPF com 11 dígitos e telefone com 8 a 15 dígitos (só números). Pontos, traços e espaços são removidos antes.</li>
+  <li><strong>Escolhe o status inicial</strong>: <code>pending</code> (PIX/cartão) ou <code>awaiting_approval</code> (quarto/dinheiro).</li>
+  <li><strong>Valida a lista de itens</strong>: precisa ser uma lista com 1 a 30 linhas, quantidade inteira de 1 a 20 e observação de até 200 caracteres.</li>
+  <li><strong>Confere cada item no banco</strong>: ele existe? Está disponível? A categoria está visível? Se o pagamento é “faturar no quarto”, o item aceita isso?</li>
+  <li><strong>Busca o preço real</strong> de cada item na tabela e <strong>calcula o total</strong>. O front nunca manda preço.</li>
+  <li><strong>Grava o pedido e os itens de uma vez só.</strong> Se qualquer passo falhar, nada fica gravado pela metade.</li>
+  <li><strong>Devolve</strong> o <code>order_id</code> (UUID), o número (#101), o total e o status.</li>
+</ol>
+<div class="box lembre"><span class="t">Para lembrar</span><p>O total exibido no carrinho é só uma <strong>prévia</strong>. O total que vale é o calculado pelo banco. Se alguém mexer no JavaScript, só consegue estragar a própria prévia.</p></div>
+<p>Quando algo está errado, a função interrompe tudo com uma mensagem (“Um ou mais itens não estão disponíveis no momento.”). O front traduz essa mensagem para o idioma do hóspede.</p>
+
+<h3>As outras funções</h3>
+<table class="small">
+  <tr><th style="width:28%">Função</th><th>O que faz</th></tr>
+  <tr><td><code>is_admin()</code></td><td>Responde <code>true</code> ou <code>false</code>: quem está logado está em <code>admin_users</code>? O painel usa isso depois do login, e as regras RLS também.</td></tr>
+  <tr><td><code>is_category_visible(id)</code></td><td>Sobe pela árvore (subseção → seção → aba) e só responde “visível” se todas estiverem ativas. Desativou “Vinhos”? Tudo dentro some.</td></tr>
+  <tr><td><code>get_order_status(order_id)</code></td><td>O hóspede não pode ler a tabela <code>orders</code>, mas pode perguntar “como está o meu pedido?” passando o UUID. A resposta não traz nome, CPF nem telefone.</td></tr>
+  <tr><td><code>dev_simulate_payment(order_id)</code></td><td><strong>Só para testes.</strong> Marca um PIX/cartão pendente como pago, sem dinheiro. Fica em arquivo separado e <strong>precisa ser apagada antes de abrir para hóspedes</strong> (capítulo 21).</td></tr>
+</table>
+
+<h2 class="chapter" id="c9"><span class="n">9</span>Login, fotos e tempo real: os outros serviços do Supabase</h2>
+<h3>Auth: o login</h3>
+<p>Quando o Cristiano digita e-mail e senha no <code>/admin</code>, o Auth confere e devolve uma <strong>sessão</strong>: um “crachá” digital (um token chamado JWT) que o supabase-js guarda no navegador e envia, sozinho, em toda requisição seguinte. O banco lê o crachá e sabe quem é a pessoa (<code>auth.uid()</code>). Por isso as regras RLS conseguem dizer “só se for admin”.</p>
+<p>Os usuários do Auth <strong>não ficam nas nossas tabelas</strong>: eles moram numa área do próprio Supabase (<em>Authentication → Users</em>). A nossa <code>admin_users</code> só guarda o ID de quem é admin.</p>
+
+<h3>Storage: as fotos</h3>
+<p>O bucket <code>menu-images</code> é público para <strong>ver</strong> (qualquer um abre a foto pelo link) e restrito para <strong>enviar e apagar</strong> (só admin). Ele aceita só PNG, JPEG, WebP e AVIF, com até 5 MB. O SVG ficou de fora porque pode carregar código malicioso. Cada foto recebe uma <strong>URL pública</strong>, que é o que fica gravado em <code>menu_items.image_url</code>.</p>
+
+<h3>Realtime: o alto-falante</h3>
+<p>Normalmente o navegador só recebe dados quando pergunta. Com o Realtime, o navegador abre uma <strong>conexão que fica aberta</strong> (um WebSocket) e o Supabase manda um aviso sempre que uma linha de <code>orders</code> é criada ou alterada. O painel recebe esse aviso, busca o pedido completo e toca o som. O Realtime também respeita o RLS: só o admin recebe os avisos.</p>
+<div class="box analogia"><span class="t">Analogia</span><p>Sem Realtime, é como ligar para a recepção a cada minuto perguntando “chegou pedido?”. Isso se chama <em>polling</em>, e o hóspede usa esse jeito para acompanhar o pedido, a cada 8 segundos. Com Realtime, é a recepção que tem um rádio ligado e <strong>escuta</strong> quando alguém fala.</p></div>
+
+<h2 class="chapter newpage" id="c10"><span class="n">10</span>Os arquivos SQL do projeto e quando rodar cada um</h2>
+<p>SQL não “roda sozinho” como o seu React. Você <strong>cola o conteúdo no SQL Editor do Supabase e clica em Run</strong>. Os arquivos ficam na pasta <code>supabase/</code>:</p>
+<table class="small">
+  <tr><th style="width:32%">Arquivo</th><th>O que faz</th><th style="width:22%">Quando rodar</th></tr>
+  <tr><td><code>supabase/schema.sql</code></td><td>Cria tabelas, regras (GRANT e RLS), funções, Realtime e o bucket de fotos. É a “planta da casa”.</td><td>Uma vez, e de novo sempre que ele mudar.</td></tr>
+  <tr><td><code>supabase/seed.sql</code></td><td>Preenche o cardápio com as 37 categorias e os 143 itens que estavam no código antigo, com as traduções.</td><td>Uma vez, depois do schema.</td></tr>
+  <tr><td><code>supabase/dev/payment_simulator.sql</code></td><td>Cria a função do botão DEV de pagamento simulado.</td><td>Só para testar.</td></tr>
+  <tr><td><code>supabase/dev/remove_payment_simulator.sql</code></td><td>Apaga a função acima.</td><td><strong>Antes</strong> de abrir para hóspedes.</td></tr>
+</table>
+<h3>“Pode rodar de novo sem quebrar”</h3>
+<p>Os arquivos foram escritos para poderem ser rodados mais de uma vez. Algumas expressões que garantem isso:</p>
+<ul>
+  <li><code>create table if not exists</code>: só cria se ainda não existir.</li>
+  <li><code>create or replace function</code>: cria ou atualiza a função.</li>
+  <li><code>drop policy if exists ...</code> seguido de <code>create policy ...</code>: apaga a regra antiga e recria a nova.</li>
+  <li><code>on conflict (slug) do nothing</code> (no seed): se o item já existe, não mexe. Assim o seed <strong>não apaga</strong> o que o dono mudou no painel.</li>
+</ul>
+<div class="box atencao"><span class="t">Atenção</span><p>O <code>create table if not exists</code> <strong>não altera</strong> uma tabela que já existe. Se no futuro precisarmos adicionar uma coluna, será com um comando novo (<code>alter table ... add column ...</code>), e não rodando o schema de novo.</p></div>
+<p>O seed foi <strong>gerado por um programa</strong>, que leu os antigos <code>menuData.ts</code>, <code>priceList.ts</code> e os JSON de tradução. Ninguém digitou os 143 itens à mão. No final, o próprio seed confere se entraram exatamente 37 categorias e 143 itens; se faltar algo, ele desfaz tudo.</p>
+
+<!-- ======================================================= PARTE III -->
+<section class="part">
+  <div class="num">PARTE III</div>
+  <h1>O front-end</h1>
+  <p>O React que você já conhece: onde está cada coisa, como ele fala com o Supabase e como funcionam o carrinho, o checkout e o painel.</p>
+</section>
+
+<h2 class="chapter" id="c11"><span class="n">11</span>O mapa das pastas</h2>
+<pre class="tree">irius-gastronomia/
+├─ <b>.env.local</b>                <i>URL + chave pública do Supabase (não vai pro GitHub)</i>
+├─ <b>.env.development.local</b>    <i>liga o simulador de pagamento, só no "npm run dev"</i>
+├─ .env.example              <i>modelo sem as chaves</i>
+├─ package.json              <i>+ @supabase/supabase-js · script "postbuild" (404.html)</i>
+├─ public/                   <i>imagens antigas (só 3 fotos existem de verdade)</i>
+├─ <b>supabase/</b>                 <i>os arquivos SQL (capítulo 10)</i>
+│  ├─ schema.sql · seed.sql
+│  └─ dev/ payment_simulator.sql · remove_payment_simulator.sql
+├─ docs/                     <i>este guia</i>
+└─ src/
+   ├─ main.tsx               <i>escolhe: cardápio ou painel (/admin)</i>
+   ├─ App.tsx                <i>a página do cardápio + carrinho + checkout</i>
+   ├─ vite-env.d.ts          <i>tipos das variáveis VITE_...</i>
+   ├─ <b>lib/</b>
+   │  ├─ supabase.ts         <i>a conexão com o Supabase (um arquivo só)</i>
+   │  └─ menuFormat.ts       <i>idioma, preço em R$ e endereço da foto</i>
+   ├─ <b>hooks/</b>useMenu.ts       <i>busca o cardápio e monta a árvore</i>
+   ├─ <b>cart/</b>                  <i>o carrinho (Context)</i>
+   │  ├─ cartStore.ts · CartProvider.tsx
+   ├─ <b>checkout/</b>              <i>fluxo do hóspede</i>
+   │  ├─ CartBar · CheckoutSheet · CartStep · DetailsStep
+   │  ├─ PaymentStep · StatusStep · checkoutUtils.ts
+   ├─ components/            <i>as telas do cardápio (Menu, Tabs, MenuItem, Modal...)</i>
+   │  ├─ MenuSkeleton        <i>novo: carregamento elegante</i>
+   │  └─ UnavailableTag      <i>novo: selo "Indisponível no momento"</i>
+   ├─ <b>admin/</b>                 <i>o painel /admin</i>
+   │  ├─ AdminApp · LoginForm
+   │  ├─ MenuManager · ItemRow · ItemFormModal · ToggleSwitch
+   │  ├─ useAdminMenu.ts · adminUtils.ts
+   │  └─ <b>orders/</b>             <i>pedidos ao vivo</i>
+   │     ├─ useLiveOrders.ts · alertSound.ts · orderTypes.ts
+   │     └─ OrdersBoard · ReceiptModal (cupom 80mm)
+   └─ locales/pt|en|es.json  <i>textos da interface (os do cardápio estão no banco)</i></pre>
+<p>Foram <strong>apagados</strong> os arquivos <code>src/data/menuData.ts</code> e <code>src/data/priceList.ts</code>, e dos JSON de tradução saíram os nomes dos pratos e categorias. Tudo isso agora vive no banco.</p>
+
+<h2 class="chapter" id="c12"><span class="n">12</span>Como o app se conecta ao Supabase</h2>
+<h3>As variáveis de ambiente (.env)</h3>
+<p>São configurações que ficam <strong>fora do código</strong>. O Vite lê esses arquivos e, para tudo que começa com <code>VITE_</code>, deixa o valor disponível em <code>import.meta.env</code>:</p>
+<pre><span class="c"># .env.local  (lido no "npm run dev" E no "npm run build")</span>
+VITE_SUPABASE_URL=https://ubwdzhatunywjedkrnju.supabase.co     <span class="c"># sem /rest/v1 no final!</span>
+VITE_SUPABASE_ANON_KEY=sb_publishable_...
+
+<span class="c"># .env.development.local  (lido SÓ no "npm run dev")</span>
+VITE_PAYMENT_SIMULATOR=true</pre>
+<p>Os dois arquivos terminam em <code>.local</code>, e o <code>.gitignore</code> ignora <code>*.local</code>. Por isso eles nunca vão para o GitHub.</p>
+
+<h3>O cliente: src/lib/supabase.ts</h3>
+<pre><span class="k">import</span> { createClient } <span class="k">from</span> <span class="s">"@supabase/supabase-js"</span>;
+<span class="k">export const</span> supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);</pre>
+<p>Esse objeto <code>supabase</code> é importado no resto do app. Pense nele como um <strong><code>fetch</code> turbinado</strong> que já sabe o endereço, já manda a chave e já envia o crachá do login quando ele existe.</p>
+<div class="two">
+<div><h4>Com fetch, “na mão”</h4>
+<pre><span class="k">await</span> fetch(URL + <span class="s">"/rest/v1/menu_items?select=*&amp;order=sort_order"</span>, {
+  headers: { apikey: KEY }
+}).then(r =&gt; r.json())</pre></div>
+<div><h4>Com supabase-js</h4>
+<pre><span class="k">await</span> supabase
+  .from(<span class="s">"menu_items"</span>)
+  .select(<span class="s">"*"</span>)
+  .order(<span class="s">"sort_order"</span>)</pre></div>
+</div>
+<p>Os dois fazem a <strong>mesma requisição HTTP</strong>. O supabase-js só escreve a URL por você e devolve <code>{ data, error }</code>. Os métodos lembram SQL: <code>.from()</code> é a tabela, <code>.select()</code> as colunas, <code>.eq("id", 5)</code> é o <code>where id = 5</code>, <code>.order()</code> é o <code>order by</code>, e <code>.update()</code> / <code>.insert()</code> mudam dados.</p>
+
+<h3>Como o app decide entre cardápio e painel (main.tsx)</h3>
+<p>O projeto não usa React Router. O <code>main.tsx</code> olha o endereço: se terminar em <code>/admin</code>, mostra o painel; senão, o cardápio. O painel é carregado com <code>lazy(() =&gt; import(...))</code>, isto é, <strong>só quando alguém abre o /admin</strong>. O hóspede não baixa esse código.</p>
+<p>O GitHub Pages não sabe que <code>/RestMenu/admin</code> é uma “página do React”. Se alguém abrir esse endereço direto, ele procura um arquivo <code>admin</code> e dá 404. A solução está no <code>package.json</code>: o script <code>postbuild</code> copia o <code>index.html</code> para <code>404.html</code>. Quando o GitHub não acha a página, entrega o 404.html, que é o próprio app, e o React resolve o resto.</p>
+
+<h2 class="chapter newpage" id="c13"><span class="n">13</span>O cardápio público</h2>
+<h3>useMenu: buscar e organizar</h3>
+<p>O hook <code>src/hooks/useMenu.ts</code> faz duas buscas ao mesmo tempo (<code>Promise.all</code>): categorias ativas e itens. Depois ele <strong>monta a árvore</strong> e “achata” cada aba numa lista na ordem certa, intercalando títulos e itens, igual ao antigo <code>menuData.ts</code>:</p>
+<pre>entriesByTab[<span class="s">"vinho"</span>] = [
+  { kind: <span class="s">"section"</span>,    category: { name: <span class="s">"Vinhos Tintos"</span> } },
+  { kind: <span class="s">"subsection"</span>, category: { name: <span class="s">"Malbec"</span> } },
+  { kind: <span class="s">"item"</span>,       item: { name: <span class="s">"Punto Final Gran Reserva"</span>, price: <span class="s">240</span> } },
+  ...
+]</pre>
+<p>O hook devolve <code>{ tabs, entriesByTab, loading, error, reload }</code>. O <code>Menu.tsx</code> só percorre essa lista e decide: título grande, título pequeno ou cartão de item.</p>
+<div class="box lembre"><span class="t">Para lembrar</span><p>Categorias e itens que são “irmãos” dividem o mesmo <code>sort_order</code>. É assim que um item pode aparecer antes de uma seção, se o dono quiser.</p></div>
+
+<h3>menuFormat.ts: três ajudantes</h3>
+<ul>
+  <li><code>localize(item, idioma)</code>: pega o nome e a descrição em EN/ES de <code>translations</code>; se faltar, usa o português.</li>
+  <li><code>formatPrice(68)</code>: devolve “R$ 68,00”.</li>
+  <li><code>resolveImageUrl(url)</code>: se a foto já é um link completo (do Storage), usa direto. Se é um caminho antigo (<code>lanches/x.webp</code>), coloca o <code>/RestMenu/</code> na frente. É por isso que os caminhos antigos não têm barra no início.</li>
+</ul>
+
+<h3>Os componentes</h3>
+<table class="small">
+  <tr><th style="width:24%">Componente</th><th>O que faz agora</th></tr>
+  <tr><td><code>Menu</code></td><td>Usa o <code>useMenu</code>. Enquanto carrega, mostra o <code>MenuSkeleton</code>. Se der erro, mostra “Cardápio indisponível” com o botão “Tentar novamente”.</td></tr>
+  <tr><td><code>Tabs</code></td><td>As abas vêm do banco (antes eram uma lista fixa).</td></tr>
+  <tr><td><code>MenuItem</code></td><td>O cartão do prato, com o botão redondo <strong>+</strong> (que vira o número de unidades no carrinho). Indisponível: nome apagado, preço riscado, selo e botão desabilitado.</td></tr>
+  <tr><td><code>Modal</code></td><td>A foto grande, com quantidade (− 1 +), observação e o botão “Adicionar · R$ X”. Se a foto não existir, mostra a imagem padrão.</td></tr>
+  <tr><td><code>MenuSkeleton</code></td><td>Blocos bege com brilho suave no formato do cardápio, para a página não “pular” quando os dados chegam.</td></tr>
+  <tr><td><code>UnavailableTag</code></td><td>O selo “— <em>Indisponível no momento</em> —”, traduzido.</td></tr>
+</table>
+<p>Algumas abas (Entradas, Principais, Lanches, Sobremesas) abrem o modal com foto ao clicar no item. Bebidas e Vinhos não abrem, mas têm o botão +.</p>
+
+<h2 class="chapter newpage" id="c14"><span class="n">14</span>O carrinho e o checkout do hóspede</h2>
+<h3>O carrinho é um Context</h3>
+<p>O carrinho precisa ser lido em vários lugares: o botão + de cada prato, o modal, a barra do rodapé e o checkout. Passar isso por props de componente em componente seria um inferno. Por isso usamos um <strong>Context</strong> do React.</p>
+<div class="box analogia"><span class="t">Analogia</span><p>Context é um <strong>quadro de avisos na parede da cozinha</strong>. Qualquer pessoa da equipe olha o quadro, e ninguém precisa repassar o recado de mão em mão. O <code>CartProvider</code> é quem pendura o quadro (em volta do <code>App</code>), e o <code>useCart()</code> é olhar para ele.</p></div>
+<ul>
+  <li><code>src/cart/cartStore.ts</code>: define o formato e o hook <code>useCart()</code>.</li>
+  <li><code>src/cart/CartProvider.tsx</code>: guarda as linhas do carrinho, soma quantidade e subtotal e junta itens iguais (mesmo prato + mesma observação = mesma linha). Ele também <strong>salva no navegador</strong> (<code>localStorage</code>, chave <code>irius:cart</code>), para o carrinho sobreviver a um recarregamento da página.</li>
+  <li>Ele também lembra o <strong>último pedido</strong> enviado (<code>irius:active-order</code>, por 8 horas). Assim, se o hóspede fechar a janela, a barra mostra “Acompanhar pedido #101”.</li>
+</ul>
+
+<h3>As etapas do checkout</h3>
+<figure>
+<svg viewBox="0 0 680 80" xmlns="http://www.w3.org/2000/svg" font-family="EB Garamond, serif" font-size="12.5">
+  <defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2c2420"/></marker></defs>
+  <g text-anchor="middle">
+    <rect x="5" y="15" width="140" height="50" rx="25" fill="#2c2420"/><text x="75" y="37" fill="#fdf5e6" font-weight="700">1 · Carrinho</text><text x="75" y="53" fill="#dfd5bd" font-size="10.5">CartStep</text>
+    <rect x="180" y="15" width="140" height="50" rx="25" fill="#2c2420"/><text x="250" y="37" fill="#fdf5e6" font-weight="700">2 · Dados</text><text x="250" y="53" fill="#dfd5bd" font-size="10.5">DetailsStep</text>
+    <rect x="355" y="15" width="140" height="50" rx="25" fill="#ed6c02"/><text x="425" y="37" fill="#fff" font-weight="700">3 · Pagamento</text><text x="425" y="53" fill="#fff" font-size="10.5">só PIX/cartão</text>
+    <rect x="530" y="15" width="145" height="50" rx="25" fill="#2e7d32"/><text x="602" y="37" fill="#fff" font-weight="700">4 · Acompanhar</text><text x="602" y="53" fill="#fff" font-size="10.5">StatusStep</text>
+  </g>
+  <line x1="145" y1="40" x2="178" y2="40" stroke="#2c2420" stroke-width="1.5" marker-end="url(#f)"/>
+  <line x1="320" y1="40" x2="353" y2="40" stroke="#2c2420" stroke-width="1.5" marker-end="url(#f)"/>
+  <line x1="495" y1="40" x2="528" y2="40" stroke="#2c2420" stroke-width="1.5" marker-end="url(#f)"/>
+</svg>
+<figcaption>A janela <code>CheckoutSheet</code> troca de etapa. “Faturar no quarto” e “dinheiro” pulam a etapa 3.</figcaption>
+</figure>
+<p><strong>CartBar</strong> é a barra escura no rodapé (“Ver pedido · 4 · R$ 283,00”). Ao clicar, abre o <strong>CheckoutSheet</strong>, que mostra uma etapa por vez:</p>
+<ol>
+  <li><strong>CartStep</strong>: a lista com + e −, lixeira e observação por item.</li>
+  <li><strong>DetailsStep</strong>: quarto, nome completo, telefone, CPF (ou “não tenho CPF”, para estrangeiros), forma de pagamento e observações. Ao enviar, chama <code>create_safe_order</code>. O quarto, o nome e o telefone ficam lembrados no aparelho (<code>irius:guest</code>); o CPF não, por privacidade.</li>
+  <li><strong>PaymentStep</strong>: só para PIX/cartão. Mostra um QR Code desenhado (de mentira) e, em modo de teste, o botão <code>🛠️ DEV: Simular Pagamento Aprovado</code>, que chama <code>dev_simulate_payment</code>.</li>
+  <li><strong>StatusStep</strong>: “Aguardando confirmação da recepção” → “Pedido enviado para a cozinha” → “Em preparo”. Pergunta ao banco a cada 8 segundos, via <code>get_order_status</code>.</li>
+</ol>
+
+<h3>Regras visíveis na tela de dados</h3>
+<ul>
+  <li><strong>Faturar no quarto</strong> fica desabilitado se <em>algum</em> item do carrinho não aceitar, e a tela mostra quais (“Não disponível para: Suco de Laranja”). É a mesma regra do banco, mostrada antes para o hóspede não levar um erro.</li>
+  <li><strong>PIX e cartão</strong> ficam desabilitados (“Pagamento online em breve”) quando o simulador está desligado, porque ainda não existe gateway de verdade.</li>
+  <li>O <strong>CPF</strong> é conferido pelo <em>dígito verificador</em>: os dois últimos números do CPF são calculados a partir dos 9 primeiros. Se a pessoa errar um número, a conta não fecha e o app avisa.</li>
+</ul>
+
+<h3>Por que o botão DEV nunca aparece para hóspedes</h3>
+<pre><span class="k">export const</span> PAYMENT_SIMULATOR =
+  import.meta.env.DEV &amp;&amp; import.meta.env.VITE_PAYMENT_SIMULATOR === <span class="s">"true"</span>;</pre>
+<p><code>import.meta.env.DEV</code> só é verdadeiro no <code>npm run dev</code>. No <code>npm run build</code> ele vira <code>false</code>, e o Vite <strong>remove</strong> o código do botão do arquivo final. Isso foi conferido: o texto do botão não existe no build.</p>
+
+<h2 class="chapter newpage" id="c15"><span class="n">15</span>O painel: login e gestão do cardápio</h2>
+<h3>A porta de entrada (AdminApp.tsx)</h3>
+<ol>
+  <li>Pergunta ao supabase-js se já existe sessão (<code>getSession</code>) e passa a escutar mudanças (<code>onAuthStateChange</code>: entrou, saiu, crachá renovado).</li>
+  <li>Sem sessão, mostra o <code>LoginForm</code> (e-mail, senha, olho para mostrar a senha, erros em português).</li>
+  <li>Com sessão, o <code>AdminGate</code> chama <code>is_admin()</code>. Se responder <code>false</code>, aparece “Esta conta não tem acesso”. Se <code>true</code>, o painel com as duas abas.</li>
+</ol>
+<div class="box lembre"><span class="t">Para lembrar</span><p>Esconder botões no front é só conforto. Quem barra de verdade é o banco: um usuário que não é admin, mesmo que “hackeie” a tela, recebe recusa em cada tentativa de alterar dados.</p></div>
+
+<h3>Gestão de Cardápio (MenuManager)</h3>
+<ul>
+  <li><strong>Busca</strong> que ignora acentos (“parmegiana” acha “Parmegiana”), <strong>filtro por aba</strong> e o botão <strong>“Só pausados (N)”</strong>.</li>
+  <li>Itens agrupados por categoria, na mesma ordem do cardápio (“Vinhos › Vinhos Tintos › Malbec”).</li>
+  <li><strong>ItemRow</strong> (cada linha): miniatura, nome, <strong>preço clicável</strong> (vira um campo; Enter salva, Esc cancela; aceita “68”, “68,5”, “R$ 1.234,56”), <strong>interruptor</strong> Disponível/Pausado e o botão Editar.</li>
+</ul>
+<h4>Atualização “otimista”</h4>
+<p>Ao clicar no interruptor, a tela muda <strong>na hora</strong>, sem esperar o banco responder. Se o banco recusar, o <code>useAdminMenu</code> <strong>desfaz</strong> a mudança e mostra o erro. É o que apps como o Instagram fazem com o “curtir”: parece instantâneo.</p>
+
+<h3>O modal de item (ItemFormModal)</h3>
+<p>Ele cria ou edita: nome, descrição, categoria (com a hierarquia indentada), preço, disponível e aceita faturar no quarto. Em “Traduções e mais opções” ficam os nomes e descrições em EN/ES e o tipo de serviço (taça/garrafa).</p>
+<h4>O caminho de uma foto</h4>
+<ol>
+  <li>O dono escolhe ou arrasta uma imagem.</li>
+  <li><strong>O próprio navegador reduz a foto</strong> para no máximo 1600 px e converte para WebP (ou JPEG, se o navegador não gerar WebP), usando um <code>&lt;canvas&gt;</code> invisível. Uma foto de celular de 6 MB virou 133 KB no teste.</li>
+  <li>Ela sobe para o bucket com um nome aleatório (<code>items/uuid.webp</code>).</li>
+  <li>O Storage devolve a <strong>URL pública</strong>, e o modal mostra a prévia.</li>
+  <li>Só ao clicar em <strong>Salvar</strong> a URL vai para <code>image_url</code>, e o ícone de câmera liga.</li>
+  <li>Se o dono <strong>cancelar</strong>, a foto enviada é <strong>apagada</strong> do bucket, para não deixar lixo.</li>
+</ol>
+
+<h2 class="chapter newpage" id="c16"><span class="n">16</span>O painel: pedidos ao vivo, som e cupom de 80mm</h2>
+<h3>useLiveOrders: o cérebro da aba de pedidos</h3>
+<p>Fica em <code>src/admin/orders/useLiveOrders.ts</code> e faz quatro coisas:</p>
+<ol>
+  <li><strong>Carga inicial</strong>: busca os pedidos das últimas 24 h com status <code>awaiting_approval</code>, <code>approved</code> ou <code>paid</code>, já com os itens de cada um.</li>
+  <li><strong>Escuta o Realtime</strong>: a cada aviso de “pedido X mudou”, busca o pedido X completo (o aviso não traz os itens) e atualiza a tela.</li>
+  <li><strong>Reserva</strong>: a cada 30 segundos, busca tudo de novo. Se o Wi-Fi derrubar o Realtime, o painel continua funcionando, e o indicador mostra “Reconectando”.</li>
+  <li><strong>Decide o alerta</strong>: guarda o último status conhecido de cada pedido. Toca o som da <strong>recepção</strong> quando aparece um pedido novo em <code>awaiting_approval</code> e o da <strong>cozinha</strong> quando um pedido passa de <code>pending</code> para <code>paid</code>. Um PIX ainda não pago <strong>não</strong> toca nada.</li>
+</ol>
+<p>O hook é usado no <code>AdminApp</code>, e não dentro da aba. Por isso os pedidos e o som continuam funcionando mesmo com a aba “Gestão de Cardápio” aberta.</p>
+
+<h3>Dois aparelhos ao mesmo tempo</h3>
+<p>Imagine a recepção e o garçom clicando em “Confirmar” no mesmo pedido. O comando enviado diz: “mude para <code>approved</code> <strong>somente se</strong> ainda estiver <code>awaiting_approval</code>”. O segundo clique não acha nada para mudar e recebe a mensagem “já foi atualizado em outro aparelho”.</p>
+
+<h3>O som (alertSound.ts)</h3>
+<p>O som é gerado pelo próprio navegador (Web Audio API), sem arquivo de áudio. A recepção ouve um “ding-dong” duplo e a cozinha, três notas subindo. Por regra dos navegadores, <strong>nenhum site pode tocar som antes de um clique do usuário</strong>. Por isso existe o botão “Ativar som de alerta”, e, depois de recarregar a página, o primeiro clique em qualquer lugar do painel libera o som de novo.</p>
+<div class="box atencao"><span class="t">Atenção</span><p>Na operação real, deixe o painel aberto num computador ou tablet <strong>que não entre em descanso de tela</strong>. Com a aba suspensa, o navegador pode atrasar avisos e sons.</p></div>
+
+<h3>O quadro (OrdersBoard)</h3>
+<ul>
+  <li><strong>Coluna 1, Aguardando conferência (VHF/Recepção)</strong>: pedidos <code>awaiting_approval</code>, com os botões <strong>Confirmar Quarto e Enviar p/ Cozinha</strong> (vira <code>approved</code>) e <strong>Recusar</strong> (vira <code>cancelled</code>, com confirmação).</li>
+  <li><strong>Coluna 2, Na cozinha (Impressora)</strong>: pedidos <code>paid</code> e <code>approved</code>, com o selo de pagamento (“Pago · PIX” em verde; “Faturar no quarto” e “Dinheiro” em laranja) e o selo <strong>Impresso / Não impresso</strong>. Os não impressos ficam com borda laranja.</li>
+  <li>O título da aba do navegador mostra “(2) Pedidos”, para chamar a atenção de longe.</li>
+</ul>
+
+<h3>O cupom de 80mm (ReceiptModal)</h3>
+<p>A impressora EPSON TM-T20X-II usa papel de <strong>80 mm</strong>, com cerca de <strong>72 mm</strong> de área impressa. O cupom é desenhado em CSS com <strong>milímetros</strong> (<code>width: 80mm</code>, margens de 4 mm), então a prévia na tela tem o tamanho real do papel. A fonte é monoespaçada (Courier), como a da impressora.</p>
+<ul>
+  <li><strong>Quarto gigante</strong> em fundo preto, para o garçom ler de longe.</li>
+  <li>Hóspede, telefone e <strong>CPF mascarado</strong> (<code>***.982.247-**</code>), por causa da LGPD.</li>
+  <li>Itens, observações em destaque (<code>&gt;&gt; SEM CEBOLA</code>), total e forma de pagamento.</li>
+  <li><strong>Faturar no quarto</strong>: caixa “FATURAR NO QUARTO / COLHER ASSINATURA DO HÓSPEDE” com linha para assinar.</li>
+  <li><strong>Dinheiro</strong>: “COBRAR NA ENTREGA / RECEBER R$ X / Levar troco”.</li>
+  <li><strong>PIX/cartão pago</strong>: “*** PAGO ONLINE ***”.</li>
+</ul>
+<p>O modal é desenhado <strong>fora</strong> do <code>#root</code>, com um <em>portal</em> do React (<code>createPortal</code>). Quando o botão chama <code>window.print()</code>, uma regra CSS <code>@media print</code> esconde o <code>#root</code> inteiro e só o cupom vai para o papel. Depois de imprimir, o pedido vira “Impresso”.</p>
+<div class="box pratica"><span class="t">Na prática</span><p>Na janela de impressão, escolha a <strong>EPSON TM-T20X-II</strong>, papel “Roll Paper 80 mm”, margens “Nenhuma” e marque “Gráficos de plano de fundo” (para o quarto sair com o fundo preto).</p></div>
+
+<!-- ======================================================= PARTE IV -->
+<section class="part">
+  <div class="num">PARTE IV</div>
+  <h1>Na prática</h1>
+  <p>Fazer funcionar de verdade, investigar problemas e preparar a abertura para hóspedes.</p>
+</section>
+
+<h2 class="chapter" id="c17"><span class="n">17</span>Por que hoje aparece “Cardápio indisponível”</h2>
+<p><strong>O app está conectado ao Supabase?</strong> A configuração está certa e a conexão acontece: a URL e a chave estão corretas, e o banco <strong>responde</strong>. Mas ele responde “não”. Testei no dia 22/10/2026:</p>
+<pre><span class="c">// resposta do Supabase ao pedir as categorias</span>
+{ <span class="s">"code"</span>: <span class="s">"42501"</span>,
+  <span class="s">"message"</span>: <span class="s">"permission denied for table categories"</span>,
+  <span class="s">"hint"</span>: <span class="s">"Grant the required privileges ... GRANT SELECT ON public.categories TO anon;"</span> }</pre>
+<p>O código <strong>42501</strong> significa “permissão negada”. As tabelas e funções existem (a função <code>is_admin</code> respondeu normalmente), mas falta o <strong>GRANT</strong> de leitura. Isso acontece porque o banco ainda tem a <strong>primeira versão</strong> do <code>schema.sql</code>, de antes de adicionarmos os GRANTs explícitos para funcionar com a exposição automática de tabelas desligada.</p>
+<div class="box lembre"><span class="t">Para lembrar</span><p><strong>A solução é rodar de novo o <code>supabase/schema.sql</code> atual</strong> no SQL Editor (próximo capítulo). Não é preciso mudar nada no código React.</p></div>
+<p><strong>Login e senha do admin:</strong> ainda não existe nenhum usuário no seu Supabase. Nos meus testes usei um Supabase falso, local, com usuários de teste que só existiam lá e já foram apagados. Você vai criar o usuário de verdade no passo 4 do próximo capítulo.</p>
+
+<h2 class="chapter newpage" id="c18"><span class="n">18</span>Passo a passo: colocando o teste real para rodar</h2>
+<p>Faça na ordem. Os nomes dos menus do Supabase podem variar um pouco com o tempo, mas a ideia é sempre a mesma.</p>
+
+<h3>Passo 1 · Rodar o schema atualizado</h3>
+<ol>
+  <li>Abra <code>supabase.com</code>, entre no projeto e clique em <strong>SQL Editor</strong> no menu da esquerda.</li>
+  <li>Clique em <strong>New query</strong>.</li>
+  <li>No VS Code, abra <code>supabase/schema.sql</code>, selecione tudo (Ctrl+A), copie e cole no editor.</li>
+  <li>Clique em <strong>Run</strong>. Deve aparecer “Success. No rows returned”.</li>
+</ol>
+<h3>Passo 2 · Rodar o seed</h3>
+<p>Mesma coisa com <code>supabase/seed.sql</code>. Se você já tinha rodado antes, tudo bem: ele não duplica nada. Para conferir, rode:</p>
+<pre><span class="k">select count</span>(*) <span class="k">from</span> menu_items;   <span class="c">-- deve dar 143</span></pre>
+<p>Agora rode <code>npm run dev</code>: <strong>o cardápio deve aparecer</strong>.</p>
+
+<h3>Passo 3 · Ligar o simulador de pagamento (só para testar)</h3>
+<p>Rode <code>supabase/dev/payment_simulator.sql</code> no SQL Editor.</p>
+
+<h3>Passo 4 · Criar o login do painel</h3>
+<ol>
+  <li>No Supabase: <strong>Authentication → Users → Add user → Create new user</strong>.</li>
+  <li>Digite um e-mail e uma senha forte e marque <strong>Auto Confirm User</strong>. Esse vai ser o seu login no <code>/admin</code>.</li>
+  <li>Volte ao SQL Editor e rode, trocando pelo e-mail que você usou:</li>
+</ol>
+<pre><span class="k">insert into</span> public.admin_users (user_id)
+<span class="k">select</span> id <span class="k">from</span> auth.users <span class="k">where</span> email = <span class="s">'seu-email@exemplo.com'</span>;</pre>
+<p>Depois, faça o mesmo para o Cristiano, com o e-mail e a senha dele.</p>
+
+<h3>Passo 5 · Desligar o cadastro público</h3>
+<p>Em <strong>Authentication → Sign In / Providers</strong> (ou “Settings”), desligue <strong>Allow new users to sign up</strong>. Assim, só você cria contas pelo painel do Supabase.</p>
+
+<h3>Passo 6 · Liberar “faturar no quarto” (opcional)</h3>
+<p>Hoje nenhum item aceita faturamento. Para testar, libere por exemplo as carnes e os lanches:</p>
+<pre><span class="k">update</span> public.menu_items <span class="k">set</span> allow_room_charge = <span class="k">true</span>
+<span class="k">where</span> category_id <span class="k">in</span> (<span class="k">select</span> id <span class="k">from</span> public.categories <span class="k">where</span> slug <span class="k">in</span> (<span class="s">'carnes'</span>, <span class="s">'lanches'</span>));</pre>
+<p>Ou faça pelo painel: Editar item → “Aceita cobrança no quarto”.</p>
+
+<h3>Passo 7 · O roteiro de teste completo</h3>
+<p>Abra <strong>duas janelas</strong>: uma normal com <code>http://localhost:5173/RestMenu/admin</code> (faça login) e uma <strong>anônima</strong> (Ctrl+Shift+N) com <code>http://localhost:5173/RestMenu/</code>. A janela anônima garante que o hóspede não está logado como admin. Se o seu terminal mostrar outra porta, use a porta dele.</p>
+<ul class="check">
+  <li>No painel, aba Pedidos ao Vivo: confira o indicador “Ao vivo” e clique em <strong>Ativar som de alerta</strong> (deve tocar um teste).</li>
+  <li>Hóspede: adicione 2 pratos com o <strong>+</strong> e 1 pelo modal, com observação.</li>
+  <li>Hóspede: Ver pedido → Continuar → preencha tudo → <strong>PIX</strong> → Enviar. Confira que o painel <strong>não</strong> mostra nada ainda.</li>
+  <li>Hóspede: clique em <strong>DEV: Simular Pagamento Aprovado</strong>. O painel deve tocar o som da cozinha e o pedido entra em “Na cozinha”.</li>
+  <li>Hóspede: “Fazer novo pedido” → itens liberados → <strong>Faturar no Quarto</strong>. O painel toca o som da recepção e mostra o pedido na coluna 1.</li>
+  <li>Painel: <strong>Confirmar Quarto</strong>. Em até 8 s, a tela do hóspede muda para “Enviado para a cozinha”.</li>
+  <li>Painel: <strong>Visualizar / Reimprimir Cupom</strong> → confira o layout → Imprimir (pode ser em PDF) → o selo vira “Impresso”.</li>
+  <li>Faça um pedido em <strong>Dinheiro</strong> e <strong>Recuse</strong>: o hóspede vê “Pedido cancelado”.</li>
+  <li>Aba Gestão de Cardápio: pause um prato e veja o selo no cardápio do hóspede (recarregue a página dele).</li>
+  <li>Mude um preço clicando nele. Crie um item com foto. Confira no cardápio.</li>
+</ul>
+<div class="box pratica"><span class="t">Na prática</span><p>Para ver os pedidos “por dentro”, rode no SQL Editor:<br><code>select order_number, room_number, payment_method, payment_status, total_amount from orders order by created_at desc;</code></p></div>
+
+<h2 class="chapter newpage" id="c19"><span class="n">19</span>Como investigar quando algo dá errado</h2>
+<p>A ferramenta número um é o <strong>DevTools</strong> do navegador (F12):</p>
+<ul>
+  <li><strong>Console</strong>: o app escreve lá os erros, como “Erro ao carregar o cardápio: …”.</li>
+  <li><strong>Network</strong> (Rede): filtre por <code>supabase</code>. Clique numa requisição vermelha e veja a aba <strong>Response</strong>: o Supabase sempre explica o motivo em <code>message</code>.</li>
+</ul>
+<table class="small">
+  <tr><th style="width:38%">Mensagem / código</th><th>O que significa</th><th style="width:30%">O que fazer</th></tr>
+  <tr><td><code>42501 permission denied for table ...</code></td><td>Falta GRANT nessa tabela.</td><td>Rodar o <code>schema.sql</code> atualizado.</td></tr>
+  <tr><td><code>new row violates row-level security policy</code></td><td>O RLS barrou: quem tentou gravar não tem permissão (por exemplo, não é admin).</td><td>Conferir se o usuário está em <code>admin_users</code>.</td></tr>
+  <tr><td><code>Invalid login credentials</code></td><td>E-mail ou senha errados.</td><td>Conferir em Authentication → Users.</td></tr>
+  <tr><td>“Esta conta não tem acesso ao painel”</td><td>Login certo, mas <code>is_admin()</code> respondeu <code>false</code>.</td><td>Fazer o <code>insert into admin_users</code> do capítulo 18.</td></tr>
+  <tr><td><code>Failed to fetch</code> / erro de rede</td><td>Sem internet, ou a URL do <code>.env.local</code> está errada.</td><td>Conferir a URL (sem <code>/rest/v1</code>) e reiniciar o <code>npm run dev</code>.</td></tr>
+  <tr><td><code>Could not find the function ...</code></td><td>A função não existe no banco.</td><td>Rodar o arquivo SQL que cria essa função.</td></tr>
+  <tr><td>“Um ou mais itens não aceitam cobrança no quarto”</td><td>A regra do <code>allow_room_charge</code> funcionando.</td><td>Liberar o item no painel, se fizer sentido.</td></tr>
+  <tr><td>Painel em “Reconectando”</td><td>O Realtime caiu (rede).</td><td>Nada; ele busca de novo a cada 30 s e se reconecta sozinho.</td></tr>
+</table>
+<div class="box atencao"><span class="t">Atenção</span><p>Mudou algo no <code>.env.local</code> ou no <code>.env.development.local</code>? <strong>Pare e rode o <code>npm run dev</code> de novo.</strong> O Vite só lê esses arquivos quando inicia.</p></div>
+
+<h2 class="chapter" id="c20"><span class="n">20</span>As fotos do cardápio</h2>
+<h3>O padrão das 3 fotos que existem</h3>
+<ul>
+  <li><strong>Costela 12h</strong>: foto de cima (90°, “flat lay”), num prato fundo branco de aba larga, sobre uma mesa lisa marrom-chocolate. Luz natural, suave e difusa, sem sombra dura. Formato quadrado (1:1), prato centralizado ocupando uns 85% da imagem.</li>
+  <li><strong>Hambúrgueres</strong>: ângulo de uns 45°, numa tábua de madeira em dois tons. Ao fundo, desfocados, um guardanapo branco, um ramequim de molho e copos de bebida. Luz de janela, cores quentes.</li>
+</ul>
+<p>Em resumo: fotos <strong>reais</strong> do restaurante, com luz natural, louça branca, madeira e marrom, sem fundo artificial e sem exagero de edição.</p>
+
+<h3>Por que eu não gero essas fotos</h3>
+<p>Eu não tenho ferramenta de geração de imagens. Além disso, existe um cuidado importante: uma foto inventada por IA mostra um prato que <strong>não é o que a cozinha serve</strong> (outra porção, outro empratamento, outro acompanhamento). Num cardápio de restaurante, o hóspede espera receber o que viu, e uma diferença grande gera reclamação e pode ser vista como propaganda enganosa.</p>
+<h3>O caminho recomendado</h3>
+<ol>
+  <li><strong>Fotografar os pratos de verdade</strong>, repetindo a receita acima: perto de uma janela (luz indireta, sem flash), mesa marrom ou tábua de madeira, prato branco, celular paralelo à mesa (pratos fundos) ou a 45° (lanches). Tire várias fotos e escolha a melhor.</li>
+  <li>Se quiser, use IA <strong>só para tratar</strong> a foto real (luz, cor, fundo), como parecem ter sido tratadas as 3 atuais.</li>
+  <li>Suba pelo painel: Editar item → Adicionar foto. O app reduz o tamanho, envia e liga o ícone de câmera sozinho.</li>
+</ol>
+<div class="box pratica"><span class="t">Na prática</span><p>Se for usar uma IA de imagem (o Gemini, por exemplo) para <strong>tratar</strong> uma foto real, um pedido-modelo é: “Mantenha exatamente o prato e a porção desta foto. Ajuste para luz natural suave de janela, prato branco sobre mesa lisa marrom-chocolate, vista de cima, formato quadrado, estilo fotografia de restaurante sofisticado, sem elementos novos.”</p></div>
+<p>Quanto às fotos que faltam: dos 143 itens, 61 apontam para um caminho de foto, mas só 3 desses arquivos existem. Os outros 58 mostram a imagem padrão até receberem foto pelo painel.</p>
+
+<h2 class="chapter newpage" id="c21"><span class="n">21</span>Antes de abrir para hóspedes de verdade</h2>
+<ul class="check">
+  <li>Rodar <code>supabase/dev/remove_payment_simulator.sql</code>. <strong>Obrigatório</strong>: com a função de simulação no banco, qualquer pessoa “paga” o próprio pedido sem dinheiro.</li>
+  <li>Integrar um <strong>gateway de pagamento</strong> real (Mercado Pago, Asaas, Pagar.me…). A confirmação deve chegar por <strong>webhook</strong> numa <em>Edge Function</em> do Supabase, nunca pelo navegador.</li>
+  <li>Abrir a conta do gateway no <strong>CNPJ do restaurante</strong>, para o dinheiro cair direto para ele.</li>
+  <li>Criar o <strong>programa de impressão</strong> no computador da cozinha, que escuta os pedidos e imprime sozinho na Epson. Hoje a impressão é pelo botão (o “backup”).</li>
+  <li>Garantir que o cadastro público está desligado (capítulo 18, passo 5).</li>
+  <li>Revisar o <code>allow_room_charge</code> de cada item com o Cristiano.</li>
+  <li>Apagar os pedidos de teste (os pagos pelo simulador têm <code>payment_provider_id</code> começando com <code>SIMULADO-</code>).</li>
+  <li>Publicar uma política de privacidade simples (LGPD), já que o app guarda nome, CPF e telefone.</li>
+  <li>Fotografar os pratos (capítulo 20).</li>
+  <li>Fazer o commit e o deploy (<code>npm run deploy</code>).</li>
+</ul>
+<p>Coisas que ainda não existem no painel: excluir item, reordenar itens e categorias, e relatórios de vendas.</p>
+
+<h2 class="chapter newpage" id="c22"><span class="n">22</span>Glossário</h2>
+<table class="small">
+  <tr><th style="width:27%">Termo</th><th>Explicação</th></tr>
+  <tr><td>Banco de dados</td><td>Onde os dados ficam guardados de forma organizada e permanente, num servidor.</td></tr>
+  <tr><td>Supabase</td><td>Serviço na nuvem que oferece banco (Postgres), login, arquivos e tempo real, sem precisar de servidor próprio.</td></tr>
+  <tr><td>Postgres / PostgreSQL</td><td>O tipo de banco de dados que o Supabase usa.</td></tr>
+  <tr><td>SQL</td><td>A linguagem para ler e alterar dados do banco.</td></tr>
+  <tr><td>Tabela, linha, coluna</td><td>Planilha, registro e campo.</td></tr>
+  <tr><td>Chave primária</td><td>A coluna que identifica cada linha de forma única (o <code>id</code>).</td></tr>
+  <tr><td>Chave estrangeira</td><td>Uma coluna que aponta para o <code>id</code> de outra tabela.</td></tr>
+  <tr><td>Schema</td><td>A estrutura do banco: quais tabelas, colunas e regras existem.</td></tr>
+  <tr><td>Seed</td><td>Os dados iniciais usados para preencher o banco.</td></tr>
+  <tr><td>Query</td><td>Uma consulta ou comando enviado ao banco.</td></tr>
+  <tr><td>Join</td><td>Juntar duas tabelas pela coluna que as liga.</td></tr>
+  <tr><td>GRANT</td><td>Permissão por tabela: quem pode ler, inserir, alterar ou apagar.</td></tr>
+  <tr><td>RLS / policy</td><td>Regras por linha: “esta pessoa pode ver ou alterar ESTA linha?”.</td></tr>
+  <tr><td>anon / authenticated</td><td>Visitante sem login / visitante com login.</td></tr>
+  <tr><td>RPC</td><td>Uma função do banco que o app chama pelo nome.</td></tr>
+  <tr><td>security definer</td><td>Função que roda com a permissão do dono do banco, mas só faz o que está escrito nela.</td></tr>
+  <tr><td>Transação</td><td>Um conjunto de comandos que acontece inteiro ou não acontece (nada fica pela metade).</td></tr>
+  <tr><td>UUID</td><td>Um código aleatório e impossível de adivinhar, como <code>8368db83-...</code>.</td></tr>
+  <tr><td>JSON / jsonb</td><td>Um objeto no formato do JavaScript, guardado numa coluna.</td></tr>
+  <tr><td>Auth / sessão / JWT</td><td>O login. A sessão é o “crachá” digital (um token JWT) que prova quem é a pessoa.</td></tr>
+  <tr><td>Chave publishable / secret</td><td>A pública pode ir no site; a secreta (service_role) ignora todas as regras e nunca pode ir para o site.</td></tr>
+  <tr><td>Storage / bucket</td><td>Armazenamento de arquivos / uma “pasta” dele.</td></tr>
+  <tr><td>Realtime / WebSocket</td><td>Conexão que fica aberta para o servidor avisar o navegador na hora.</td></tr>
+  <tr><td>Polling</td><td>Perguntar ao servidor de tempos em tempos (“mudou algo?”).</td></tr>
+  <tr><td>Webhook</td><td>Quando um serviço externo (o gateway) avisa o seu sistema chamando um endereço dele.</td></tr>
+  <tr><td>Gateway de pagamento</td><td>A empresa que processa PIX e cartão (Mercado Pago, Asaas…).</td></tr>
+  <tr><td>Edge Function</td><td>Um pedacinho de código que roda nos servidores do Supabase, e não no navegador.</td></tr>
+  <tr><td>Hook</td><td>Uma função do React que começa com <code>use</code> e guarda lógica reaproveitável.</td></tr>
+  <tr><td>Context</td><td>Dados compartilhados por vários componentes sem passar props.</td></tr>
+  <tr><td>Portal</td><td>Desenhar um componente React fora da div principal (<code>#root</code>).</td></tr>
+  <tr><td>Atualização otimista</td><td>Mudar a tela antes da resposta do servidor e desfazer se der erro.</td></tr>
+  <tr><td>Lazy loading</td><td>Baixar um pedaço do código só quando ele é necessário.</td></tr>
+  <tr><td>Build / deploy</td><td>Gerar a versão final do site / publicá-la.</td></tr>
+  <tr><td>LGPD</td><td>A lei brasileira de proteção de dados pessoais.</td></tr>
+</table>
+
+<h2 class="chapter newpage" id="c23"><span class="n">23</span>Exercícios para fixar</h2>
+<p>Os exercícios de SQL abaixo <strong>só leem dados</strong> (<code>select</code>), então pode rodar no SQL Editor sem medo. Tente fazer antes de olhar a resposta.</p>
+<ol>
+  <li><p>Liste o nome e o preço dos 5 itens mais caros do cardápio.</p><p class="answer">Resposta: <code>select name, price from menu_items order by price desc limit 5;</code></p></li>
+  <li><p>Quantos itens estão pausados agora?</p><p class="answer">Resposta: <code>select count(*) from menu_items where is_available = false;</code></p></li>
+  <li><p>Mostre cada vinho tinto de Malbec com o preço.</p><p class="answer">Resposta: <code>select i.name, i.price from menu_items i join categories c on c.id = i.category_id where c.slug = 'malbec';</code></p></li>
+  <li><p>Quais são as abas do cardápio (categorias sem pai)?</p><p class="answer">Resposta: <code>select name from categories where parent_id is null order by sort_order;</code></p></li>
+  <li><p>Mostre os pedidos de hoje com quarto, status e total.</p><p class="answer">Resposta: <code>select order_number, room_number, payment_status, total_amount from orders where created_at::date = current_date order by created_at;</code></p></li>
+  <li><p>Qual é o nome do prato em inglês do item com slug <code>cn2</code>?</p><p class="answer">Resposta: <code>select translations-&gt;'en'-&gt;&gt;'name' from menu_items where slug = 'cn2';</code> (a seta <code>-&gt;</code> entra no JSON e a <code>-&gt;&gt;</code> devolve o texto).</p></li>
+  <li><p><em>(React)</em> Em que arquivo você mudaria o texto “Indisponível no momento” em espanhol?</p><p class="answer">Resposta: <code>src/locales/es.json</code>, na chave <code>menu.unavailable</code>.</p></li>
+  <li><p><em>(React)</em> O hóspede reclama que o carrinho “sumiu” depois de fechar o navegador. Onde ele é salvo?</p><p class="answer">Resposta: no <code>localStorage</code> do aparelho, chave <code>irius:cart</code> (<code>src/cart/CartProvider.tsx</code>). Numa janela anônima, ele some ao fechar, e isso é normal.</p></li>
+  <li><p><em>(Pensar)</em> Por que o front não manda o preço para <code>create_safe_order</code>?</p><p class="answer">Resposta: porque qualquer pessoa pode alterar o que o navegador envia. O banco busca o preço oficial e calcula o total sozinho.</p></li>
+  <li><p><em>(Pensar)</em> O que acontece se você esquecer de rodar <code>remove_payment_simulator.sql</code> antes de abrir o app?</p><p class="answer">Resposta: qualquer pessoa pode chamar <code>dev_simulate_payment</code> para o próprio pedido PIX e ele vai para a cozinha como pago, sem dinheiro nenhum.</p></li>
+</ol>
+<div class="box lembre"><span class="t">Para terminar</span><p>Você não precisa dominar SQL para manter este app no dia a dia: quase tudo se faz pelo painel. O SQL aparece em três momentos: na instalação (capítulo 18), em consultas de conferência (exercícios acima) e quando o sistema ganhar recursos novos. Com este guia, você já sabe ler os arquivos e entender o que cada linha faz.</p></div>
+
+</body>
+</html>

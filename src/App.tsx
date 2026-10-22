@@ -8,25 +8,35 @@ import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 import "./App.css";
 import ScrollToTop from "./components/ScrollToTop";
+import type { MenuItemData } from "./hooks/useMenu";
+import CartProvider from "./cart/CartProvider";
+import CartBar from "./checkout/CartBar";
+import CheckoutSheet from "./checkout/CheckoutSheet";
 
 function App() {
-  const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [selectedItem, setSelectedItem] = useState<MenuItemData | null>(null);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   return (
-    <div className="container">
-      <Navbar /> 
-      <Header />
-      <Menu onSelectItem={setSelectedItem} />
-      <Hours />
-      <Location />
-      <Footer />
-      <ScrollToTop />
-      <Modal
-        isOpen={!!selectedItem}
-        onClose={() => setSelectedItem(null)}
-        item={selectedItem}
-      />
-    </div>
+    <CartProvider>
+      <div className="container">
+        <Navbar />
+        <Header />
+        <Menu onSelectItem={setSelectedItem} />
+        <Hours />
+        <Location />
+        <Footer />
+        <ScrollToTop />
+        <Modal
+          key={selectedItem?.id ?? "none"} // zera quantidade/observação a cada prato
+          isOpen={!!selectedItem}
+          onClose={() => setSelectedItem(null)}
+          item={selectedItem}
+        />
+        {!checkoutOpen && <CartBar onOpen={() => setCheckoutOpen(true)} />}
+        {checkoutOpen && <CheckoutSheet onClose={() => setCheckoutOpen(false)} />}
+      </div>
+    </CartProvider>
   );
 }
 

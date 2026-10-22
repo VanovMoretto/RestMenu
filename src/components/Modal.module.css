@@ -101,3 +101,112 @@
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* Item indisponível: selo à esquerda, preço apagado à direita */
+.footerUnavailable {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerUnavailable .price {
+  opacity: 0.45;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* --- Pedido: observação, quantidade e adicionar --- */
+.details {
+  overflow-y: auto;
+}
+
+.orderArea {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(44, 36, 32, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.notesField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.notesField textarea {
+  resize: none;
+  padding: 8px 10px;
+  border: 1px solid rgba(44, 36, 32, 0.2);
+  border-radius: 10px;
+  background-color: #fff;
+  font-family: var(--font-ui);
+  font-size: 1rem; /* >= 16px: o iPhone não dá zoom ao focar */
+  color: var(--text-primary);
+}
+
+.notesField textarea:focus {
+  border-color: var(--text-primary);
+}
+
+.orderRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(44, 36, 32, 0.3);
+  border-radius: 999px;
+}
+
+.stepper button {
+  width: 36px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.stepper button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.stepper span {
+  min-width: 20px;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.addButton {
+  flex: 1;
+  min-height: 42px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--text-primary);
+  color: var(--bg-paper);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.addButton:disabled {
+  margin-top: 16px;
+  opacity: 0.35;
+  cursor: not-allowed;
+}

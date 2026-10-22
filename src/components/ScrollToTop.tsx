@@ -45,8 +45,12 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Checagem inicial no próximo quadro (e não direto no efeito), quando o botão já está na tela
+    const frame = requestAnimationFrame(handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(frame);
+    };
   }, [isVisible]); 
 
   if (!isVisible) {

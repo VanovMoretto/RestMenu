@@ -1,0 +1,23 @@
+/* Selo discreto, no estilo das etiquetas de carta de vinhos */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* filetes finos antes e depois do texto */
+.tag::before,
+.tag::after {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.6;
+}

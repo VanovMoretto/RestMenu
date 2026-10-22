@@ -22,7 +22,7 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    debug: true, 
+    debug: false, // true enche o console de logs (inclusive no site publicado)
   });
 
 export default i18n;

@@ -79,3 +79,68 @@
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* --- Item indisponível (pausado no painel) --- */
+.unavailable .name,
+.unavailable .price,
+.unavailable .description,
+.unavailable .icon,
+.unavailable .cameraIcon {
+  opacity: 0.45;
+}
+
+.unavailable .price {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.tag {
+  margin-top: 8px;
+}
+
+/* --- Botão de adicionar ao pedido --- */
+.priceArea {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.addButton {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--text-primary);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.addButton:hover:not(:disabled),
+.addButton:focus-visible {
+  background-color: var(--text-primary);
+  color: var(--bg-paper);
+}
+
+.addButton:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+/* já tem no pedido: mostra a quantidade em destaque */
+.addButtonActive {
+  background-color: var(--text-primary);
+  color: var(--bg-paper);
+}
+
+.addButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

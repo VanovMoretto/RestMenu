@@ -3,65 +3,91 @@ import { useState } from "react";
 import styles from "./Menu.module.css";
 import Tabs from "./Tabs";
 import MenuItem from "./MenuItem";
-import { menuItems } from "../data/menuData";
+import MenuSkeleton from "./MenuSkeleton";
+import { useMenu, type MenuItemData } from "../hooks/useMenu";
+import { formatPrice, localize } from "../lib/menuFormat";
 import { useTranslation } from "react-i18next";
+import { useCart } from "../cart/cartStore";
 
 interface MenuProps {
-  onSelectItem: (item: any) => void;
+  onSelectItem: (item: MenuItemData) => void;
 }
 
+// Abas cujos itens abrem o modal com foto (bebidas e vinhos não abrem).
+const categoriesWithModal = ["entrada", "principal", "lanches", "sobremesa"];
+
 const Menu: React.FC<MenuProps> = ({ onSelectItem }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const language = i18n.resolvedLanguage ?? i18n.language;
+  const { tabs, entriesByTab, loading, error, reload } = useMenu();
+  const { addItem, quantityOf } = useCart();
   const [activeTab, setActiveTab] = useState("entrada");
 
-  const currentItems = menuItems[activeTab as keyof typeof menuItems] || [];
+  if (loading) return <MenuSkeleton />;
 
-  const categoriesWithModal = ["entrada", "principal", "lanches", "sobremesa"];
-  const isClickable = categoriesWithModal.includes(activeTab);
+  // Se a aba escolhida não existir mais (desativada no painel), cai na primeira.
+  const currentTab = tabs.some((tab) => tab.slug === activeTab)
+    ? activeTab
+    : tabs[0]?.slug ?? "";
+  const currentItems = entriesByTab[currentTab] ?? [];
+  const isClickable = categoriesWithModal.includes(currentTab);
+
+  const tabOptions = tabs.map((tab) => ({
+    id: tab.slug,
+    label: localize(tab, language).name,
+  }));
 
   return (
     <main className={styles.menuWrapper}>
       <div className={styles.menuContainer}>
-        <Tabs activeTab={activeTab} onTabChange={setActiveTab} />
+        <Tabs tabs={tabOptions} activeTab={currentTab} onTabChange={setActiveTab} />
 
         <section className={styles.contentArea}>
-          {currentItems.length > 0 ? (
-            currentItems.map((item: any, index) => {
-              if (item.section) {
+          {error ? (
+            <div className={styles.errorBox} role="alert">
+              <p className={styles.errorTitle}>{t("menu.load_error_title")}</p>
+              <p className={styles.placeholder}>{t("menu.load_error_text")}</p>
+              <button className={styles.retryButton} onClick={reload}>
+                {t("menu.retry")}
+              </button>
+            </div>
+          ) : currentItems.length > 0 ? (
+            currentItems.map((entry) => {
+              if (entry.kind === "section") {
                 return (
-                  <h2 key={`sec-${index}`} className={styles.sectionTitle}>
-                    {t(item.section)}
+                  <h2 key={`sec-${entry.category.id}`} className={styles.sectionTitle}>
+                    {localize(entry.category, language).name}
                   </h2>
                 );
               }
-              if (item.subsection) {
+              if (entry.kind === "subsection") {
                 return (
-                  <h3 key={`sub-${index}`} className={styles.subSectionTitle}>
-                    {t(item.subsection)}
+                  <h3 key={`sub-${entry.category.id}`} className={styles.subSectionTitle}>
+                    {localize(entry.category, language).name}
                   </h3>
                 );
               }
 
+              const { item } = entry;
+              const text = localize(item, language);
               return (
                 <MenuItem
                   key={item.id}
-                  name={t(item.name)}
-                  price={item.price}
-                  description={
-                    item.description ? t(item.description) : undefined}
-                    picture={item.picture}                  
-                  // --- ADICIONADO: Passando a imagem novamente ---
-                  image={item.image} 
-                  // ----------------------------------------------
-                  servingType={item.servingType}
+                  name={text.name}
+                  price={formatPrice(item.price)}
+                  description={text.description}
+                  picture={item.show_picture_icon}
+                  servingType={item.serving_type ?? undefined}
+                  isAvailable={item.is_available}
                   onClick={isClickable ? () => onSelectItem(item) : undefined}
+                  onAdd={() => addItem(item)}
+                  addLabel={t("cart.add_named", { name: text.name })}
+                  cartQuantity={quantityOf(item.id)}
                 />
               );
             })
           ) : (
-            <p className={styles.placeholder}>
-              Nenhum item disponível nesta categoria.
-            </p>
+            <p className={styles.placeholder}>{t("menu.empty")}</p>
           )}
         </section>
       </div>

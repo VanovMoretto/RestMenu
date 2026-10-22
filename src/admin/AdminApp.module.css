@@ -1,0 +1,282 @@
+/* src/admin/AdminApp.module.css */
+
+.page {
+  min-height: 100vh;
+  background-color: var(--bg-body);
+}
+
+/* --- Barra superior --- */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 24px;
+  background-color: var(--bg-paper);
+  border-bottom: 1px solid rgba(44, 36, 32, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 34px;
+}
+
+.brandLabel {
+  font-family: var(--font-logo);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding-left: 12px;
+  border-left: 1px solid rgba(44, 36, 32, 0.25);
+}
+
+.userArea {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.userEmail {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logoutButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid rgba(44, 36, 32, 0.3);
+  border-radius: 999px;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logoutButton:hover {
+  background-color: rgba(44, 36, 32, 0.06);
+}
+
+/* --- Abas do painel (mesmo desenho das abas do cardápio) --- */
+.tabs {
+  display: flex;
+  gap: 8px;
+  max-width: 1000px;
+  margin: 24px auto 0;
+  padding: 0 20px;
+}
+
+.tab {
+  padding: 12px 24px;
+  border: none;
+  background-color: var(--bg-tabs-track);
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+}
+
+.tabBadge {
+  display: inline-block;
+  min-width: 20px;
+  margin-left: 8px;
+  padding: 1px 6px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  background-color: var(--status-warning);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tabActive {
+  background-color: var(--bg-paper);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: 0px -4px 10px 0px rgba(44, 36, 32, 0.05);
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* --- Telas centralizadas (carregando / sem acesso / login) --- */
+.centered {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--bg-body);
+  text-align: center;
+}
+
+.centeredLogo {
+  height: 64px;
+  opacity: 0.85;
+}
+
+.centeredText {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 360px;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 380px;
+  background-color: var(--bg-paper);
+  padding: 36px 32px 32px;
+  border-radius: 20px;
+  box-shadow: 0px 11px 20px 10px rgba(44, 36, 32, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.loginLogo {
+  height: 72px;
+  align-self: center;
+}
+
+.loginTitle {
+  font-family: var(--font-logo);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(44, 36, 32, 0.15);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border: 1px solid rgba(44, 36, 32, 0.25);
+  border-radius: 10px;
+  background-color: #fff;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 1rem; /* >= 16px evita o zoom automático do iPhone */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input:focus {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 3px rgba(44, 36, 32, 0.08);
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordWrapper input {
+  padding-right: 44px;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+}
+
+.loginError {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background-color: rgba(198, 40, 40, 0.08);
+  color: var(--status-closed);
+  font-size: 0.95rem;
+}
+
+.primaryButton {
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--text-primary);
+  color: var(--bg-paper);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.primaryButton:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.secondaryButton {
+  padding: 10px 22px;
+  background: transparent;
+  border: 1px solid var(--text-primary);
+  border-radius: 999px;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .topBar {
+    padding: 10px 14px;
+  }
+
+  .userEmail {
+    display: none;
+  }
+
+  .tabs,
+  .content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
