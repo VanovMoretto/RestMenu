@@ -88,8 +88,11 @@
       "unavailable": "Algún producto acaba de quedar no disponible. Revise el pedido e intente de nuevo.",
       "room_charge": "Algún producto no se puede cargar a la habitación. Elija otra forma de pago.",
       "network": "Sin conexión. Verifique internet e intente de nuevo.",
-      "generic": "No pudimos enviar el pedido. Intente de nuevo o llame a la recepción."
-    }
+      "generic": "No pudimos enviar el pedido. Intente de nuevo o llame a la recepción.",
+      "method_off": "Esta forma de pago no está disponible por el momento. Elija otra."
+    },
+    "method_off": "No disponible por el momento.",
+    "ordering_off": "Los pedidos por la app no están disponibles temporalmente. Para pedir, hable con la recepción."
   },
   "payment": {
     "title": "Pago",

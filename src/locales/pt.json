@@ -88,8 +88,11 @@
       "unavailable": "Algum item ficou indisponível agora há pouco. Revise o pedido e tente de novo.",
       "room_charge": "Algum item não aceita faturamento no quarto. Escolha outra forma de pagamento.",
       "network": "Sem conexão. Verifique a internet e tente de novo.",
-      "generic": "Não foi possível enviar o pedido. Tente de novo ou ligue para a recepção."
-    }
+      "generic": "Não foi possível enviar o pedido. Tente de novo ou ligue para a recepção.",
+      "method_off": "Esta forma de pagamento está indisponível no momento. Escolha outra."
+    },
+    "method_off": "Indisponível no momento.",
+    "ordering_off": "Os pedidos pelo app estão temporariamente indisponíveis. Para pedir, fale com a recepção."
   },
   "payment": {
     "title": "Pagamento",

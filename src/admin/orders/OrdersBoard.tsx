@@ -7,6 +7,7 @@ import { METHOD_LABELS, formatPhone, formatTime, isPrepaid, maskCpf, type AdminO
 import type { LiveOrders } from "./useLiveOrders";
 import { unlockAudio, playAlert } from "./alertSound";
 import ReceiptModal from "./ReceiptModal";
+import PaymentSettingsPanel from "./PaymentSettingsPanel";
 import styles from "./OrdersBoard.module.css";
 
 interface OrdersBoardProps {
@@ -67,6 +68,8 @@ const OrdersBoard: React.FC<OrdersBoardProps> = ({ live, soundOn, onSoundChange 
           {soundOn ? "Som ligado" : "Ativar som de alerta"}
         </button>
       </div>
+
+      <PaymentSettingsPanel onError={setMessage} />
 
       {message && (
         <p className={styles.message} role="alert">

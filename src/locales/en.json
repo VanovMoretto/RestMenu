@@ -88,8 +88,11 @@
       "unavailable": "An item just became unavailable. Please review your order and try again.",
       "room_charge": "An item can't be charged to the room. Please choose another payment method.",
       "network": "No connection. Check your internet and try again.",
-      "generic": "We couldn't send your order. Try again or call the front desk."
-    }
+      "generic": "We couldn't send your order. Try again or call the front desk.",
+      "method_off": "This payment method is currently unavailable. Please choose another one."
+    },
+    "method_off": "Currently unavailable.",
+    "ordering_off": "Ordering through the app is temporarily unavailable. To order, please contact the front desk."
   },
   "payment": {
     "title": "Payment",

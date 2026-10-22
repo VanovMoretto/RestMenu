@@ -436,6 +436,18 @@
   line-height: 1.35;
 }
 
+.orderingOff {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px dashed rgba(44, 36, 32, 0.35);
+  border-radius: 10px;
+  background-color: rgba(44, 36, 32, 0.04);
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
 .submitError {
   margin: 0;
   padding: 10px 12px;

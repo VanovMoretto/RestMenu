@@ -185,6 +185,42 @@ create index if not exists order_items_menu_item_id_idx on public.order_items (m
 
 
 -- -----------------------------------------------------------------------------
+-- 4b. Formas de pagamento ligadas/desligadas
+-- -----------------------------------------------------------------------------
+-- Liga/desliga cada forma de pagamento sem mexer no código. O app apaga as
+-- desligadas e o create_safe_order RECUSA pedidos com elas — mesmo que alguém
+-- chame a função direto, sem passar pela tela.
+-- Todas começam DESLIGADAS (o app está público no portfólio).
+-- Para ligar: painel /admin > Pedidos ao Vivo, ou
+--   update public.payment_settings set enabled = true where method = 'pix';
+create table if not exists public.payment_settings (
+  method  text primary key check (method in ('pix', 'credit_card', 'room_charge', 'cash_on_delivery')),
+  enabled boolean not null default false
+);
+
+-- on conflict do nothing: rodar o schema de novo não desfaz o que você ligou
+insert into public.payment_settings (method, enabled) values
+  ('pix', false), ('credit_card', false), ('room_charge', false), ('cash_on_delivery', false)
+on conflict (method) do nothing;
+
+alter table public.payment_settings enable row level security;
+revoke all on public.payment_settings from anon, authenticated;
+grant select on public.payment_settings to anon, authenticated;
+grant update (enabled) on public.payment_settings to authenticated;
+
+drop policy if exists "payment_settings_public_read" on public.payment_settings;
+create policy "payment_settings_public_read" on public.payment_settings
+  for select to anon, authenticated
+  using (true);
+
+drop policy if exists "payment_settings_admin_update" on public.payment_settings;
+create policy "payment_settings_admin_update" on public.payment_settings
+  for update to authenticated
+  using (public.is_admin())
+  with check (public.is_admin());
+
+
+-- -----------------------------------------------------------------------------
 -- 5. RLS e permissões
 -- -----------------------------------------------------------------------------
 alter table public.categories  enable row level security;
@@ -324,6 +360,13 @@ begin
   end;
   if v_payment_status is null then
     raise exception 'Forma de pagamento inválida.' using errcode = '22023';
+  end if;
+  -- A trava de verdade: forma de pagamento desligada em payment_settings
+  if not exists (
+    select 1 from public.payment_settings
+    where method = p_payment_method and enabled
+  ) then
+    raise exception 'Forma de pagamento indisponível no momento.' using errcode = 'P0001';
   end if;
 
   -- Formato dos itens ----------------------------------------------------------

@@ -79,6 +79,7 @@ export function orderErrorMessage(message: string | undefined, t: TFunction) {
   if (!message) return t("checkout.errors.generic");
   if (/não estão disponíveis|cardápio mudou/i.test(message)) return t("checkout.errors.unavailable");
   if (/cobrança no quarto/i.test(message)) return t("checkout.errors.room_charge");
+  if (/indisponível no momento/i.test(message)) return t("checkout.errors.method_off");
   if (/Failed to fetch|NetworkError|network/i.test(message)) return t("checkout.errors.network");
   return t("checkout.errors.generic");
 }

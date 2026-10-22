@@ -98,6 +98,15 @@ npm run dev
 
 Só pedidos `paid` ou `approved` vão para a cozinha.
 
+**Formas de pagamento ligadas/desligadas (`payment_settings`)**
+
+Cada forma (PIX, cartão, faturar no quarto, dinheiro) tem uma chave `enabled`. **Todas começam desligadas.** Desligada, ela aparece apagada no checkout com "Indisponível no momento", e o banco **recusa** o pedido mesmo que alguém chame a API direto. Se todas estiverem desligadas, o checkout avisa que os pedidos estão pausados.
+
+Para ligar ou desligar: **/admin → Pedidos ao Vivo → Formas de pagamento no app**, ou pelo SQL:
+```sql
+update public.payment_settings set enabled = true where method = 'pix';
+```
+
 **Segurança**
 - O front **nunca envia preço**: a função `create_safe_order` busca os preços no banco, calcula o total e valida tudo (itens disponíveis, limites, faturamento permitido).
 - Hóspedes não leem a tabela de pedidos; acompanham pelo `get_order_status(uuid)`, que não expõe dados pessoais.

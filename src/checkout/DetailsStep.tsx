@@ -18,6 +18,7 @@ import {
   saveGuest,
   type PaymentMethod,
 } from "./checkoutUtils";
+import { usePaymentSettings } from "./usePaymentSettings";
 import styles from "./CheckoutSheet.module.css";
 
 type Field = "room" | "name" | "cpf" | "phone" | "method";
@@ -26,6 +27,7 @@ const DetailsStep: React.FC<{ onCreated: (order: ActiveOrder) => void }> = ({ on
   const { t, i18n } = useTranslation();
   const language = i18n.resolvedLanguage ?? i18n.language;
   const { lines, subtotal } = useCart();
+  const { settings, loading: settingsLoading } = usePaymentSettings();
   const [guest] = useState(loadGuest);
   const [room, setRoom] = useState(guest.room);
   const [name, setName] = useState(guest.name);
@@ -42,9 +44,15 @@ const DetailsStep: React.FC<{ onCreated: (order: ActiveOrder) => void }> = ({ on
   const blockedForRoom = lines.filter((l) => !l.item.allow_room_charge).map((l) => localize(l.item, language).name);
 
   const isMethodDisabled = (m: PaymentMethod) =>
-    (m === "room_charge" && blockedForRoom.length > 0) || (ONLINE_METHODS.includes(m) && !PAYMENT_SIMULATOR);
+    !settings[m] || // desligada pelo restaurante (payment_settings)
+    (m === "room_charge" && blockedForRoom.length > 0) ||
+    (ONLINE_METHODS.includes(m) && !PAYMENT_SIMULATOR);
+
+  // Nenhuma forma disponível: pedidos pelo app estão pausados
+  const orderingOff = !settingsLoading && PAYMENT_METHODS.every(isMethodDisabled);
 
   const methodHint = (m: PaymentMethod) => {
+    if (!settings[m]) return t("checkout.method_off");
     if (m === "room_charge" && blockedForRoom.length > 0) {
       return t("checkout.room_charge_blocked", { items: blockedForRoom.join(", ") });
     }
@@ -102,6 +110,11 @@ const DetailsStep: React.FC<{ onCreated: (order: ActiveOrder) => void }> = ({ on
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <div className={styles.body}>
+        {orderingOff && (
+          <p className={styles.orderingOff} role="status">
+            {t("checkout.ordering_off")}
+          </p>
+        )}
         <div className={styles.row}>
           <label className={`${styles.field} ${styles.roomField}`}>
             <span>{t("checkout.room")}</span>
@@ -204,7 +217,7 @@ const DetailsStep: React.FC<{ onCreated: (order: ActiveOrder) => void }> = ({ on
       </div>
 
       <footer className={styles.footer}>
-        <button type="submit" className={styles.primaryButton} disabled={sending}>
+        <button type="submit" className={styles.primaryButton} disabled={sending || orderingOff || settingsLoading}>
           {sending ? t("checkout.sending") : t("checkout.submit", { total: formatPrice(subtotal) })}
         </button>
       </footer>
